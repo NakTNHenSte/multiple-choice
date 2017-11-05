@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+  <definition name="pageFrame" template="/templates/layout/pageFrame.jsp">
+    <put-attribute name="header" value="/templates/layout/header.jsp"/>
+  </definition>
+  <!-- room -->
+  <!--<definition name="roomList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/room/roomList.jsp"/>
+  </definition>
+  <definition name="roomEdit" extends="pageFrame">
+    <put-attribute name="content" value="/templates/room/roomEdit.jsp"/>
+  </definition>
+  &lt;!&ndash; lecture &ndash;&gt;
+  <definition name="lectureList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/lecture/lectureList.jsp"/>
+  </definition>
+  <definition name="lectureEdit" extends="pageFrame">
+    <put-attribute name="content" value="/templates/lecture/lectureEdit.jsp"/>
+  </definition>-->
+</tiles-definitions>
