@@ -13,5 +13,6 @@
 </head>
 <body>
     Hello World, <s:property value = "name"/>
+<h3>Kommentar von Chris</h3>
 </body>
 </html>
