@@ -1,6 +1,6 @@
 package de.nordakademie.multiplechoice.exam.model;
 
-import de.nordakademie.multiplechoice.lecturer.model.Lecturer;
+import de.nordakademie.multiplechoice.user.model.User;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -19,15 +19,15 @@ public class Exam {
     private Date end;
     private Byte credits;
     private String seminar;
-    private Lecturer lecturer;
+    private User user;
 
     public Exam() {
     }
 
-    public Exam(final long id, final String title, Lecturer lecturer) {
+    public Exam(final long id, final String title, User user) {
         this.id = id;
         this.title = title;
-        this.lecturer = lecturer;
+        this.user = user;
     }
 
     @Id
@@ -50,12 +50,12 @@ public class Exam {
     }
 
     @Basic
-    public Lecturer getLecturer() {
-        return lecturer;
+    public User getUser() {
+        return user;
     }
 
-    public void setLecturer(Lecturer lecturer) {
-        this.lecturer = lecturer;
+    public void setUser(User user) {
+        this.user = user;
     }
     @Basic
     public String getSeminar() {
