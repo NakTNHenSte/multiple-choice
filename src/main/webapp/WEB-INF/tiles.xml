@@ -11,10 +11,15 @@
   </definition>
   <!-- question -->
   <definition name="questionList" extends="pageFrame">
-      <put-attribute name="content" value="/templates/question/questionList.jsp"/>
+    <put-attribute name="content" value="/templates/question/questionList.jsp"/>
   </definition>
   <!-- user -->
   <definition name="userList" extends="pageFrame">
     <put-attribute name="content" value="/templates/user/userList.jsp"/>
   </definition>
+  <!-- answer -->
+  <definition name="answerList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/answer/answerList.jsp"/>
+  </definition>
+
 </tiles-definitions>
