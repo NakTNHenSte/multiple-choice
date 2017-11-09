@@ -13,5 +13,8 @@
   <definition name="questionList" extends="pageFrame">
       <put-attribute name="content" value="/templates/question/questionList.jsp"/>
   </definition>
-
+  <!-- user -->
+  <definition name="userList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/user/userList.jsp"/>
+  </definition>
 </tiles-definitions>

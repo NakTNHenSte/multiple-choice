@@ -3,7 +3,7 @@ package de.nordakademie.multiplechoice.user.model;
 import javax.persistence.*;
 
 /**
- * Created by Dieke on 07.11.17.
+ * Created by Dieke Luebberstedt on 07.11.17.
  */
 
 
@@ -14,19 +14,19 @@ public class User {
     private long id;
     private String name;
     private String surname;
+    private String typ;
     private String username;
-    private String role;
     private String password;
 
     public User(){
     }
 
-    public User(final long id, final String name, final String surname, final String username, final String role, final String password){
+    public User(final long id, final String name, final String surname, final String username, final String typ, final String password){
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.username = username;
-        this.role = role;
+        this.typ = typ;
         this.password = password;
     }
 
@@ -68,12 +68,12 @@ public class User {
     }
 
     @Basic
-    public String getRole() {
-        return username;
+    public String getTyp() {
+        return typ;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setTyp(String typ) {
+        this.typ = typ;
     }
 
     @Basic
