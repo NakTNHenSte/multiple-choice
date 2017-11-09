@@ -1,10 +1,7 @@
 package de.nordakademie.multiplechoice.exam.model;
 
-import de.nordakademie.multiplechoice.user.model.User;
-
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Time;
 
 
 @Entity
@@ -13,21 +10,29 @@ public class Exam {
 
     private long id;
     private String title;
-    private Time duration;
-    private Short percentualSuccessThreshold;
+    private short duration;
+    private short percentualSuccessThreshold;
     private Date start;
     private Date end;
-    private Byte credits;
+    private byte credits;
     private String seminar;
-    private User user;
+    private String user;
 
     public Exam() {
     }
 
-    public Exam(final long id, final String title, User user) {
+    public Exam(final long id, final String title, String user, short duration,short percentualSuccessThreshold,
+                Date start, Date end, byte credits, String seminar) {
         this.id = id;
         this.title = title;
         this.user = user;
+        this.duration = duration;
+
+        this.percentualSuccessThreshold = percentualSuccessThreshold;
+        this.start = start;
+        this.end = end;
+        this.credits = credits;
+        this.seminar = seminar;
     }
 
     @Id
@@ -50,13 +55,14 @@ public class Exam {
     }
 
     @Basic
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
+
     @Basic
     public String getSeminar() {
         return seminar;
@@ -65,6 +71,7 @@ public class Exam {
     public void setSeminar(String seminar) {
         this.seminar = seminar;
     }
+
     @Basic
     public Byte getCredits() {
         return credits;
@@ -73,6 +80,7 @@ public class Exam {
     public void setCredits(Byte credits) {
         this.credits = credits;
     }
+
     @Basic
     public Date getEnd() {
         return end;
@@ -81,6 +89,7 @@ public class Exam {
     public void setEnd(Date end) {
         this.end = end;
     }
+
     @Basic
     public Date getStart() {
         return start;
@@ -89,20 +98,22 @@ public class Exam {
     public void setStart(Date start) {
         this.start = start;
     }
+
     @Basic
-    public Short getPercentualSuccessThreshold() {
+    public short getPercentualSuccessThreshold() {
         return percentualSuccessThreshold;
     }
 
-    public void setPercentualSuccessThreshold(Short percentualSuccessThreshold) {
+    public void setPercentualSuccessThreshold(short percentualSuccessThreshold) {
         this.percentualSuccessThreshold = percentualSuccessThreshold;
     }
+
     @Basic
-    public Time getDuration() {
+    public short getDuration() {
         return duration;
     }
 
-    public void setDuration(Time duration) {
+    public void setDuration(short duration) {
         this.duration = duration;
     }
 }

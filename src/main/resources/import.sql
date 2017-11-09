@@ -1,0 +1,1 @@
+INSERT INTO EXAM VALUES (1234, 1, 30, '2017-10-31', 10, 'Test', '2017-10-10','Title','User');

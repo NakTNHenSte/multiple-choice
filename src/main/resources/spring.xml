@@ -3,16 +3,16 @@
        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-  <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    <property name="url" value="jdbc:h2:/Users/Bene/dev/nak/iaa-lecture/iaa-db"/>
-    <property name="username" value="iaa"/>
-    <property name="password" value="iaa"/>
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="url" value="jdbc:h2:/home/daniel/git/multiple-choice/db.mv.db"/>
+    <property name="username" value=""/>
+    <property name="password" value=""/>
     <property name="driverClassName" value="org.h2.Driver"/>
   </bean>
 
   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="dataSource" ref="dataSource"/>
-    <property name="packagesToScan" value="de.nordakademie.iaa"/>
+    <property name="packagesToScan" value="de.nordakademie.multiplechoice"/>
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
     </property>
@@ -21,7 +21,7 @@
         <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
         <prop key="hibernate.show_sql">false</prop>
         <prop key="hibernate.format_sql">true</prop>
-        <prop key="hibernate.hbm2ddl.auto">update</prop>
+        <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
       </props>
     </property>
   </bean>
@@ -33,5 +33,5 @@
   <tx:annotation-driven/>
 
   <context:annotation-config/>
-  <context:component-scan base-package="de.nordakademie.iaa"/>-->
+  <context:component-scan base-package="de.nordakademie.multiplechoice"/>
 </beans>
