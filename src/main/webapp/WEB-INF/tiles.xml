@@ -9,5 +9,9 @@
   <definition name="examList" extends="pageFrame">
     <put-attribute name="content" value="/templates/exam/examList.jsp"/>
   </definition>
+  <!-- question -->
+  <definition name="questionList" extends="pageFrame">
+      <put-attribute name="content" value="/templates/question/questionList.jsp"/>
+  </definition>
 
 </tiles-definitions>
