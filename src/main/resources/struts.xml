@@ -13,11 +13,21 @@
     <result-types>
       <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
     </result-types>
-    <!-- Hier kommen Methoden -->
 
 <!-- exam -->
     <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
       <result>examList</result>
     </action>
+
+<!-- question -->
+<action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
+  <result>questionList</result>
+</action>
+
+    <!-- user -->
+    <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
+      <result>userList</result>
+    </action>
+
   </package>
 </struts>

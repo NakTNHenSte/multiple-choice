@@ -48,7 +48,7 @@ public class Question {
         return scorePerCorrectChoice;
     }
 
-    public void setScorePerCorrectChoice(int scorePerCorrectChoice) {
+    public void setScorePerCorrectChoice(double scorePerCorrectChoice) {
         this.scorePerCorrectChoice = scorePerCorrectChoice;
     }
 
@@ -57,7 +57,7 @@ public class Question {
         return scorePerWrongChoice;
     }
 
-    public void setScorePerWrongChoice(int scorePerWrongChoice) {
+    public void setScorePerWrongChoice(double scorePerWrongChoice) {
         this.scorePerWrongChoice = scorePerWrongChoice;
     }
 
@@ -66,7 +66,7 @@ public class Question {
         return scorePerMissingChoice;
     }
 
-    public void setScorePerMissingChoice(int scorePerMissingChoice) {
+    public void setScorePerMissingChoice(double scorePerMissingChoice) {
         this.scorePerMissingChoice = scorePerMissingChoice;
     }
 
