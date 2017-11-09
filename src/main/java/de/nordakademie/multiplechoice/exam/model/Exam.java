@@ -30,7 +30,6 @@ public class Exam {
         this.title = title;
         this.user = user;
         this.duration = duration;
-
         this.percentualSuccessThreshold = percentualSuccessThreshold;
         this.start = start;
         this.end = end;
