@@ -12,31 +12,29 @@ import javax.persistence.*;
 @Table(name = "QUESTION")
 public class Question {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Basic
     private int scorePerCorrectChoice;
-    @Basic
     private int scorePerWrongChoice;
-    @Basic
     private int scorePerMissingChoice;
-    @ManyToOne(optional = false)
+    private String questionText;
     private Exam exam;
 
 
     public Question() {
     }
 
-    public Question(long id, int scorePerCorrectChoice, int scorePerWrongChoice, int scorePerMissingChoice, Exam exam) {
+    public Question(long id, int scorePerCorrectChoice, int scorePerWrongChoice,
+                    int scorePerMissingChoice, String questionText, Exam exam) {
         this.id = id;
         this.scorePerCorrectChoice = scorePerCorrectChoice;
         this.scorePerWrongChoice = scorePerWrongChoice;
         this.scorePerMissingChoice = scorePerMissingChoice;
+        this.questionText = questionText;
         this.exam = exam;
     }
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
@@ -45,6 +43,7 @@ public class Question {
         this.id = id;
     }
 
+    @Basic
     public int getScorePerCorrectChoice() {
         return scorePerCorrectChoice;
     }
@@ -53,6 +52,7 @@ public class Question {
         this.scorePerCorrectChoice = scorePerCorrectChoice;
     }
 
+    @Basic
     public int getScorePerWrongChoice() {
         return scorePerWrongChoice;
     }
@@ -61,6 +61,7 @@ public class Question {
         this.scorePerWrongChoice = scorePerWrongChoice;
     }
 
+    @Basic
     public int getScorePerMissingChoice() {
         return scorePerMissingChoice;
     }
@@ -69,6 +70,16 @@ public class Question {
         this.scorePerMissingChoice = scorePerMissingChoice;
     }
 
+    @Basic
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
+    }
+
+    @ManyToOne(optional = false)
     public Exam getExam() {
         return exam;
     }
