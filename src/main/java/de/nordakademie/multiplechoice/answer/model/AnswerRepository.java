@@ -25,7 +25,7 @@ public class AnswerRepository {
     }
 
     public List<Answer> findAll(long questionID) {
-        return entityManager.createQuery("SELECT 1 FROM Answer WHERE questionID = :questionID 1", Answer.class).getResultList();
+        return entityManager.createQuery("SELECT a FROM Answer a WHERE a.questionID = :questionID ", Answer.class).setParameter("questionID", questionID).getResultList();
     }
 }
 
