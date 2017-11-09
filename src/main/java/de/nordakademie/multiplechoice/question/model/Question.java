@@ -13,9 +13,9 @@ import javax.persistence.*;
 public class Question {
 
     private long id;
-    private int scorePerCorrectChoice;
-    private int scorePerWrongChoice;
-    private int scorePerMissingChoice;
+    private double scorePerCorrectChoice;
+    private double scorePerWrongChoice;
+    private double scorePerMissingChoice;
     private String questionText;
     private Exam exam;
 
@@ -44,7 +44,7 @@ public class Question {
     }
 
     @Basic
-    public int getScorePerCorrectChoice() {
+    public double getScorePerCorrectChoice() {
         return scorePerCorrectChoice;
     }
 
@@ -53,7 +53,7 @@ public class Question {
     }
 
     @Basic
-    public int getScorePerWrongChoice() {
+    public double getScorePerWrongChoice() {
         return scorePerWrongChoice;
     }
 
@@ -62,7 +62,7 @@ public class Question {
     }
 
     @Basic
-    public int getScorePerMissingChoice() {
+    public double getScorePerMissingChoice() {
         return scorePerMissingChoice;
     }
 
