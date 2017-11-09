@@ -6,4 +6,4 @@ INSERT INTO EXAM VALUES (1238, 2, 90, '2017-10-31', 30, 'Malen mit Zahlen', '201
 
 INSERT INTO QUESTION VALUES (1001, 'Hier steht eine Frage', 1, -0.5, 0,  1234);
 INSERT INTO USER VALUES (1234, 'Hans', 'password', 'Petersen', 'S', 'hans.petersen');
-INSERT INTO ANSWER VALUES (1001, 'Softwaretechnik existiert seit 1969', 1002, TRUE );
+INSERT INTO ANSWER VALUES (1001, 'Softwaretechnik existiert seit 1969', TRUE, 1001 );

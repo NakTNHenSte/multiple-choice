@@ -28,7 +28,7 @@ public class AnswerListAction implements Action {
         return SUCCESS;
     }
 
-    public List<Answer> getExams() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.question.model.Question;
 
 @Entity
@@ -19,16 +20,16 @@ import de.nordakademie.multiplechoice.question.model.Question;
 public class Answer {
 
     private long answerID;
-    private long questionID;
+    private Question question;
     private boolean trueOrFalse;
     private String answerText;
 
     public Answer() {
     }
 
-    public Answer(final long answerID, long questionID, final boolean trueOrFalse, final String answerText) {
+    public Answer(final long answerID, Question question, final boolean trueOrFalse, final String answerText) {
         this.answerID = answerID;
-        this.questionID = questionID;
+        this.question = question;
         this.trueOrFalse = trueOrFalse;
         this.answerText = answerText;
     }
@@ -36,18 +37,11 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getAnswerID() {
-        return questionID;
+        return answerID;
     }
 
     public void setAnswerID(final long answerID) {
         this.answerID = answerID;
-    }
-
-    @Basic
-    public long getQuestionID() { return questionID; }
-
-    public void setQuestionID(final long questionID) {
-        this.questionID = questionID;
     }
 
     @Basic
@@ -62,6 +56,15 @@ public class Answer {
 
     public void setAnswerText(final String answerText) {
         this.answerText = answerText;
+    }
+
+    @ManyToOne(optional = false)
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }
 

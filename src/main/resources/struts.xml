@@ -30,6 +30,7 @@
           <result>userList</result>
       </action>
 
+    <!-- answer -->
       <action name='answerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
           <result>answerList</result>
       </action>
