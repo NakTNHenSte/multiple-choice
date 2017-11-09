@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.sql.Date;
 
 
+/**
+ * Created by Daniel Fiolka on 08.11.17.
+ */
 @Entity
 @Table(name = "EXAM")
 public class Exam {

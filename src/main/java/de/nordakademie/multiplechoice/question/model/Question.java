@@ -21,7 +21,7 @@ public class Question {
     private int scorePerWrongChoice;
     @Basic
     private int scorePerMissingChoice;
-    @Basic
+    @ManyToOne(optional = false)
     private Exam exam;
 
 
