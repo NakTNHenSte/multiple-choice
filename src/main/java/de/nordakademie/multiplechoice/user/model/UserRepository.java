@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
- * Created by Dieke on 09.11.17.
+ * Created by Dieke Luebberstedt on 09.11.17.
  */
 
 @Repository

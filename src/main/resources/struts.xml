@@ -30,6 +30,18 @@
           <result>userList</result>
       </action>
 
+      <action name='loginUser'
+              class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
+              method="loginUser">
+          <result type="redirectAction">examList</result>
+          <result name="input">userLogin</result>
+      </action>
+
+      <action name='userLogin'
+              class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
+              method="getForm">
+      <result>userLogin</result>
+      </action>
     <!-- answer -->
       <action name='answerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
           <result>answerList</result>

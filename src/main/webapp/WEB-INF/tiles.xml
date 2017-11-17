@@ -17,6 +17,9 @@
   <definition name="userList" extends="pageFrame">
     <put-attribute name="content" value="/templates/user/userList.jsp"/>
   </definition>
+  <definition name="userLogin" extends="pageFrame">
+    <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
+  </definition>
   <!-- answer -->
   <definition name="answerList" extends="pageFrame">
     <put-attribute name="content" value="/templates/answer/answerList.jsp"/>
