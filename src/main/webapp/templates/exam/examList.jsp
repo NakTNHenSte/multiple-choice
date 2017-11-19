@@ -11,26 +11,20 @@
 <table class="table">
     <tr>
         <th scope="col">Id</th>
-        <th scope="col">Title</th>
-        <th scope="col">Duration</th>
+        <th scope="col">Titel</th>
         <th scope="col">Dozent</th>
         <th scope="col">Seminar</th>
         <th scope="col">Credits</th>
-        <th scope="col">Startdatum</th>
-        <th scope="col">Enddatum</th>
-        <th scope="col">% zum Bestehen</th>
+        <th scope="col">Prüfungszeitraum</th>
     </tr>
     <s:iterator value="exams">
         <tr>
-            <td><s:property value="id"/></td>
+            <td><s:a href="examDetail?examId=%{id}"> <s:property value="id"/></s:a></td>
             <td><s:property value="title"/></td>
-            <td><s:property value="duration"/></td>
             <td><s:property value="user"/></td>
             <td><s:property value="seminar"/></td>
             <td><s:property value="credits"/></td>
-            <td><s:property value="start"/></td>
-            <td><s:property value="end"/></td>
-            <td><s:property value="percentualSuccessThreshold"/></td>
+            <td><s:property value="start"/> - <s:property value="end"/></td>
         </tr>
     </s:iterator>
 </table>

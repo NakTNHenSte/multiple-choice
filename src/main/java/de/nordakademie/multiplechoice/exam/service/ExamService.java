@@ -31,4 +31,9 @@ public class ExamService {
         examRepository.create(exam);
     }
 
+    @Transactional
+    public Exam findOne(long examId){
+        return examRepository.findOne(examId);
+    }
+
 }

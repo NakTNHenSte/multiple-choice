@@ -4,7 +4,7 @@
     <div class="container" >
 
 
-            <a class="navbar-brand" href="#">Multiple Choice</a>
+            <a class="navbar-brand" href="examList">Multiple Choice</a>
 
 
 

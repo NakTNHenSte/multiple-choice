@@ -19,6 +19,9 @@
     <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
       <result>examList</result>
     </action>
+    <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
+      <result>examDetail</result>
+    </action>
 
       <!-- question -->
       <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
@@ -46,5 +49,7 @@
       <action name='answerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
           <result>answerList</result>
       </action>
+
+
   </package>
 </struts>
