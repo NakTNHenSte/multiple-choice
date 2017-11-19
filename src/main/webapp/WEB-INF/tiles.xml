@@ -9,13 +9,18 @@
   <definition name="examList" extends="pageFrame">
     <put-attribute name="content" value="/templates/exam/examList.jsp"/>
   </definition>
-  <definition name="examDetail" extends="pageFrame">
-    <put-attribute name="content" value="/templates/exam/examDetail.jsp"/>
-  </definition>
-  <!-- question -->
+
+    <!-- question -->
   <definition name="questionList" extends="pageFrame">
     <put-attribute name="content" value="/templates/question/questionList.jsp"/>
   </definition>
+  <definition name="questionEdit" extends="pageFrame">
+     <put-attribute name="content" value="/templates/question/questionEdit.jsp"/>
+  </definition>
+  <definition name="questionAddAnswer" extends="pageFrame">
+     <put-attribute name="content" value="/templates/question/questionAddAnswer.jsp"/>
+  </definition>
+
   <!-- user -->
   <definition name="userList" extends="pageFrame">
     <put-attribute name="content" value="/templates/user/userList.jsp"/>

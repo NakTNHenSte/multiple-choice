@@ -31,6 +31,7 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
+    @Transactional
     public void create(final Question question) {
         final Exam exam = examRepository.findOne(question.getExam().getId());
         question.setExam(exam);

@@ -27,6 +27,23 @@
       <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
           <result>questionList</result>
       </action>
+      <action name='questionEdit'
+              class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+              method="getForm">
+          <result>questionEdit</result>
+      </action>
+      <action name='saveQuestion'
+              class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+              method="saveQuestion">
+          <result type="redirectAction">questionList</result>
+          <result name="input">questionEdit</result>
+      </action>
+      <action name='addAnswer'
+              class="de.nordakademie.multiplechoice.question.ui.QuestionAddAnswerAction"
+              method="addAnswer">
+          <result name="ADD_ANSWER">questionAddAnswer</result>
+      </action>
+
 
       <!-- user -->
       <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
