@@ -50,6 +50,17 @@
             <result>answerList</result>
         </action>
 
+        <action name='saveAnswer'
+                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
+                method="saveAnswer">
+            <result type="redirectAction">answerList</result>
+            <result name="input">answerEdit</result>
+        </action>
 
+        <action name='answerEdit'
+                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
+                method="getForm">
+            <result>answerEdit</result>
+        </action>
     </package>
 </struts>

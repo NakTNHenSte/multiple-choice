@@ -27,5 +27,8 @@
   <definition name="answerList" extends="pageFrame">
     <put-attribute name="content" value="/templates/answer/answerList.jsp"/>
   </definition>
+  <definition name="answerEdit" extends="pageFrame">
+    <put-attribute name="content" value="/templates/answer/answerEdit.jsp"/>
+  </definition>
 
 </tiles-definitions>
