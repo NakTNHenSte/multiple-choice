@@ -14,10 +14,12 @@ public class UserLoginAction implements Action{
     public UserLoginAction(){}
 
     public String loginUser(){
+
         return SUCCESS;
     }
 
     public String getForm(){
+
         return SUCCESS;
     }
 

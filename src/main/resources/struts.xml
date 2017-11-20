@@ -58,6 +58,18 @@
               method="getForm">
       <result>userLogin</result>
       </action>
+
+      <action name="login" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+              method="login">
+          <result type="redirectAction">examList</result>
+          <result name="input">Login</result>
+      </action>
+
+      <action name="logout" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+              method="logout">
+          <result name="success">Login</result>
+      </action>
+
       <!-- answer -->
       <action name='answerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
           <result>answerList</result>

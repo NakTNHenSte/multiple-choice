@@ -7,7 +7,8 @@
             Multiple Choice</a>
 
         <div class="navbar-right">
-            <s:a action="logoutUser">
+            <s:a action="logout">
+                <i>${sessionScope.username}</i>
                 <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
             </s:a>
         </div>

@@ -7,6 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+
+<h2>Struts2 login & logout example with Session Management</h2>
+
+Hello,	<s:property value="#session.username" /> |	<a href="logout">Logout</a>
+
+
 <table>
     <tr>
         <th>Id</th>
