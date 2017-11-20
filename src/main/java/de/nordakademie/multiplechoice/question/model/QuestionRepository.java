@@ -28,4 +28,8 @@ public class QuestionRepository {
         return entityManager.createQuery("SELECT q FROM Question q", Question.class).getResultList();
     }
 
+    public Question findOne(final long questionId) {
+        return entityManager.find(Question.class, questionId);
+    }
+
 }

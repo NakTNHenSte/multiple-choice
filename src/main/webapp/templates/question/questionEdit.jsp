@@ -16,8 +16,10 @@
     <s:textfield name="question.scorePerMissingChoice" label="Malus fehlende Antwort"/>
     <%--examID nur temporaer zum Testen--%>
     <s:textfield name="question.exam.id" label="ExamID"/>
-    
-    <%--<s:action name="addAnswer" executeResult="true"/>--%>
+
+    <s:iterator var="index" begin="1" end="5">
+        <s:textfield label="Antwort %{index}"/>
+    </s:iterator>
 
     <s:submit value="Speichern"/>
 </s:form>
