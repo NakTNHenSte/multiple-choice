@@ -18,7 +18,8 @@
     <s:textfield name="question.exam.id" label="ExamID"/>
 
     <s:iterator var="index" begin="1" end="5">
-        <s:textfield label="Antwort %{index}"/>
+        <s:action name="answerEdit" executeResult="true"/>
+        <%--<s:textfield label="Antwort %{index}"/>--%>
     </s:iterator>
 
     <s:submit value="Speichern"/>
