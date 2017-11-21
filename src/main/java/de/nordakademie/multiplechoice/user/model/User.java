@@ -30,7 +30,6 @@ public class User {
         this.password = password;
     }
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
@@ -85,4 +84,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
