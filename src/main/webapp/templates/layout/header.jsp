@@ -8,6 +8,7 @@
 
         <div class="navbar-right">
             <s:a action="logout">
+                <i>${sessionScope.userTyp}</i>
                 <i>${sessionScope.username}</i>
                 <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
             </s:a>

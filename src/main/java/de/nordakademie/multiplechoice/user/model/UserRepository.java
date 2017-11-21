@@ -2,6 +2,7 @@ package de.nordakademie.multiplechoice.user.model;
 
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
@@ -21,6 +22,15 @@ public class UserRepository {
 
     public List<User> findAll() {
         return entityManager.createQuery("SELECT r FROM User r", User.class).getResultList();
+    }
+
+    public User findUser(final String userNaturalId) {
+        try {
+            return entityManager.createQuery("SELECT r FROM User r WHERE username = :username", User.class)
+                    .setParameter("username", userNaturalId).getSingleResult();
+        } catch (final NoResultException e) {
+            return null;
+        }
     }
 
 }

@@ -47,7 +47,7 @@
         </div>
     </s:if>
 
-    <h3>Benutzername: admin / Passwort: nimda</h3>
+    <h3>Benutzername: hans.petersen / Passwort: password</h3>
 
 </center>
 </body>

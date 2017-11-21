@@ -30,6 +30,7 @@ public class User {
         this.password = password;
     }
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {

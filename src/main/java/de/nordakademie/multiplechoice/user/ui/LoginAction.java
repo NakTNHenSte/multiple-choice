@@ -6,34 +6,39 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import de.nordakademie.multiplechoice.user.model.User;
+import de.nordakademie.multiplechoice.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class LoginAction extends ActionSupport implements SessionAware {
+    @Autowired
+    private UserService userService;
 
     private Map<String, Object> sessionMap;
     private String username;
     private String password;
+    private User user;
 
     public String login() {
-        String loggedUser = null;
 
         // check if the userName is already stored in the session
-        if (sessionMap.containsKey("username")) {
-            loggedUser = (String) sessionMap.get("username");
-
-            if (loggedUser != null && loggedUser.equals("admin")) {
+        if (sessionMap.containsKey("userId")) {
                 return SUCCESS; // return welcome page
             }
-            return INPUT;
-        }
+
         if (username != null && password != null){
             // if no userName stored in the session,
             // check the entered userName and password
-            if (username.equals("admin")
-                    && password.equals("nimda")) {
+            user = userService.findUser(username);
+            if (user != null){
+                if (password.equals(user.getPassword())) {
 
-                // add userName to the session
-                sessionMap.put("username", username);
+                    // add userName to the session
+                    sessionMap.put("userId", user.getUsername());
+                    sessionMap.put("userTyp", user.getTyp());
 
-                return SUCCESS; // return welcome page
+                    return SUCCESS; // return welcome page
+                }
             }
             addActionError("Benutzername oder Passwort sind falsch!");
             return INPUT;
@@ -44,8 +49,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     public String logout() {
         // remove userName from the session
-        if (sessionMap.containsKey("username")) {
-            sessionMap.remove("username");
+        if (sessionMap.containsKey("userId")) {
+            sessionMap.remove("userId");
             addActionMessage("Erfolgreich abgemeldet.");
             return SUCCESS;
         }

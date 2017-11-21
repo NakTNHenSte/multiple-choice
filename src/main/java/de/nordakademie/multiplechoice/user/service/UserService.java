@@ -26,4 +26,9 @@ public class UserService {
     @Transactional
     public void create(final User user) { userRepository.create(user); }
 
+    @Transactional(readOnly = true)
+    public User findUser(final String username) {
+        return userRepository.findUser(username);
+    }
+
 }
