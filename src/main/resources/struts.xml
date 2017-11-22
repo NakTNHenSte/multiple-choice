@@ -110,6 +110,12 @@
           <result>answerEdit</result>
       </action>
 
+      <action name='embeddedAnswerEdit'
+              class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
+              method="getForm">
+          <result>embeddedAnswerEdit</result>
+      </action>
+
 
 
   </package>

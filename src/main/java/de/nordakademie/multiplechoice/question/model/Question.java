@@ -23,8 +23,8 @@ public class Question {
     public Question() {
     }
 
-    public Question(long id, int scorePerCorrectChoice, int scorePerWrongChoice,
-                    int scorePerMissingChoice, String questionText, Exam exam) {
+    public Question(long id, double scorePerCorrectChoice, double scorePerWrongChoice,
+                    double scorePerMissingChoice, String questionText, Exam exam) {
         this.id = id;
         this.scorePerCorrectChoice = scorePerCorrectChoice;
         this.scorePerWrongChoice = scorePerWrongChoice;
