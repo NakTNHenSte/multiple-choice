@@ -1,94 +1,107 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE struts PUBLIC '-//Apache Software Foundation//DTD Struts Configuration 2.5//EN'
-  'http://struts.apache.org/dtds/struts-2.5.dtd'>
+        'http://struts.apache.org/dtds/struts-2.5.dtd'>
 <struts>
 
-  <constant name="struts.action.excludePattern" value="/static/.*?" /><!-- not resolve js resources as action -->
-  <constant name="struts.action.excludePattern" value="/images/.*?" /><!-- not resolve js resources as action -->
-  <constant name="struts.action.excludePattern" value="/js/.*?" /><!--not resolve js resources as action -->
-  <constant name="struts.action.excludePattern" value="/css/.*?" /><!--not resolve css resources as action -->
-  <constant name="struts.serve.static" value="true" />
+    <constant name="struts.action.excludePattern" value="/static/.*?"/><!-- not resolve js resources as action -->
+    <constant name="struts.action.excludePattern" value="/images/.*?"/><!-- not resolve js resources as action -->
+    <constant name="struts.action.excludePattern" value="/js/.*?"/><!--not resolve js resources as action -->
+    <constant name="struts.action.excludePattern" value="/css/.*?"/><!--not resolve css resources as action -->
+    <constant name="struts.serve.static" value="true"/>
 
-  <package name='default' extends="tiles-default">
-    <result-types>
-      <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
-    </result-types>
-    <!-- Hier kommen Methoden -->
+    <package name='default' extends="tiles-default">
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
+        </result-types>
+        <!-- Hier kommen Methoden -->
 
-<!-- exam -->
-    <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
-      <result>examList</result>
-    </action>
-    <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
-      <result>examDetail</result>
-    </action>
+        <!-- exam -->
+        <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
+            <result>examList</result>
+        </action>
+        <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="viewExam">
+            <result>examDetail</result>
+        </action>
 
-      <!-- question -->
-      <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
-          <result>questionList</result>
-      </action>
-      <action name='questionEdit'
-              class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
-              method="getForm">
-          <result>questionEdit</result>
-      </action>
-      <action name='saveQuestion'
-              class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
-              method="saveQuestion">
-          <result type="redirectAction">questionList</result>
-          <result name="input">questionEdit</result>
-      </action>
+        <action name='saveExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction"
+                method="saveExam">
+            <result>examEditForm</result>
+        </action>
 
+        <action name='newExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
+            <result>examCreationForm</result>
+        </action>
+        <action name='editExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="viewExam">
+            <result>examEditForm</result>
+        </action>
+        <action name='removeExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="removeExam">
+            <result>examList</result>
+        </action>
 
-
-      <!-- user -->
-      <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
-          <result>userList</result>
-      </action>
-
-      <action name='loginUser'
-              class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
-              method="loginUser">
-          <result type="redirectAction">examList</result>
-          <result name="input">userLogin</result>
-      </action>
-
-      <action name='userLogin'
-              class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
-              method="getForm">
-      <result>userLogin</result>
-      </action>
-
-      <action name="login" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
-              method="login">
-          <result type="redirectAction">examList</result>
-          <result name="input">Login</result>
-      </action>
-
-      <action name="logout" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
-              method="logout">
-          <result name="success">Login</result>
-      </action>
-
-      <!-- answer -->
-      <action name='answerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
-          <result>answerList</result>
-      </action>
-
-      <action name='saveAnswer'
-              class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
-              method="saveAnswer">
-          <result type="redirectAction">answerList</result>
-          <result name="input">answerEdit</result>
-      </action>
-
-      <action name='answerEdit'
-              class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
-              method="getForm">
-          <result>answerEdit</result>
-      </action>
+        <!-- question -->
+        <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
+            <result>questionList</result>
+        </action>
+        <action name='questionEdit'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="getForm">
+            <result>questionEdit</result>
+        </action>
+        <action name='saveQuestion'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="saveQuestion">
+            <result type="redirectAction">questionList</result>
+            <result name="input">questionEdit</result>
+        </action>
 
 
+        <!-- user -->
+        <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
+            <result>userList</result>
+        </action>
 
-  </package>
+        <action name='loginUser'
+                class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
+                method="loginUser">
+            <result type="redirectAction">examList</result>
+            <result name="input">userLogin</result>
+        </action>
+
+        <action name='userLogin'
+                class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
+                method="getForm">
+            <result>userLogin</result>
+        </action>
+
+        <action name="login" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+                method="login">
+            <result type="redirectAction">examList</result>
+            <result name="input">Login</result>
+        </action>
+
+        <action name="logout" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+                method="logout">
+            <result name="success">Login</result>
+        </action>
+
+        <!-- answer -->
+        <action name='answerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
+            <result>answerList</result>
+        </action>
+
+        <action name='saveAnswer'
+                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
+                method="saveAnswer">
+            <result type="redirectAction">answerList</result>
+            <result name="input">answerEdit</result>
+        </action>
+
+        <action name='answerEdit'
+                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
+                method="getForm">
+            <result>answerEdit</result>
+        </action>
+
+
+    </package>
 </struts>

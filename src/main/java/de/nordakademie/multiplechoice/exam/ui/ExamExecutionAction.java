@@ -5,36 +5,39 @@ import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-
-public class ExamListAction implements Action {
+public class ExamExecutionAction implements Action {
 
 
     private final ExamService examService;
     private Exam exam;
-    private List<Exam> exams;
+    private long examId;
+
 
     @Autowired
-    public ExamListAction(final ExamService examService) {
+    public ExamExecutionAction(final ExamService examService) {
         this.examService = examService;
     }
 
     @Override
     public String execute() {
-        exams = examService.findAll();
+        exam = examService.findOne(this.getExamId());
         return SUCCESS;
-    }
-
-    public List<Exam> getExams() {
-        return exams;
     }
 
     public Exam getExam() {
         return exam;
     }
 
-    public void setExam(Exam exam) {
-        this.exam = exam;
+    public String getForm() {
+        return SUCCESS;
+    }
+
+    public long getExamId() {
+        return examId;
+    }
+
+    public void setExamId(long examId) {
+        this.examId = examId;
     }
 
 

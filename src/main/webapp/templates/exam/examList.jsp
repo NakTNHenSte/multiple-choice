@@ -6,8 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+
+
+<s:if test='%{#session.userTyp == ("D")}'>
+    <s:form action="newExam">
+        <s:submit value="Prüfung erstellen" type="button" class="btn btn-primary"/>
+    </s:form>
+</s:if>
+
 <table class="table">
     <tr>
         <th scope="col">Id</th>
