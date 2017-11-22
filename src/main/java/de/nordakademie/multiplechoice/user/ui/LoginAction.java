@@ -22,9 +22,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
     public String login() {
 
         // check if the userName is already stored in the session
-//        if (sessionMap.containsKey("userId")) {
-//                return SUCCESS; // return welcome page
-//            }
+        if (sessionMap.containsKey("userId")) {
+                return SUCCESS; // return welcome page
+            }
 
         if (username != null && password != null){
             // if no userName stored in the session,

@@ -19,14 +19,23 @@
         <interceptors>
             <interceptor name="loginInterceptor" class="de.nordakademie.multiplechoice.interceptor.LoginInterceptor">
             </interceptor>
+            <interceptor name="permissionInterceptor" class="de.nordakademie.multiplechoice.interceptor.PermissionInterceptor">
+            </interceptor>
             <interceptor-stack name="loginStack">
                 <interceptor-ref name="loginInterceptor"/>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
+            <interceptor-stack name="permissionStack">
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="permissionInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
         </interceptors>
 
         <global-results>
             <result name="loginRedirect" type="tiles">Login</result>
+            <result name="permissionRedirect" type="tiles">Welcome</result>
         </global-results>
 
         <!-- exam -->
@@ -122,7 +131,7 @@
         <action name='saveAnswer'
                 class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
                 method="saveAnswer">
-            <interceptor-ref name="loginStack"/>
+            <interceptor-ref name="permissionStack"/>
             <result type="redirectAction">answerList</result>
             <result name="input">answerEdit</result>
         </action>
