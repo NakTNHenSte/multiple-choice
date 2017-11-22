@@ -11,9 +11,9 @@
     <tr>
         <th>Id</th>
         <th>Frage</th>
-        <th>Punkte pro korrekter Antwort</th>
-        <th>Abzug pro falscher Antwort</th>
-        <th>Abzug pro fehlender Antwort</th>
+        <th>richtig</th>
+        <th>falsch</th>
+        <th>fehlt</th>
     </tr>
     <s:iterator value="questions">
         <tr>

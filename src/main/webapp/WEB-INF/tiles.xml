@@ -2,53 +2,54 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <definition name="pageFrame" template="/templates/layout/pageFrame.jsp">
-        <put-attribute name="header" value="/templates/layout/header.jsp"/>
-    </definition>
-    <!-- exam -->
-    <definition name="examList" extends="pageFrame">
-        <put-attribute name="content" value="/templates/exam/examList.jsp"/>
-    </definition>
-    <definition name="examDetail" extends="pageFrame">
-        <put-attribute name="content" value="/templates/exam/examDetail.jsp"/>
-    </definition>
+  <definition name="pageFrame" template="/templates/layout/pageFrame.jsp">
+    <put-attribute name="header" value="/templates/layout/header.jsp"/>
+  </definition>
+  <!-- exam -->
+  <definition name="examList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/exam/examList.jsp"/>
+  </definition>
+  <definition name="examDetail" extends="pageFrame">
+     <put-attribute name="content" value="/templates/exam/examDetail.jsp"/>
+  </definition>
     <definition name="examEditForm" extends="pageFrame">
         <put-attribute name="content" value="/templates/exam/examEditForm.jsp"/>
     </definition>
     <definition name="examCreationForm" extends="pageFrame">
         <put-attribute name="content" value="/templates/exam/examCreationForm.jsp"/>
     </definition>
-
     <!-- question -->
-    <definition name="questionList" extends="pageFrame">
-        <put-attribute name="content" value="/templates/question/questionList.jsp"/>
-    </definition>
-    <definition name="questionEdit" extends="pageFrame">
-        <put-attribute name="content" value="/templates/question/questionEdit.jsp"/>
-    </definition>
+  <definition name="questionList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/question/questionList.jsp"/>
+  </definition>
+  <definition name="questionEdit" extends="pageFrame">
+     <put-attribute name="content" value="/templates/question/questionEdit.jsp"/>
+  </definition>
 
-    <!-- user -->
-    <definition name="userList" extends="pageFrame">
-        <put-attribute name="content" value="/templates/user/userList.jsp"/>
-    </definition>
-    <definition name="userLogin" extends="pageFrame">
-        <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
-    </definition>
+  <!-- user -->
+  <definition name="userList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/user/userList.jsp"/>
+  </definition>
+  <definition name="userLogin" extends="pageFrame">
+    <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
+  </definition>
 
 
-    <definition name="Welcome" extends="pageFrame">
-        <put-attribute name="content" value="/templates/user/Welcome.jsp"/>
-    </definition>
-    <definition name="Login" extends="pageFrame">
-        <put-attribute name="content" value="/templates/user/Login.jsp"/>
-    </definition>
+  <definition name="Welcome" extends="pageFrame">
+    <put-attribute name="content" value="/templates/user/Welcome.jsp"/>
+  </definition>
+  <definition name="Login" extends="pageFrame">
+    <put-attribute name="content" value="/templates/user/Login.jsp"/>
+  </definition>
 
-    <!-- answer -->
-    <definition name="answerList" extends="pageFrame">
-        <put-attribute name="content" value="/templates/answer/answerList.jsp"/>
+  <!-- answer -->
+  <definition name="answerList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/answer/answerList.jsp"/>
+  </definition>
+  <definition name="answerEdit" extends="pageFrame">
+    <put-attribute name="content" value="/templates/answer/answerEdit.jsp"/>
+  </definition>
+    <definition name="embeddedAnswerEdit" extends="pageFrame">
+        <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
     </definition>
-    <definition name="answerEdit" extends="pageFrame">
-        <put-attribute name="content" value="/templates/answer/answerEdit.jsp"/>
-    </definition>
-
 </tiles-definitions>
