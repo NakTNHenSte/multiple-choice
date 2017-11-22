@@ -19,10 +19,7 @@ public class LoginInterceptor extends AbstractInterceptor {
     public String intercept(ActionInvocation invocation) throws Exception {
         Map<String, Object> sessionMap = ActionContext.getContext().getSession();
 
-        final long userId = (long) sessionMap.get("userId");
-        final User user = userService.find(userId);
-
-        if (user == null)
+        if (!sessionMap.containsKey("userId"))
         {
             return "loginRedirect";
         }
