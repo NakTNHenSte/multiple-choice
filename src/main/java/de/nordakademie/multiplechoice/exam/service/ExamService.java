@@ -32,8 +32,16 @@ public class ExamService {
     }
 
     @Transactional
-    public Exam findOne(long examId){
+    public Exam findOne(final long examId){
         return examRepository.findOne(examId);
     }
-
+    @Transactional
+    public void removeExam(final long examId ) {
+        Exam exam = examRepository.findOne(examId);
+        examRepository.remove(exam);
+    }
+    @Transactional
+    public void update(Exam exam) {
+        examRepository.update(exam);
+    }
 }

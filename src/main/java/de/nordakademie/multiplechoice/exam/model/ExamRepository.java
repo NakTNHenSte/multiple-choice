@@ -27,4 +27,12 @@ public class ExamRepository {
     public Exam findOne(final long examId) {
         return entityManager.find(Exam.class, examId);
     }
+
+    public void remove(Exam exam) {
+        entityManager.remove(exam);
+    }
+
+    public void update(Exam exam) {
+        entityManager.merge(exam);
+    }
 }

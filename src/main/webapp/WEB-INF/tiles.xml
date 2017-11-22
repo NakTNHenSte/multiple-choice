@@ -12,6 +12,12 @@
   <definition name="examDetail" extends="pageFrame">
      <put-attribute name="content" value="/templates/exam/examDetail.jsp"/>
   </definition>
+    <definition name="examEditForm" extends="pageFrame">
+        <put-attribute name="content" value="/templates/exam/examEditForm.jsp"/>
+    </definition>
+    <definition name="examCreationForm" extends="pageFrame">
+        <put-attribute name="content" value="/templates/exam/examCreationForm.jsp"/>
+    </definition>
 
     <!-- question -->
   <definition name="questionList" extends="pageFrame">
@@ -20,7 +26,9 @@
   <definition name="questionEdit" extends="pageFrame">
      <put-attribute name="content" value="/templates/question/questionEdit.jsp"/>
   </definition>
-
+    <definition name="questionFillTheBlankText" extends="pageFrame">
+        <put-attribute name="content" value="/templates/question/questionFillTheBlankText.jsp"/>
+    </definition>
   <!-- user -->
   <definition name="userList" extends="pageFrame">
     <put-attribute name="content" value="/templates/user/userList.jsp"/>
@@ -38,20 +46,14 @@
   </definition>
 
   <!-- answer -->
-  <definition name="studentAnswerList" extends="pageFrame">
-    <put-attribute name="content" value="/templates/answer/studentAnswerList.jsp"/>
-  </definition>
-  <definition name="lecturerAnswerList" extends="pageFrame">
-    <put-attribute name="content" value="/templates/answer/lecturerAnswerList.jsp"/>
+  <definition name="answerList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/answer/answerList.jsp"/>
   </definition>
   <definition name="answerEdit" extends="pageFrame">
     <put-attribute name="content" value="/templates/answer/answerEdit.jsp"/>
   </definition>
   <definition name="embeddedAnswerEdit" extends="pageFrame">
      <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
-  </definition>
-  <definition name="answerDetail" extends="pageFrame">
-    <put-attribute name="content" value="/templates/answer/answerDetail.jsp"/>
   </definition>
 
 </tiles-definitions>

@@ -37,4 +37,10 @@ public class QuestionService {
         question.setExam(exam);
         questionRepository.create(question);
     }
+
+    @Transactional(readOnly = true)
+    public List<Question> findByExam(long examId) {
+        return questionRepository.findByExam(examId);
+    }
+
 }

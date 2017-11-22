@@ -34,7 +34,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
                 if (password.equals(user.getPassword())) {
 
                     // add userName to the session
-                    sessionMap.put("userId", user.getUsername());
+                    sessionMap.put("userId", user.getId());
                     sessionMap.put("userTyp", user.getTyp());
                     sessionMap.put("userFullName", user.getName()+" "+user.getSurname());
 

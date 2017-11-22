@@ -1,5 +1,6 @@
 package de.nordakademie.multiplechoice.question.model;
 
+import de.nordakademie.multiplechoice.user.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -32,4 +33,8 @@ public class QuestionRepository {
         return entityManager.find(Question.class, questionId);
     }
 
+    public List<Question> findByExam(long examId) {
+        return entityManager.createQuery("SELECT q FROM Question q WHERE exam_id = :examId", Question.class)
+                .setParameter("examId", examId).getResultList();
+    }
 }

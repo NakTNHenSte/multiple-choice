@@ -1,6 +1,7 @@
 package de.nordakademie.multiplechoice.user.model;
 
 import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -16,7 +17,7 @@ public class UserRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void create(final User user)  {
+    public void create(final User user) {
         entityManager.persist(user);
     }
 
@@ -33,4 +34,7 @@ public class UserRepository {
         }
     }
 
+    public User find(long userId) {
+        return entityManager.find(User.class, userId);
+    }
 }

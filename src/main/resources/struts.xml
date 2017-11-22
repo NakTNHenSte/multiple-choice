@@ -1,136 +1,146 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE struts PUBLIC '-//Apache Software Foundation//DTD Struts Configuration 2.5//EN'
-  'http://struts.apache.org/dtds/struts-2.5.dtd'>
+        'http://struts.apache.org/dtds/struts-2.5.dtd'>
 <struts>
 
-  <constant name="struts.action.excludePattern" value="/static/.*?" /><!-- not resolve js resources as action -->
-  <constant name="struts.action.excludePattern" value="/images/.*?" /><!-- not resolve js resources as action -->
-  <constant name="struts.action.excludePattern" value="/js/.*?" /><!--not resolve js resources as action -->
-  <constant name="struts.action.excludePattern" value="/css/.*?" /><!--not resolve css resources as action -->
-  <constant name="struts.serve.static" value="true" />
+    <constant name="struts.action.excludePattern" value="/static/.*?" /><!-- not resolve js resources as action -->
+    <constant name="struts.action.excludePattern" value="/images/.*?" /><!-- not resolve js resources as action -->
+    <constant name="struts.action.excludePattern" value="/js/.*?" /><!--not resolve js resources as action -->
+    <constant name="struts.action.excludePattern" value="/css/.*?" /><!--not resolve css resources as action -->
+    <constant name="struts.serve.static" value="true" />
 
-  <package name='default' extends="tiles-default">
-    <result-types>
-      <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
-    </result-types>
-    <!-- Hier kommen Methoden -->
+    <package name='default' extends="tiles-default">
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
+        </result-types>
+        <!-- Hier kommen Methoden -->
 
-      <!-- Interceptor, der prueft, ob User angemeldet sind -->
-      <interceptors>
-          <interceptor name="loginInterceptor" class="de.nordakademie.multiplechoice.interceptor.LoginInterceptor">
-          </interceptor>
-          <interceptor-stack name="loginStack">
-              <interceptor-ref name="loginInterceptor" />
-              <interceptor-ref name="defaultStack" />
-          </interceptor-stack>
-      </interceptors>
+        <!-- Interceptor, der prueft, ob User angemeldet sind -->
+        <interceptors>
+            <interceptor name="loginInterceptor" class="de.nordakademie.multiplechoice.interceptor.LoginInterceptor">
+            </interceptor>
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
 
-      <global-results>
-          <result name="loginRedirect" type="tiles">Login</result>
-      </global-results>
+        <global-results>
+            <result name="loginRedirect" type="tiles">Login</result>
+        </global-results>
 
-    <!-- exam -->
-    <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
-        <interceptor-ref name="loginStack" />
-      <result>examList</result>
-    </action>
-    <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
-        <interceptor-ref name="loginStack" />
-      <result>examDetail</result>
-    </action>
+        <!-- exam -->
+        <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
+            <result>examList</result>
+        </action>
+        <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="viewExam">
+            <result>examDetail</result>
+        </action>
+        <action name='saveExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction"
+                method="saveExam">
+            <result>examEditForm</result>
+        </action>
 
-      <!-- question -->
-      <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
-          <interceptor-ref name="loginStack" />
-          <result>questionList</result>
-      </action>
-      <action name='questionEdit'
-              class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
-              method="getForm">
-          <interceptor-ref name="loginStack" />
-          <result>questionEdit</result>
-      </action>
-      <action name='saveQuestion'
-              class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
-              method="saveQuestion">
-          <interceptor-ref name="loginStack" />
-          <result type="redirectAction">questionList</result>
-          <result name="input">questionEdit</result>
-      </action>
+        <action name='newExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
+            <result>examCreationForm</result>
+        </action>
+        <action name='editExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="viewExam">
+            <result>examEditForm</result>
+        </action>
+        <action name='removeExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="removeExam">
+            <result>examList</result>
+        </action>
 
-      <!-- user -->
-      <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
-          <interceptor-ref name="loginStack" />
-          <result>userList</result>
-      </action>
+        <!-- question -->
+        <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <result>questionList</result>
+        </action>
+        <action name='questionEdit'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="getForm">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <result>questionEdit</result>
+        </action>
+        <action name='saveQuestion'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="saveQuestion">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <result type="redirectAction">questionList</result>
+            <result name="input">questionEdit</result>
+        </action>
+        <action name='questionFillTheBlankText'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
+                method="getForm">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <result>questionFillTheBlankText</result>
+        </action>
+        <action name='saveQuestionBlankText'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
+                method="saveQuestionBlankText">
+            <result type="redirectAction">questionList</result>
+            <result name="input">questionFillTheBlankText</result>
+        </action>
 
-      <action name='loginUser'
-              class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
-              method="loginUser">
-          <result type="redirectAction">examList</result>
-          <result name="input">userLogin</result>
-      </action>
 
-      <action name='userLogin'
-              class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
-              method="getForm">
-      <result>userLogin</result>
-      </action>
+        <!-- user -->
+        <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
+            <interceptor-ref name="loginStack" />
+            <result>userList</result>
+        </action>
 
-      <action name="login" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
-              method="login">
-          <result type="redirectAction">examList</result>
-          <result name="input">Login</result>
-      </action>
+        <action name='loginUser'
+                class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
+                method="loginUser">
+            <result type="redirectAction">examList</result>
+            <result name="input">userLogin</result>
+        </action>
 
-      <action name="logout" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
-              method="logout">
-          <result name="success">Login</result>
-      </action>
+        <action name='userLogin'
+                class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
+                method="getForm">
+            <result>userLogin</result>
+        </action>
 
-      <!-- answer -->
-      <action name='studentAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
-          <interceptor-ref name="loginStack" />
-          <result>studentAnswerList</result>
-      </action>
+        <action name="login" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+                method="login">
+            <result type="redirectAction">examList</result>
+            <result name="input">Login</result>
+        </action>
 
-      <action name='lecturerAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
-          <interceptor-ref name="loginStack" />
-          <result>lecturerAnswerList</result>
-      </action>
+        <action name="logout" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+                method="logout">
+            <result name="success">Login</result>
+        </action>
 
-      <action name='saveAnswer'
-              class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
-              method="saveAnswer">
-          <interceptor-ref name="loginStack" />
-          <result type="redirectAction">lecturerAnswerList</result>
-          <result name="input">answerEdit</result>
-      </action>
+        <!-- answer -->
+        <action name='answerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
+            <interceptor-ref name="loginStack" />
+            <result>answerList</result>
+        </action>
 
-      <action name='deleteAnswer'
-              class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction"
-              method="deleteAnswer">
-          <interceptor-ref name="loginStack" />
-          <result>lecturerAnswerList</result>
-      </action>
+        <action name='saveAnswer'
+                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
+                method="saveAnswer">
+            <interceptor-ref name="loginStack"/>
+            <result type="redirectAction">answerList</result>
+            <result name="input">answerEdit</result>
+        </action>
 
-      <action name='answerEdit'
-              class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
-              method="getForm">
-          <interceptor-ref name="loginStack" />
-          <result>answerEdit</result>
-      </action>
+        <action name='answerEdit'
+                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
+                method="getForm">
+            <interceptor-ref name="loginStack"/>
+            <result>answerEdit</result>
+        </action>
 
-      <action name='embeddedAnswerEdit'
-              class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
-              method="getForm">
-          <result>embeddedAnswerEdit</result>
-      </action>
+        <action name='embeddedAnswerEdit'
+                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
+                method="getForm">
+            <result>embeddedAnswerEdit</result>
+        </action>
 
-      <action name='answerDetail' class="de.nordakademie.multiplechoice.answer.ui.AnswerDetailAction">
-          <interceptor-ref name="loginStack" />
-          <result>answerDetail</result>
-      </action>
 
-  </package>
+
+    </package>
 </struts>

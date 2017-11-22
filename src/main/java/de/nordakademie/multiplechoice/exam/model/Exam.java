@@ -1,7 +1,11 @@
 package de.nordakademie.multiplechoice.exam.model;
 
+import de.nordakademie.multiplechoice.question.model.Question;
+import de.nordakademie.multiplechoice.user.model.User;
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 
 /**
@@ -19,12 +23,14 @@ public class Exam {
     private Date end;
     private byte credits;
     private String seminar;
-    private String user;
+    private User user;
+    private List<User> participants;
+    private List<Question> questions;
 
     public Exam() {
     }
 
-    public Exam(final long id, final String title, String user, short duration,short percentualSuccessThreshold,
+    public Exam(final long id, final String title, User user, short duration,short percentualSuccessThreshold,
                 Date start, Date end, byte credits, String seminar) {
         this.id = id;
         this.title = title;
@@ -56,12 +62,12 @@ public class Exam {
         this.title = title;
     }
 
-    @Basic
-    public String getUser() {
+    @OneToOne
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -117,5 +123,23 @@ public class Exam {
 
     public void setDuration(short duration) {
         this.duration = duration;
+    }
+
+    @ManyToMany
+    public List<User> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<User> participants) {
+        this.participants = participants;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 }

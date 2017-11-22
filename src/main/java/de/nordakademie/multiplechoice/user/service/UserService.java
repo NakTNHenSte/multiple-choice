@@ -31,4 +31,9 @@ public class UserService {
         return userRepository.findUser(username);
     }
 
+    @Transactional(readOnly = true)
+    public User find(final long userId) {
+        return userRepository.find(userId);
+    }
+
 }
