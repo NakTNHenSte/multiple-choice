@@ -3,6 +3,7 @@ package de.nordakademie.multiplechoice.question.ui;
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.multiplechoice.answer.model.Answer;
 import de.nordakademie.multiplechoice.answer.service.AnswerService;
+import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     private final String startRegex = "$$";
     private final String endRegex = "%%";
+    private Exam exam;
 
 
     @Autowired
@@ -36,7 +38,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     public String saveQuestionBlankText() {
 
-        questionService.create(question);
+        questionService.create(question, exam.getId());
         List<String> blanksList = extractAnswers(question.getQuestionText());
 
         answerList = createAnswerList(blanksList);
@@ -95,5 +97,12 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
         return answers;
     }
 
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
 }
 

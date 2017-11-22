@@ -38,7 +38,10 @@
         </action>
         <action name='saveExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction"
                 method="saveExam">
-            <result>examEditForm</result>
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param>
+            </result>
         </action>
 
         <action name='newExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
@@ -66,8 +69,11 @@
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveQuestion">
             <!--<interceptor-ref name="loginStack"/>-->
-            <result type="redirectAction">questionList</result>
-            <result name="input">questionEdit</result>
+           <result type="redirectAction">
+               <param name="actionName">editExam</param>
+               <param name="examId">${examId}</param>
+           </result>
+            <!-- <result name="input">questionEdit</result>-->
         </action>
         <action name='questionFillTheBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"

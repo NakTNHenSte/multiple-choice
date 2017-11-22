@@ -15,8 +15,10 @@
     <s:textfield name="question.scorePerWrongChoice" label="Punkte falsche Antwort*"/>
     <s:textfield name="question.scorePerMissingChoice" label="Punkte fehlende Antwort*"/>
     <s:label value="* Minuszeichen nicht vergessen."/>
+    <s:hidden name="examId" value="%{exam.id}"/>
+
     <%--examID und questionID nur temporaer zum Testen--%>
-    <s:textfield name="question.exam.id" label="ExamID"/>
+    <%--<s:textfield name="question.exam.id" label="ExamID"/>--%>
 
     <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
         <s:textfield name="answerList[%{#stat.index}].answerText" label="Antwort %{#stat.index + 1}"/>

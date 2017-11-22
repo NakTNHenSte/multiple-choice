@@ -3,6 +3,8 @@ package de.nordakademie.multiplechoice.question.ui;
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.multiplechoice.answer.model.Answer;
 import de.nordakademie.multiplechoice.answer.service.AnswerService;
+import de.nordakademie.multiplechoice.exam.model.Exam;
+import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,22 +24,30 @@ public class QuestionEditAction extends ActionSupport {
     private List<Answer> answerList = new ArrayList<Answer>();
     private int answerCount;
     private Answer answer;
-
+    private long examId;
+    private Exam exam;
+    private ExamService examService;
 
     @Autowired
-    public QuestionEditAction(final QuestionService questionService, final AnswerService answerService) {
+    public QuestionEditAction(final QuestionService questionService, final AnswerService answerService, ExamService examService) {
         this.questionService = questionService;
         this.answerService = answerService;
-
-        //TODO: spaeter rausnehmen
-        this.answerCount = 3;
+        this.examService = examService;
     }
 
-    public String getForm() { return SUCCESS; }
+    public String getForm() {
+        exam = examService.findOne(examId);
+        return SUCCESS; }
 
     public String saveQuestion() {
 
-        questionService.create(question);
+        for (int i = 0; i < answerCount; i++) {
+            answerList.add(new Answer());
+        }
+
+        exam = examService.findOne(examId);
+
+        questionService.create(question, examId);
 
         for (Answer answer : answerList) {
             answer.setQuestion(question);
@@ -79,5 +89,23 @@ public class QuestionEditAction extends ActionSupport {
     }
 
 
+    public void setExamId(long examId) {
+        this.examId = examId;
+    }
 
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
+
+    public long getExamId() {
+        return examId;
+    }
+
+    public void getExamId(long examId) {
+        this.examId = examId;
+    }
 }

@@ -29,12 +29,12 @@ Frage anlegen
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <s:form action="saveQuestion">
+            <s:form action="questionEdit">
                 <div class="modal-body">
 
                     <s:hidden name="examId" value="%{exam.id}"/>
-                    <s:textfield name="question.questiontext" label="Fragentext"/>
-                    <s:textfield name="question.numberofanswers" label="Anzahl Anwortmöglichkeiten"/>
+                    <s:textfield name="question.questionText" label="Fragentext"/>
+                    <s:textfield name="answerCount" label="Anzahl Anwortmöglichkeiten"/>
 
                 </div>
                 <div class="modal-footer">

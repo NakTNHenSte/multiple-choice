@@ -79,13 +79,13 @@ public class ExamDetailAction implements Action, SessionAware {
     public String saveExam() {
 
         exam.setUser(userService.find(userId));
-
         if (this.getExamId() == 0) {
             examService.create(getExam());
         } else {
             exam.setId(this.getExamId());
             examService.update(exam);
         }
+        examId = exam.getId();
 
         return SUCCESS;
     }

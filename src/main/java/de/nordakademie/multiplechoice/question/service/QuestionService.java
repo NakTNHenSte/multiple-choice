@@ -1,6 +1,5 @@
 package de.nordakademie.multiplechoice.question.service;
 
-import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.model.ExamRepository;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.model.QuestionRepository;
@@ -19,11 +18,13 @@ public class QuestionService {
 
     private final QuestionRepository questionRepository;
     private final ExamRepository examRepository;
+    private ExamRepository examService;
 
     @Autowired
-    public QuestionService(final QuestionRepository questionRepository, final ExamRepository examRepository) {
+    public QuestionService(final QuestionRepository questionRepository, final ExamRepository examRepository, ExamRepository examService) {
         this.questionRepository = questionRepository;
         this.examRepository = examRepository;
+        this.examService = examService;
     }
 
     @Transactional(readOnly = true)
@@ -32,9 +33,8 @@ public class QuestionService {
     }
 
     @Transactional
-    public void create(final Question question) {
-        final Exam exam = examRepository.findOne(question.getExam().getId());
-        question.setExam(exam);
+    public void create(final Question question, long examId) {
+        question.setExam(examService.findOne(examId));
         questionRepository.create(question);
     }
 
