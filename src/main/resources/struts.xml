@@ -48,7 +48,7 @@
             <result>examEditForm</result>
         </action>
         <action name='removeExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="removeExam">
-            <result>examList</result>
+            <result type="redirectAction">examList</result>
         </action>
 
         <!-- question -->

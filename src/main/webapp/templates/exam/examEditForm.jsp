@@ -32,6 +32,7 @@ Frage anlegen
             <s:form action="saveQuestion">
                 <div class="modal-body">
 
+                    <s:hidden name="examId" value="%{exam.id}"/>
                     <s:textfield name="question.questiontext" label="Fragentext"/>
                     <s:textfield name="question.numberofanswers" label="Anzahl Anwortmöglichkeiten"/>
 

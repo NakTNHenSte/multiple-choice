@@ -69,12 +69,12 @@
 </s:if>
 
 <s:if test='%{#session.userTyp == ("D")}'>
-    <s:form action="editExam" method="GET">
+    <s:form action="editExam">
         <s:hidden name="examId" value="%{exam.id}"/>
         <s:submit value="editieren" type="button" class="btn btn-secondary"/>
     </s:form>
 
-    <s:form action="removeExam" method="GET">
+    <s:form action="removeExam">
         <s:hidden name="examId" value="%{exam.id}"/>
         <s:submit value="löschen" type="button" class="btn btn-danger"/>
     </s:form>
