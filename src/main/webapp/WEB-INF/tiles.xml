@@ -18,6 +18,7 @@
     <definition name="examCreationForm" extends="pageFrame">
         <put-attribute name="content" value="/templates/exam/examCreationForm.jsp"/>
     </definition>
+
     <!-- question -->
   <definition name="questionList" extends="pageFrame">
     <put-attribute name="content" value="/templates/question/questionList.jsp"/>
@@ -25,7 +26,9 @@
   <definition name="questionEdit" extends="pageFrame">
      <put-attribute name="content" value="/templates/question/questionEdit.jsp"/>
   </definition>
-
+    <definition name="questionFillTheBlankText" extends="pageFrame">
+        <put-attribute name="content" value="/templates/question/questionFillTheBlankText.jsp"/>
+    </definition>
   <!-- user -->
   <definition name="userList" extends="pageFrame">
     <put-attribute name="content" value="/templates/user/userList.jsp"/>
@@ -49,7 +52,8 @@
   <definition name="answerEdit" extends="pageFrame">
     <put-attribute name="content" value="/templates/answer/answerEdit.jsp"/>
   </definition>
-    <definition name="embeddedAnswerEdit" extends="pageFrame">
-        <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
-    </definition>
+  <definition name="embeddedAnswerEdit" extends="pageFrame">
+     <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
+  </definition>
+
 </tiles-definitions>
