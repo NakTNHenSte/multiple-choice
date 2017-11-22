@@ -32,4 +32,9 @@ public class AnswerListAction implements Action {
         return answers;
     }
 
+    public String deleteAnswer(Long answerID){
+        answerService.delete(answerID);
+        return SUCCESS;
+    }
+
 }

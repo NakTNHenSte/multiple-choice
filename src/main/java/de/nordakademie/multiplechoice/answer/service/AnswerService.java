@@ -37,4 +37,16 @@ public class AnswerService {
         answerRepository.create(answer);
     }
 
+    @Transactional
+    public void delete(final Long answerID) {
+        final Answer answer = answerRepository.findOne(answerID);
+        answerRepository.delete(answer);
+    }
+
+    @Transactional
+    public Answer findOne(final Long answerID){
+        final Answer answer = answerRepository.findOne(answerID);
+        return answer;
+    }
+
 }

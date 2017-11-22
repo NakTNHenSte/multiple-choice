@@ -9,15 +9,15 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <table>
     <tr>
-        <th>Id</th>
         <th>Antwort</th>
         <th>Wahr/Falsch</th>
     </tr>
     <s:iterator value="answers">
         <tr>
-            <td><s:property value="answerID"/></td>
             <td><s:property value="answerText"/></td>
             <td><s:property value="trueOrFalse"/></td>
+            <td><a href = "<s:url action="deleteAnswer"><s:param name="answerID" value="answerID"/></s:url>"> Löschen </a></td>
+            <td><s:a href="answerDetail?answerID=%{answerID}"> <s:property value="answerID"/></s:a></td>
         </tr>
     </s:iterator>
 </table>

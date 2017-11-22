@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import de.nordakademie.multiplechoice.question.model.Question;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -26,6 +27,9 @@ public class AnswerRepository {
 
     public List<Answer> findAll() {
         return entityManager.createQuery("SELECT r FROM Answer r", Answer.class).getResultList();
+    }
+
+    public Answer findOne(final long answerID) {return entityManager.find(Answer.class, answerID);
     }
 }
 

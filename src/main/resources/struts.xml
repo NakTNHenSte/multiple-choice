@@ -20,8 +20,8 @@
           <interceptor name="loginInterceptor" class="de.nordakademie.multiplechoice.interceptor.LoginInterceptor">
           </interceptor>
           <interceptor-stack name="loginStack">
-              <interceptor-ref name="loginInterceptor"/>
-              <interceptor-ref name="defaultStack"/>
+              <interceptor-ref name="loginInterceptor" />
+              <interceptor-ref name="defaultStack" />
           </interceptor-stack>
       </interceptors>
 
@@ -31,45 +31,32 @@
 
     <!-- exam -->
     <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
-        <interceptor-ref name="loginStack"/>
+        <interceptor-ref name="loginStack" />
       <result>examList</result>
     </action>
     <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
-        <interceptor-ref name="loginStack"/>
+        <interceptor-ref name="loginStack" />
       <result>examDetail</result>
     </action>
 
       <!-- question -->
       <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
-          <!--<interceptor-ref name="loginStack"/>-->
+          <interceptor-ref name="loginStack" />
           <result>questionList</result>
       </action>
       <action name='questionEdit'
               class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
               method="getForm">
-          <!--<interceptor-ref name="loginStack"/>-->
+          <interceptor-ref name="loginStack" />
           <result>questionEdit</result>
       </action>
       <action name='saveQuestion'
               class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
               method="saveQuestion">
-          <!--<interceptor-ref name="loginStack"/>-->
+          <interceptor-ref name="loginStack" />
           <result type="redirectAction">questionList</result>
           <result name="input">questionEdit</result>
       </action>
-      <action name='questionFillTheBlankText'
-              class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
-              method="getForm">
-          <!--<interceptor-ref name="loginStack"/>-->
-          <result>questionFillTheBlankText</result>
-      </action>
-      <action name='saveQuestionBlankText'
-              class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
-              method="saveQuestionBlankText">
-          <result type="redirectAction">questionList</result>
-          <result name="input">questionFillTheBlankText</result>
-      </action>
-
 
       <!-- user -->
       <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
@@ -102,23 +89,35 @@
       </action>
 
       <!-- answer -->
-      <action name='answerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
+      <action name='studentAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
           <interceptor-ref name="loginStack" />
-          <result>answerList</result>
+          <result>studentAnswerList</result>
+      </action>
+
+      <action name='lecturerAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
+          <interceptor-ref name="loginStack" />
+          <result>lecturerAnswerList</result>
       </action>
 
       <action name='saveAnswer'
               class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
               method="saveAnswer">
-          <interceptor-ref name="loginStack"/>
-          <result type="redirectAction">answerList</result>
+          <interceptor-ref name="loginStack" />
+          <result type="redirectAction">lecturerAnswerList</result>
           <result name="input">answerEdit</result>
+      </action>
+
+      <action name='deleteAnswer'
+              class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction"
+              method="deleteAnswer">
+          <interceptor-ref name="loginStack" />
+          <result>lecturerAnswerList</result>
       </action>
 
       <action name='answerEdit'
               class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
               method="getForm">
-          <interceptor-ref name="loginStack"/>
+          <interceptor-ref name="loginStack" />
           <result>answerEdit</result>
       </action>
 
@@ -128,7 +127,10 @@
           <result>embeddedAnswerEdit</result>
       </action>
 
-
+      <action name='answerDetail' class="de.nordakademie.multiplechoice.answer.ui.AnswerDetailAction">
+          <interceptor-ref name="loginStack" />
+          <result>answerDetail</result>
+      </action>
 
   </package>
 </struts>
