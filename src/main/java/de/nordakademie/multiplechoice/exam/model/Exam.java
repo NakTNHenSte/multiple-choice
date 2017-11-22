@@ -23,14 +23,14 @@ public class Exam {
     private Date end;
     private byte credits;
     private String seminar;
-    private String user;
+    private User user;
     private List<User> participants;
     private List<Question> questions;
 
     public Exam() {
     }
 
-    public Exam(final long id, final String title, String user, short duration,short percentualSuccessThreshold,
+    public Exam(final long id, final String title, User user, short duration,short percentualSuccessThreshold,
                 Date start, Date end, byte credits, String seminar) {
         this.id = id;
         this.title = title;
@@ -62,12 +62,12 @@ public class Exam {
         this.title = title;
     }
 
-    @Basic
-    public String getUser() {
+    @OneToOne
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

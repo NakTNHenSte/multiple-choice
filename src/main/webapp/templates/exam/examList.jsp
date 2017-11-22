@@ -28,7 +28,7 @@
         <tr>
             <td><s:a href="examDetail?examId=%{id}"> <s:property value="id"/></s:a></td>
             <td><s:property value="title"/></td>
-            <td><s:property value="user"/></td>
+            <td><s:property value="user.username"/></td>
             <td><s:property value="seminar"/></td>
             <td><s:property value="credits"/></td>
             <td><s:property value="start"/> - <s:property value="end"/></td>

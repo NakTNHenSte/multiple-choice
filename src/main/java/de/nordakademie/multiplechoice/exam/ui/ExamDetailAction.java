@@ -4,7 +4,9 @@ import com.opensymphony.xwork2.Action;
 import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.question.model.Question;
+import de.nordakademie.multiplechoice.question.service.QuestionService;
 import de.nordakademie.multiplechoice.user.model.User;
+import de.nordakademie.multiplechoice.user.service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,6 +17,8 @@ public class ExamDetailAction implements Action, SessionAware {
 
 
     private final ExamService examService;
+    private UserService userService;
+    private QuestionService questionService;
 
 
     Map<String, Object> session;
@@ -32,8 +36,10 @@ public class ExamDetailAction implements Action, SessionAware {
     private List<Question> questions;
 
     @Autowired
-    public ExamDetailAction(final ExamService examService) {
+    public ExamDetailAction(final ExamService examService, UserService userService, QuestionService questionService) {
         this.examService = examService;
+        this.userService = userService;
+        this.questionService = questionService;
     }
 
     @Override
@@ -64,11 +70,15 @@ public class ExamDetailAction implements Action, SessionAware {
     }
 
     public String viewExam() {
+
         exam = examService.findOne(this.getExamId());
+        questions = questionService.findByExam(exam.getId());
         return SUCCESS;
     }
 
     public String saveExam() {
+
+        exam.setUser(userService.find(userId));
 
         if (this.getExamId() == 0) {
             examService.create(getExam());
@@ -99,5 +109,21 @@ public class ExamDetailAction implements Action, SessionAware {
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public List<User> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<User> participants) {
+        this.participants = participants;
     }
 }
