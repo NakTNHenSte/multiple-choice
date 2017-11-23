@@ -19,14 +19,17 @@
     <s:textfield name="question.scorePerMissingChoice" label="Punkte fehlende Antwort*"/>
     <s:label value="* Minuszeichen nicht vergessen."/>
 
-    <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
-        <s:textfield name="answerList[%{#stat.index}].answerText" label="Antwort %{#stat.index + 1}"/>
-        <s:checkbox name="answerList[%{#stat.index}].trueOrFalse" fieldValue="true" label="wahr"/>
-    </s:iterator>
+    <s:include value="/templates/answer/embeddedAnswerEdit.jsp"></s:include>
+
+    <%--<s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">--%>
+        <%--<s:textfield name="answerList[%{#stat.index}].answerText" label="Antwort %{#stat.index + 1}"/>--%>
+        <%--<s:checkbox name="answerList[%{#stat.index}].trueOrFalse" fieldValue="true" label="wahr"/>--%>
+    <%--</s:iterator>--%>
 
     <s:submit value="Speichern" type="button" class="btn btn-primary"/>
 </s:form>
 
 <s:form action="cancelQuestionEdit">
+    <s:hidden name="examId" value="%{exam.id}"/>
     <s:submit value="Abbrechen" type="button" class="btn btn-secondary"/>
 </s:form>

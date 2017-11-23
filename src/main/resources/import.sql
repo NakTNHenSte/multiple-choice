@@ -18,7 +18,7 @@ INSERT INTO ANSWER VALUES (100, 'Softwaretechnik existiert seit 1969.', 'false',
 INSERT INTO ANSWER VALUES (200, 'Das ist die richtige Antwort.', 'true', 1001);
 INSERT INTO ANSWER VALUES (300, 'Das ist die falsche Antwort.', 'true', 1001);
 INSERT INTO ANSWER VALUES (400, 'ein Test für den $$Lückentext', 'true', 1002);
-INSERT INTO ANSWER VALUES (500, '$$Betriebswirtschaftslehre', 'true', 1003);
+INSERT INTO ANSWER VALUES (500, 'Betriebswirtschaftslehre', 'true', 1003);
 INSERT INTO ANSWER VALUES (600, 'Paris', 'false', 1004);
 INSERT INTO ANSWER VALUES (700, 'New York', 'false', 1004);
 INSERT INTO ANSWER VALUES (800, 'Peking', 'true', 1004);

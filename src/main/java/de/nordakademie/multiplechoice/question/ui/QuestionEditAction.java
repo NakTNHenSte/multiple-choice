@@ -46,7 +46,8 @@ public class QuestionEditAction extends ActionSupport {
     }
 
     public String cancel() {
-        exam = examService.findOne(examId);
+        exam = question.getExam();
+//        exam = examService.findOne(examId);
         return "cancel";
     }
 

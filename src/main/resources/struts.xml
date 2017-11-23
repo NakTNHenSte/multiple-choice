@@ -100,7 +100,7 @@
             <!--<interceptor-ref name="loginStack"/>-->
             <result name="cancel" type="redirectAction">
                 <param name="actionName">editExam</param>
-                <param name="examId">1234</param>
+                <param name="examId">${examId}</param>
             </result>
             <result>questionEdit</result>
         </action>
