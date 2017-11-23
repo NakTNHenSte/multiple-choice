@@ -42,12 +42,15 @@ public class QuestionEditAction extends ActionSupport {
         question = questionService.findOne(questionId);
         answerList = answerService.findAll(questionId);
         answerCount = answerList.size();
+
+        exam = examService.findOne(question.getExam().getId());
+        examId = exam.getId();
         return SUCCESS;
     }
 
     public String cancel() {
-        exam = question.getExam();
-//        exam = examService.findOne(examId);
+
+        exam = examService.findOne(examId);
         return "cancel";
     }
 
@@ -57,6 +60,8 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS; }
 
     public String saveQuestion() {
+
+        exam = question.getExam();
 
         for (int i = 0; i < answerCount; i++) {
             answerList.add(new Answer());

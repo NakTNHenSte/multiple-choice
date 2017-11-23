@@ -30,6 +30,6 @@
 </s:form>
 
 <s:form action="cancelQuestionEdit">
-    <s:hidden name="examId" value="%{exam.id}"/>
+    <s:hidden name="examId" value="%{examId}"/>
     <s:submit value="Abbrechen" type="button" class="btn btn-secondary"/>
 </s:form>
