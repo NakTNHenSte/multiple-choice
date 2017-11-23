@@ -31,7 +31,6 @@ public class AnswerRepository {
         return entityManager.createQuery("SELECT r FROM Answer r WHERE question_Id = :questionId", Answer.class)
                 .setParameter("questionId", questionId).getResultList();
     }
-
     public Answer findOne(final long answerID) {return entityManager.find(Answer.class, answerID);
     }
 }

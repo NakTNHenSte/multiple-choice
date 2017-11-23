@@ -116,6 +116,14 @@
             <!-- <result name="input">questionEdit</result>-->
         </action>
 
+        <action name='deleteQuestion'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="deleteQuestion">
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${exam.id}</param></result>
+        </action>
+
         <action name='questionFillTheBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
                 method="getForm">
@@ -129,7 +137,6 @@
             <result type="redirectAction">questionList</result>
             <result name="input">questionFillTheBlankText</result>
         </action>
-
 
         <!-- user -->
         <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
@@ -187,10 +194,12 @@
         </action>
 
         <action name='deleteAnswer'
-                class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction"
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="deleteAnswer">
             <interceptor-ref name="loginStack"/>
-            <result type="redirectAction">lecturerAnswerList</result>
+            <result type="redirectAction">
+                <param name="actionName">questionEdit</param>
+                <param name="questionId">${questionId}</param></result>
         </action>
 
 

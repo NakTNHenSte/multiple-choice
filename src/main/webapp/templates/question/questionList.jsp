@@ -28,6 +28,10 @@
                 <s:submit value="editieren" type="button" class="btn btn-primary"/>
             </s:form>
 
+            <s:form action="deleteQuestion">
+                <s:hidden name="questionId" value="%{id}"/>
+                <s:submit value="löschen" type="button" class="btn btn-danger"/>
+            </s:form>
         </tr>
     </s:iterator>
 

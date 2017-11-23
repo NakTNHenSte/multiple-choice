@@ -23,15 +23,17 @@ public class Answer {
     private Question question;
     private String trueOrFalse;
     private String answerText;
+    private int positionOfAnswer;
 
     public Answer() {
     }
 
-    public Answer(final long answerID, Question question, final String trueOrFalse, final String answerText) {
+    public Answer(final long answerID, Question question, final String trueOrFalse, final String answerText, final int positionOfAnswer) {
         this.answerID = answerID;
         this.question = question;
         this.trueOrFalse = trueOrFalse;
         this.answerText = answerText;
+        this.positionOfAnswer = positionOfAnswer;
     }
 
     @Id
@@ -65,6 +67,15 @@ public class Answer {
 
     public void setQuestion(Question question) {
         this.question = question;
+    }
+
+    @Basic
+    public int getPositionOfAnswer() {
+        return positionOfAnswer;
+    }
+
+    public void setPositionOfAnswer(int positionOfAnswer) {
+        this.positionOfAnswer = positionOfAnswer;
     }
 }
 

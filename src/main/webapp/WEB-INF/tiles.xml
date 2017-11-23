@@ -55,9 +55,6 @@
   <definition name="embeddedAnswerEdit" extends="pageFrame">
      <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
   </definition>
-  <definition name="answerDetail" extends="pageFrame">
-    <put-attribute name="content" value="/templates/answer/answerDetail.jsp"/>
-  </definition>
 
   <!-- errors -->
   <definition name="notFoundError" extends="pageFrame">
