@@ -56,4 +56,15 @@
      <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
   </definition>
 
+  <!-- errors -->
+  <definition name="notFoundError" extends="pageFrame">
+    <put-attribute name="content" value="/templates/error/pageNotFoundError.jsp" />
+  </definition>
+  <definition name="genericError" extends="pageFrame">
+    <put-attribute name="content" value="/templates/error/genericError.jsp" />
+  </definition>
+  <definition name="forbiddenError" extends="pageFrame">
+    <put-attribute name="content" value="/templates/error/forbiddenError.jsp" />
+  </definition>
+
 </tiles-definitions>

@@ -1,7 +1,7 @@
 package de.nordakademie.multiplechoice.question.service;
 
-import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.model.ExamRepository;
+import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.model.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +18,12 @@ import java.util.List;
 public class QuestionService {
 
     private final QuestionRepository questionRepository;
-    private final ExamRepository examRepository;
+    private ExamService examService;
 
     @Autowired
-    public QuestionService(final QuestionRepository questionRepository, final ExamRepository examRepository) {
+    public QuestionService(final QuestionRepository questionRepository, final ExamService examService) {
         this.questionRepository = questionRepository;
-        this.examRepository = examRepository;
+        this.examService = examService;
     }
 
     @Transactional(readOnly = true)
@@ -32,9 +32,8 @@ public class QuestionService {
     }
 
     @Transactional
-    public void create(final Question question) {
-        final Exam exam = examRepository.findOne(question.getExam().getId());
-        question.setExam(exam);
+    public void create(final Question question, long examId) {
+        question.setExam(examService.findOne(examId));
         questionRepository.create(question);
     }
 

@@ -1,6 +1,8 @@
 package de.nordakademie.multiplechoice.question.model;
 
 import de.nordakademie.multiplechoice.exam.model.Exam;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -88,5 +90,3 @@ public class Question {
         this.exam = exam;
     }
 }
-
-

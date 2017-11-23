@@ -9,6 +9,16 @@
     <constant name="struts.action.excludePattern" value="/css/.*?" /><!--not resolve css resources as action -->
     <constant name="struts.serve.static" value="true" />
 
+    <!-- Fange 404 Fehler ab -->
+    <package name="serveAll" namespace="" extends="struts-default">
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+        <action name="*">
+            <result type="tiles">notFoundError</result>
+        </action>
+    </package>
+
     <package name='default' extends="tiles-default">
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
@@ -30,13 +40,18 @@
                 <interceptor-ref name="permissionInterceptor"/>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
-
         </interceptors>
 
         <global-results>
             <result name="loginRedirect" type="tiles">Login</result>
-            <result name="permissionRedirect" type="tiles">Welcome</result>
+            <result name="forbiddenError" type="tiles">forbiddenError</result>
+            <result name="genericError" type="tiles">genericError</result>
         </global-results>
+
+        <!-- Fange 500 Fehler ab -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="genericError" />
+        </global-exception-mappings>
 
         <!-- exam -->
         <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
@@ -47,7 +62,10 @@
         </action>
         <action name='saveExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction"
                 method="saveExam">
-            <result>examEditForm</result>
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param>
+            </result>
         </action>
 
         <action name='newExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
@@ -67,16 +85,23 @@
         </action>
         <action name='questionEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
-                method="getForm">
+                method="cancel">
             <!--<interceptor-ref name="loginStack"/>-->
+            <result name="cancel" type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">1234</param>
+            </result>
             <result>questionEdit</result>
         </action>
         <action name='saveQuestion'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveQuestion">
             <!--<interceptor-ref name="loginStack"/>-->
-            <result type="redirectAction">questionList</result>
-            <result name="input">questionEdit</result>
+           <result type="redirectAction">
+               <param name="actionName">editExam</param>
+               <param name="examId">${examId}</param>
+           </result>
+            <!-- <result name="input">questionEdit</result>-->
         </action>
         <action name='questionFillTheBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
@@ -148,7 +173,6 @@
                 method="getForm">
             <result>embeddedAnswerEdit</result>
         </action>
-
 
 
     </package>

@@ -3,6 +3,7 @@ package de.nordakademie.multiplechoice.question.ui;
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.multiplechoice.answer.model.Answer;
 import de.nordakademie.multiplechoice.answer.service.AnswerService;
+import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     private final String startRegex = "$$";
     private final String endRegex = "%%";
+    private Exam exam;
 
 
     @Autowired
@@ -34,9 +36,13 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     public String getForm() { return SUCCESS; }
 
+    /**
+     * Die Methode speichert den Lueckentext und die daraus extrahierten Antworten.
+     * @return
+     */
     public String saveQuestionBlankText() {
 
-        questionService.create(question);
+        questionService.create(question, exam.getId());
         List<String> blanksList = extractAnswers(question.getQuestionText());
 
         answerList = createAnswerList(blanksList);
@@ -63,6 +69,32 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
         return answers;
     }
 
+    private List<String> extractAnswers(String blankText) {
+
+        List<String> answers = new ArrayList<String>();
+
+        if (blankText != null) {
+            while (blankText.contains(startRegex)) {
+
+                int startGap = blankText.indexOf(startRegex, 0);
+                int endGap = blankText.indexOf(endRegex, 0);
+                answers.add(blankText.substring(startGap + startRegex.length(), endGap));
+
+                blankText = blankText.substring(endGap + endRegex.length());
+
+            }
+        }
+        return answers;
+    }
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
+
     public Question getQuestion() {
         return question;
     }
@@ -78,22 +110,5 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
     public void setAnswerList(List<Answer> answerList) {
         this.answerList = answerList;
     }
-
-    private List<String> extractAnswers(String blankText) {
-
-        List<String> answers = new ArrayList<String>();
-
-        while (blankText.contains(startRegex)) {
-
-            int startGap = blankText.indexOf(startRegex, 0);
-            int endGap = blankText.indexOf(endRegex, 0);
-            answers.add(blankText.substring(startGap + startRegex.length(), endGap));
-
-            blankText = blankText.substring(endGap + endRegex.length());
-
-        }
-        return answers;
-    }
-
 }
 

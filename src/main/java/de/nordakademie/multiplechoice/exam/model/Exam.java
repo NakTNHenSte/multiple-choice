@@ -1,6 +1,5 @@
 package de.nordakademie.multiplechoice.exam.model;
 
-import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.user.model.User;
 
 import javax.persistence.*;
@@ -25,7 +24,6 @@ public class Exam {
     private String seminar;
     private User user;
     private List<User> participants;
-    private List<Question> questions;
 
     public Exam() {
     }
@@ -134,12 +132,5 @@ public class Exam {
         this.participants = participants;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    public List<Question> getQuestions() {
-        return questions;
-    }
 
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
 }

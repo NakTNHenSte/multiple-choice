@@ -24,12 +24,14 @@ public class PermissionInterceptor extends AbstractInterceptor {
             final long userId = (long) sessionMap.get("userId");
             final User user = userService.find(userId);
 
+//            Ueberpruefen, ob der angemeldete User ein Dozent ist. Ansonsten den Zugriff auf die Zeite verweigern
+
             if (user.getTyp().equals("D")) {
 
                 return invocation.invoke();
 
             } else {
-                return "permissionRedirect";
+                return "forbiddenError";
             }
         }
         return invocation.invoke();
