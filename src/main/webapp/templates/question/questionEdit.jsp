@@ -25,10 +25,6 @@
         <s:checkbox name="answerList[%{#stat.index}].trueOrFalse" fieldValue="true" label="wahr"/>
     </s:iterator>
 
-    <s:form action="questionEdit">
-        <s:submit value="Abbrechen" type="button" class="btn btn-secondary"/>
-    </s:form>
-
     <s:submit value="Speichern" type="button" class="btn btn-primary"/>
 </s:form>
 

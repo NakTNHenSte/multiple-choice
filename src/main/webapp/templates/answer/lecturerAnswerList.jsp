@@ -16,8 +16,10 @@
         <tr>
             <td><s:property value="answerText"/></td>
             <td><s:property value="trueOrFalse"/></td>
-            <td><a href = "<s:url action="deleteAnswer"><s:param name="answerID" value="answerID"/></s:url>"> Löschen </a></td>
-            <td><s:a href="answerDetail?answerID=%{answerID}"> <s:property value="answerID"/></s:a></td>
+            <s:form action="deleteAnswer">
+                <s:hidden name="answerId" value="answerID"/>
+                <s:submit value="löschen" type="button" class="btn btn-danger"/>
+            </s:form>
         </tr>
     </s:iterator>
 </table>

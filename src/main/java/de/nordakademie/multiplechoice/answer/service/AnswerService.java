@@ -26,8 +26,8 @@ public class AnswerService {
     }
 
     @Transactional(readOnly = true)
-    public List<Answer> findAll() {
-        return answerRepository.findAll();
+    public List<Answer> findAll(long questionId) {
+        return answerRepository.findAll(questionId);
     }
 
     @Transactional
@@ -38,15 +38,19 @@ public class AnswerService {
     }
 
     @Transactional
-    public void delete(final Long answerID) {
+    public void delete(final long answerID) {
         final Answer answer = answerRepository.findOne(answerID);
         answerRepository.delete(answer);
     }
 
     @Transactional
-    public Answer findOne(final Long answerID){
+    public Answer findOne(final long answerID){
         final Answer answer = answerRepository.findOne(answerID);
         return answer;
     }
 
+    @Transactional
+    public void update(Answer answer) {
+        answerRepository.update(answer);
+    }
 }

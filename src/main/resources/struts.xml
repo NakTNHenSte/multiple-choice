@@ -155,30 +155,35 @@
         </action>
 
         <!-- answer -->
-        <action name='answerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
+        <action name='lecturerAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
             <interceptor-ref name="loginStack" />
-            <result>answerList</result>
+            <result>lecturerAnswerList</result>
+        </action>
+
+        <action name='studentAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
+            <interceptor-ref name="loginStack" />
+            <result>studentAnswerList</result>
         </action>
 
         <action name='saveAnswer'
                 class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
                 method="saveAnswer">
             <interceptor-ref name="permissionStack"/>
-            <result type="redirectAction">answerList</result>
+            <result type="redirectAction">lecturerAnswerList</result>
             <result name="input">answerEdit</result>
-        </action>
-
-        <action name='answerEdit'
-                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
-                method="getForm">
-            <interceptor-ref name="loginStack"/>
-            <result>answerEdit</result>
         </action>
 
         <action name='embeddedAnswerEdit'
                 class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
                 method="getForm">
             <result>embeddedAnswerEdit</result>
+        </action>
+
+        <action name='deleteAnswer'
+                class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction"
+                method="deleteAnswer">
+            <interceptor-ref name="loginStack"/>
+            <result type="redirectAction">lecturerAnswerList</result>
         </action>
 
 

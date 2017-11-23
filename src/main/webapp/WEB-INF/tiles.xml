@@ -5,6 +5,7 @@
   <definition name="pageFrame" template="/templates/layout/pageFrame.jsp">
     <put-attribute name="header" value="/templates/layout/header.jsp"/>
   </definition>
+
   <!-- exam -->
   <definition name="examList" extends="pageFrame">
     <put-attribute name="content" value="/templates/exam/examList.jsp"/>
@@ -29,6 +30,7 @@
     <definition name="questionFillTheBlankText" extends="pageFrame">
         <put-attribute name="content" value="/templates/question/questionFillTheBlankText.jsp"/>
     </definition>
+
   <!-- user -->
   <definition name="userList" extends="pageFrame">
     <put-attribute name="content" value="/templates/user/userList.jsp"/>
@@ -36,8 +38,6 @@
   <definition name="userLogin" extends="pageFrame">
     <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
   </definition>
-
-
   <definition name="Welcome" extends="pageFrame">
     <put-attribute name="content" value="/templates/user/Welcome.jsp"/>
   </definition>
@@ -46,14 +46,17 @@
   </definition>
 
   <!-- answer -->
-  <definition name="answerList" extends="pageFrame">
-    <put-attribute name="content" value="/templates/answer/answerList.jsp"/>
+  <definition name="lecturerAnswerList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/answer/lecturerAnswerList.jsp"/>
   </definition>
-  <definition name="answerEdit" extends="pageFrame">
-    <put-attribute name="content" value="/templates/answer/answerEdit.jsp"/>
+  <definition name="studentAnswerList" extends="pageFrame">
+    <put-attribute name="content" value="/templates/answer/studentAnswerList.jsp"/>
   </definition>
   <definition name="embeddedAnswerEdit" extends="pageFrame">
      <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
+  </definition>
+  <definition name="answerDetail" extends="pageFrame">
+    <put-attribute name="content" value="/templates/answer/answerDetail.jsp"/>
   </definition>
 
   <!-- errors -->

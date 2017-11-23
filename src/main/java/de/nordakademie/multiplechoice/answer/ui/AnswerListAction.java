@@ -17,6 +17,10 @@ public class AnswerListAction implements Action {
 
     private List<Answer> answers;
 
+    private long answerId;
+
+    private long questionId;
+
     @Autowired
     public AnswerListAction(final AnswerService answerService) {
         this.answerService = answerService;
@@ -24,7 +28,7 @@ public class AnswerListAction implements Action {
 
     @Override
     public String execute() {
-        answers = answerService.findAll();
+        answers = answerService.findAll(questionId);
         return SUCCESS;
     }
 
@@ -32,9 +36,22 @@ public class AnswerListAction implements Action {
         return answers;
     }
 
-    public String deleteAnswer(Long answerID){
-        answerService.delete(answerID);
+    public String deleteAnswer(){
+        answerService.delete(this.getAnswerId());
         return SUCCESS;
     }
 
+    public long getAnswerId() { return answerId; }
+
+    public void setAnswerId(long answerId) {
+        this.answerId = answerId;
+    }
+
+    public long getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(long questionId) {
+        this.questionId = questionId;
+    }
 }
