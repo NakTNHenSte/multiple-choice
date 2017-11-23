@@ -31,7 +31,7 @@ public class PermissionInterceptor extends AbstractInterceptor {
                 return invocation.invoke();
 
             } else {
-                return "forbidden";
+                return "forbiddenError";
             }
         }
         return invocation.invoke();

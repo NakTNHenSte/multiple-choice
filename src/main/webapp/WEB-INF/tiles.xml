@@ -63,5 +63,8 @@
   <definition name="genericError" extends="pageFrame">
     <put-attribute name="content" value="/templates/error/genericError.jsp" />
   </definition>
+  <definition name="forbiddenError" extends="pageFrame">
+    <put-attribute name="content" value="/templates/error/forbiddenError.jsp" />
+  </definition>
 
 </tiles-definitions>

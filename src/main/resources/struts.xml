@@ -44,10 +44,11 @@
 
         <global-results>
             <result name="loginRedirect" type="tiles">Login</result>
-            <result name="forbidden" type="tiles">Welcome</result>
+            <result name="forbiddenError" type="tiles">forbiddenError</result>
             <result name="genericError" type="tiles">genericError</result>
         </global-results>
 
+        <!-- Fange 500 Fehler ab -->
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="genericError" />
         </global-exception-mappings>
