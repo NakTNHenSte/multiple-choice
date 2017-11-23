@@ -31,3 +31,7 @@
 
     <s:submit value="Speichern" type="button" class="btn btn-primary"/>
 </s:form>
+
+<s:form action="cancelQuestionEdit">
+    <s:submit value="Abbrechen" type="button" class="btn btn-secondary"/>
+</s:form>

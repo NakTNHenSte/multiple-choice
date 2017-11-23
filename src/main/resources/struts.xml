@@ -84,6 +84,12 @@
             <result>questionList</result>
         </action>
         <action name='questionEdit'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <result>questionEdit</result>
+        </action>
+
+        <action name='cancelQuestionEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="cancel">
             <!--<interceptor-ref name="loginStack"/>-->
@@ -93,6 +99,7 @@
             </result>
             <result>questionEdit</result>
         </action>
+
         <action name='saveQuestion'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveQuestion">
