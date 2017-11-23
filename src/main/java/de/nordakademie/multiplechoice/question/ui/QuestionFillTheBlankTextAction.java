@@ -36,6 +36,10 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     public String getForm() { return SUCCESS; }
 
+    /**
+     * Die Methode speichert den Lueckentext und die daraus extrahierten Antworten.
+     * @return
+     */
     public String saveQuestionBlankText() {
 
         questionService.create(question, exam.getId());
@@ -65,6 +69,32 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
         return answers;
     }
 
+    private List<String> extractAnswers(String blankText) {
+
+        List<String> answers = new ArrayList<String>();
+
+        if (blankText != null) {
+            while (blankText.contains(startRegex)) {
+
+                int startGap = blankText.indexOf(startRegex, 0);
+                int endGap = blankText.indexOf(endRegex, 0);
+                answers.add(blankText.substring(startGap + startRegex.length(), endGap));
+
+                blankText = blankText.substring(endGap + endRegex.length());
+
+            }
+        }
+        return answers;
+    }
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
+
     public Question getQuestion() {
         return question;
     }
@@ -79,30 +109,6 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     public void setAnswerList(List<Answer> answerList) {
         this.answerList = answerList;
-    }
-
-    private List<String> extractAnswers(String blankText) {
-
-        List<String> answers = new ArrayList<String>();
-
-        while (blankText.contains(startRegex)) {
-
-            int startGap = blankText.indexOf(startRegex, 0);
-            int endGap = blankText.indexOf(endRegex, 0);
-            answers.add(blankText.substring(startGap + startRegex.length(), endGap));
-
-            blankText = blankText.substring(endGap + endRegex.length());
-
-        }
-        return answers;
-    }
-
-    public Exam getExam() {
-        return exam;
-    }
-
-    public void setExam(Exam exam) {
-        this.exam = exam;
     }
 }
 

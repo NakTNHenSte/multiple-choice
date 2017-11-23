@@ -85,8 +85,12 @@
         </action>
         <action name='questionEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
-                method="getForm">
+                method="cancel">
             <!--<interceptor-ref name="loginStack"/>-->
+            <result name="cancel" type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">1234</param>
+            </result>
             <result>questionEdit</result>
         </action>
         <action name='saveQuestion'

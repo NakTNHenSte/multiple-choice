@@ -1,6 +1,7 @@
 package de.nordakademie.multiplechoice.question.service;
 
 import de.nordakademie.multiplechoice.exam.model.ExamRepository;
+import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.model.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,11 @@ import java.util.List;
 public class QuestionService {
 
     private final QuestionRepository questionRepository;
-    private final ExamRepository examRepository;
-    private ExamRepository examService;
+    private ExamService examService;
 
     @Autowired
-    public QuestionService(final QuestionRepository questionRepository, final ExamRepository examRepository, ExamRepository examService) {
+    public QuestionService(final QuestionRepository questionRepository, final ExamService examService) {
         this.questionRepository = questionRepository;
-        this.examRepository = examRepository;
         this.examService = examService;
     }
 

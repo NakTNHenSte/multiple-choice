@@ -25,19 +25,9 @@
         <s:checkbox name="answerList[%{#stat.index}].trueOrFalse" fieldValue="true" label="wahr"/>
     </s:iterator>
 
+    <s:form action="questionEdit">
+        <s:submit value="Abbrechen" type="button" class="btn btn-secondary"/>
+    </s:form>
 
-    <%--<s:iterator var="index" begin="1" end="3">--%>
-        <%--<s:textfield name="answer.answerText" label="Antwort %{index}"/>--%>
-        <%--<s:checkbox name="answer.trueOrFalse" fieldValue="true" label="wahr"/>--%>
-    <%--</s:iterator>--%>
-
-    <%--<s:textfield name="answer.answerText" label="Antwort 1"/>--%>
-    <%--<s:checkbox name="answer.trueOrFalse" fieldValue="true" label="wahr"/>--%>
-
-    <%--<s:iterator var="index" begin="1" end="2">--%>
-        <%--<s:action name="embeddedAnswerEdit" executeResult="true"/>--%>
-        <%--&lt;%&ndash;<s:textfield label="Antwort %{index}"/>&ndash;%&gt;--%>
-    <%--</s:iterator>--%>
-
-    <s:submit value="Speichern"/>
+    <s:submit value="Speichern" type="button" class="btn btn-primary"/>
 </s:form>
