@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -24,8 +23,16 @@ public class AnswerRepository {
         entityManager.remove(answer);
     }
 
-    public List<Answer> findAll() {
-        return entityManager.createQuery("SELECT r FROM Answer r", Answer.class).getResultList();
+    public void update(Answer answer) {
+        entityManager.merge(answer);
+    }
+
+    public List<Answer> findAll(long questionId) {
+        return entityManager.createQuery("SELECT r FROM Answer r WHERE question_Id = :questionId", Answer.class)
+                .setParameter("questionId", questionId).getResultList();
+    }
+
+    public Answer findOne(final long answerID) {return entityManager.find(Answer.class, answerID);
     }
 }
 

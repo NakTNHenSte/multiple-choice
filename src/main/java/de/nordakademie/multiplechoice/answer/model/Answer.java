@@ -21,13 +21,13 @@ public class Answer {
 
     private long answerID;
     private Question question;
-    private boolean trueOrFalse;
+    private String trueOrFalse;
     private String answerText;
 
     public Answer() {
     }
 
-    public Answer(final long answerID, Question question, final boolean trueOrFalse, final String answerText) {
+    public Answer(final long answerID, Question question, final String trueOrFalse, final String answerText) {
         this.answerID = answerID;
         this.question = question;
         this.trueOrFalse = trueOrFalse;
@@ -45,9 +45,9 @@ public class Answer {
     }
 
     @Basic
-    public boolean getTrueOrFalse() { return trueOrFalse; }
+    public String getTrueOrFalse() { return trueOrFalse; }
 
-    public void setTrueOrFalse(final boolean trueOrFalse) {
+    public void setTrueOrFalse(final String trueOrFalse) {
         this.trueOrFalse = trueOrFalse;
     }
 
