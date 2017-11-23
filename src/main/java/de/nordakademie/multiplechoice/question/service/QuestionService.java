@@ -52,4 +52,9 @@ public class QuestionService {
         final Question question = questionRepository.findOne(questionId);
         questionRepository.delete(question);
     }
+
+    @Transactional
+    public void update(Question question) {
+        questionRepository.update(question);
+    }
 }

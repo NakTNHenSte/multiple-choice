@@ -38,4 +38,8 @@ public class QuestionRepository {
                 .setParameter("examId", examId).getResultList();
     }
 
+    public void update(Question question) {
+        entityManager.merge(question);
+    }
+
 }
