@@ -18,7 +18,7 @@
     <div class="col"><b>Titel: </b><s:property value="exam.title"/></div>
 </div>
 <div class="row">
-    <div class="col"><b>Dozent: </b><s:property value="exam.user"/></div>
+    <div class="col"><b>Dozent: </b><s:property value="exam.user.name"/> <s:property value="exam.user.surname"/></div>
 </div>
 <div class="row">
     <div class="col"><b>Seminar: </b><s:property value="exam.seminar"/></div>
