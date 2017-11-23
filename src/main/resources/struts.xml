@@ -11,7 +11,7 @@
     <constant name="struts.action.extension" value="" />
     <constant name="struts.devMode" value="false" />
 
-    <!-- Fange 404 Fehler ab -->
+     <!--Fange 404 Fehler ab -->
     <!--<package name="serveAll" namespace="" extends="struts-default">-->
         <!--<result-types>-->
             <!--<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />-->
@@ -21,10 +21,12 @@
         <!--</action>-->
     <!--</package>-->
 
+
     <package name='default' extends="tiles-default">
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
         </result-types>
+
         <!-- Hier kommen Methoden -->
 
         <!-- Interceptor, der prueft, ob User angemeldet sind -->
@@ -54,6 +56,12 @@
         <!--<global-exception-mappings>-->
             <!--<exception-mapping exception="java.lang.Exception" result="genericError" />-->
         <!--</global-exception-mappings>-->
+
+        <action name="" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+            method="login">
+            <result type="redirectAction">examList</result>
+            <result name="input">Login</result>
+        </action>
 
         <!-- exam -->
         <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
