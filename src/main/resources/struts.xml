@@ -8,6 +8,8 @@
     <constant name="struts.action.excludePattern" value="/js/.*?" /><!--not resolve js resources as action -->
     <constant name="struts.action.excludePattern" value="/css/.*?" /><!--not resolve css resources as action -->
     <constant name="struts.serve.static" value="true" />
+    <constant name="struts.action.extension" value="" />
+    <constant name="struts.devMode" value="false" />
 
     <!-- Fange 404 Fehler ab -->
     <package name="serveAll" namespace="" extends="struts-default">
