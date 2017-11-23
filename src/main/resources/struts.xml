@@ -9,6 +9,16 @@
     <constant name="struts.action.excludePattern" value="/css/.*?" /><!--not resolve css resources as action -->
     <constant name="struts.serve.static" value="true" />
 
+    <!-- Fange 404 Fehler ab -->
+    <package name="serveAll" namespace="" extends="struts-default">
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+        <action name="*">
+            <result type="tiles">notFoundError</result>
+        </action>
+    </package>
+
     <package name='default' extends="tiles-default">
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
@@ -30,13 +40,17 @@
                 <interceptor-ref name="permissionInterceptor"/>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
-
         </interceptors>
 
         <global-results>
             <result name="loginRedirect" type="tiles">Login</result>
-            <result name="permissionRedirect" type="tiles">Welcome</result>
+            <result name="forbidden" type="tiles">Welcome</result>
+            <result name="genericError" type="tiles">genericError</result>
         </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="genericError" />
+        </global-exception-mappings>
 
         <!-- exam -->
         <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
@@ -154,7 +168,6 @@
                 method="getForm">
             <result>embeddedAnswerEdit</result>
         </action>
-
 
 
     </package>
