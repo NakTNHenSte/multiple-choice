@@ -21,7 +21,10 @@ public class QuestionEditAction extends ActionSupport {
     private final AnswerService answerService;
     private Question question;
 
+    private long questionId;
+
     private List<Answer> answerList = new ArrayList<Answer>();
+
     private int answerCount;
     private Answer answer;
     private long examId;
@@ -35,11 +38,18 @@ public class QuestionEditAction extends ActionSupport {
         this.examService = examService;
     }
 
+    public String editQuestion() {
+        question = questionService.findOne(questionId);
+        answerList = answerService.findAll(questionId);
+        answerCount = answerList.size();
+        return SUCCESS;
+    }
 
     public String cancel() {
         exam = examService.findOne(examId);
         return "cancel";
     }
+
 
     public String getForm() {
         exam = examService.findOne(examId);
@@ -94,10 +104,10 @@ public class QuestionEditAction extends ActionSupport {
         this.answerCount = answerCount;
     }
 
-
     public void setExamId(long examId) {
         this.examId = examId;
     }
+
 
     public Exam getExam() {
         return exam;
@@ -113,5 +123,13 @@ public class QuestionEditAction extends ActionSupport {
 
     public void getExamId(long examId) {
         this.examId = examId;
+    }
+
+    public long getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(long questionId) {
+        this.questionId = questionId;
     }
 }

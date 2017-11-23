@@ -32,6 +32,11 @@ public class QuestionService {
     }
 
     @Transactional
+    public Question findOne(final long questionId){
+        return questionRepository.findOne(questionId);
+    }
+
+    @Transactional
     public void create(final Question question, long examId) {
         question.setExam(examService.findOne(examId));
         questionRepository.create(question);

@@ -12,14 +12,14 @@
     <constant name="struts.devMode" value="false" />
 
     <!-- Fange 404 Fehler ab -->
-    <package name="serveAll" namespace="" extends="struts-default">
-        <result-types>
-            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
-        </result-types>
-        <action name="*">
-            <result type="tiles">notFoundError</result>
-        </action>
-    </package>
+    <!--<package name="serveAll" namespace="" extends="struts-default">-->
+        <!--<result-types>-->
+            <!--<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />-->
+        <!--</result-types>-->
+        <!--<action name="*">-->
+            <!--<result type="tiles">notFoundError</result>-->
+        <!--</action>-->
+    <!--</package>-->
 
     <package name='default' extends="tiles-default">
         <result-types>
@@ -51,9 +51,9 @@
         </global-results>
 
         <!-- Fange 500 Fehler ab -->
-        <global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception" result="genericError" />
-        </global-exception-mappings>
+        <!--<global-exception-mappings>-->
+            <!--<exception-mapping exception="java.lang.Exception" result="genericError" />-->
+        <!--</global-exception-mappings>-->
 
         <!-- exam -->
         <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
@@ -85,9 +85,12 @@
             <!--<interceptor-ref name="loginStack"/>-->
             <result>questionList</result>
         </action>
+
         <action name='questionEdit'
-                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction">
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="editQuestion">
             <!--<interceptor-ref name="loginStack"/>-->
+            <!--<result name="input">questionEdit</result>-->
             <result>questionEdit</result>
         </action>
 
@@ -112,12 +115,14 @@
            </result>
             <!-- <result name="input">questionEdit</result>-->
         </action>
+
         <action name='questionFillTheBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
                 method="getForm">
             <!--<interceptor-ref name="loginStack"/>-->
             <result>questionFillTheBlankText</result>
         </action>
+
         <action name='saveQuestionBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
                 method="saveQuestionBlankText">

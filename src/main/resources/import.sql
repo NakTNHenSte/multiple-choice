@@ -27,4 +27,4 @@ INSERT INTO ANSWER VALUES (1000, 'Programmieren', 'true', 1005);
 INSERT INTO ANSWER VALUES (1100, 'Programmieren', 'true', 1005);
 INSERT INTO ANSWER VALUES (1200, 'Software entwickeln', 'true', 1005);
 INSERT INTO ANSWER VALUES (1300, 'Geschäftsprozesse modellieren', 'true', 1005);
-INSERT INTO ANSWER VALUES (1400, 'echt leckeren Kuchen backen', 'true', 1005);
+INSERT INTO ANSWER VALUES (1400, 'echt leckeren Kuchen backen', 'false', 1005);

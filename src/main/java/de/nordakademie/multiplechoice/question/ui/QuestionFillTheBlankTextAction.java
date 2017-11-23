@@ -61,7 +61,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
         for (String blank : blanksList) {
             Answer extractedAnswer = new Answer();
             extractedAnswer.setAnswerText(blank);
-            extractedAnswer.setTrueOrFalse(true);
+            extractedAnswer.setTrueOrFalse("true");
             extractedAnswer.setQuestion(question);
             answers.add(extractedAnswer);
 

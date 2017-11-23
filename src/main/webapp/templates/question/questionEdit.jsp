@@ -9,16 +9,15 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 
-<s:form action="saveQuestion">
+<s:form action="questionEdit">
+    <s:hidden name="examId" value="%{exam.id}"/>
+    <s:hidden name="questionId" value="%{questionId}"/>
+    <%--<s:hidden name="questionId" value="1005"/>--%>
     <s:textfield name="question.questionText" label="Fragentext"/>
     <s:textfield name="question.scorePerCorrectChoice" label="Punkte richtige Antwort"/>
     <s:textfield name="question.scorePerWrongChoice" label="Punkte falsche Antwort*"/>
     <s:textfield name="question.scorePerMissingChoice" label="Punkte fehlende Antwort*"/>
     <s:label value="* Minuszeichen nicht vergessen."/>
-    <s:hidden name="examId" value="%{exam.id}"/>
-
-    <%--examID und questionID nur temporaer zum Testen--%>
-    <%--<s:textfield name="question.exam.id" label="ExamID"/>--%>
 
     <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
         <s:textfield name="answerList[%{#stat.index}].answerText" label="Antwort %{#stat.index + 1}"/>

@@ -15,13 +15,23 @@
         <th>falsch</th>
         <th>fehlt</th>
     </tr>
-    <s:iterator value="questions">
+    <s:iterator var="question" value="questions" status="stat">
         <tr>
             <td><s:property value="id"/></td>
             <td><s:property value="questionText"/></td>
             <td><s:property value="scorePerCorrectChoice"/></td>
             <td><s:property value="scorePerWrongChoice"/></td>
             <td><s:property value="scorePerMissingChoice"/></td>
+
+            <s:form action="questionEdit">
+                <s:hidden name="questionId" value="%{id}"/>
+                <s:submit value="editieren" type="button" class="btn btn-primary"/>
+            </s:form>
+
         </tr>
     </s:iterator>
+
+
+
+
 </table>
