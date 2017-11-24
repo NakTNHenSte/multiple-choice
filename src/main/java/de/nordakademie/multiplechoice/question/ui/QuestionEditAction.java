@@ -76,6 +76,21 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
+
+    public String saveQuestionEdit() {
+
+        question.setExam(examService.findOne(examId));
+        if (this.getQuestionId() == 0) {
+            questionService.create(getQuestion(), examId);
+        } else {
+            question.setId(this.getQuestionId());
+            questionService.update(question);
+        }
+        examId = question.getExam().getId();
+
+        return SUCCESS;
+    }
+
     public String deleteAnswer(){
         answerList = answerService.findAll(questionId);
         answerService.delete(answerList.get(positionOfAnswer).getAnswerID());
