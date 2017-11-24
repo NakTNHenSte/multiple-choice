@@ -9,7 +9,6 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <table>
     <tr>
-        <th>Id</th>
         <th>Frage</th>
         <th>richtig</th>
         <th>falsch</th>
@@ -17,7 +16,6 @@
     </tr>
     <s:iterator var="question" value="questions" status="stat">
         <tr>
-            <td><s:property value="id"/></td>
             <td><s:property value="questionText"/></td>
             <td><s:property value="scorePerCorrectChoice"/></td>
             <td><s:property value="scorePerWrongChoice"/></td>

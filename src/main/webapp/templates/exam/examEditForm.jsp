@@ -29,7 +29,7 @@ Frage anlegen
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <s:form action="questionEdit">
+            <s:form action="saveQuestion">
                 <div class="modal-body">
 
                     <s:hidden name="examId" value="%{exam.id}"/>
