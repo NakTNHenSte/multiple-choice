@@ -71,4 +71,9 @@ public class ParticipationService {
     public void update(Participation participation) {
         participationRepository.update(participation);
     }
+
+    @Transactional
+    public Participation findByUserIdAndExamId(long userId, long examId) {
+        return participationRepository.findByUserIdAndExamId(userId, examId);
+    }
 }

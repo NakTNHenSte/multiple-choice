@@ -54,14 +54,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Sind Sie sicher, dass Sie die Prüfung starten wollen? Mit dem Start der Prüfung beginnt der Ablauf der
-                    Dauer des Prüfungsdurchlaufs.
+                    Bitten geben Sie ihr vom Dozenten erhaltenes Einmalpasswort ein, um die Prüfung zu starten. Beachten Sie, dass dieses Passwort nur einmal gültig ist und die Bearbeitungszeit mit dieser Anmeldnug beginnt.
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
-                    <s:form action="runExam">
-                        <s:submit value="Bestätigen" type="button" class="btn btn-primary"/>
+                    <s:form action="startExam">
+                        <s:hidden name="examId" value="%{examId}"/>
+                        <s:hidden name="userId" value="%{#session.userId}"/>
+
+                        <s:textfield name="oneTimePassword" label="Einmalpasswort"/>
+                        <s:submit value="Prüfen starten" type="button" class="btn btn-primary"/>
                     </s:form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+
                 </div>
             </div>
         </div>

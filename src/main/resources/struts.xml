@@ -87,6 +87,19 @@
             <result type="redirectAction">examList</result>
         </action>
 
+        <action name='startExam' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction" method="runExam">
+            <result name="success">examExecution</result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">examDetail</param>
+                <param name="examId">${examId}</param>
+            </result>
+
+        </action>
+
+        <action name='examExecution' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction">
+            <result>examExecution</result>
+        </action>
+
         <!-- participation -->
 
         <action name='participationAddition' class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction" method="getForm">

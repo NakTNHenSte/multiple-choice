@@ -19,6 +19,9 @@
     <definition name="examCreationForm" extends="pageFrame">
         <put-attribute name="content" value="/templates/exam/examCreationForm.jsp"/>
     </definition>
+  <definition name="examExecution" extends="pageFrame">
+    <put-attribute name="content" value="/templates/exam/examExecution.jsp"/>
+  </definition>
 
   <!-- participation -->
   <definition name="participationAddition" extends="pageFrame">
