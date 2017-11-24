@@ -94,6 +94,13 @@
             <result>participationAddition</result>
         </action>
 
+        <action name='addParticipation' class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction" method="saveParticipation">
+            <result name="input">participationAddition</result>
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param>
+            </result>
+        </action>
         <!-- question -->
         <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
             <!--<interceptor-ref name="loginStack"/>-->

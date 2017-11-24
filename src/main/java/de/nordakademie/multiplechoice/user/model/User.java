@@ -85,5 +85,9 @@ public class User {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
 
 }

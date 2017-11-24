@@ -8,12 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
-<s:select label="Fügen Sie einen Teilnehmer hinzu"
-          headerKey="-1" headerValue="wtf macht das hier"
-          list="students"
-          name="user.name"/>
+<s:form action="addParticipation">
 
-<s:form action="participationAddition">
-    <s:hidden name="examId" value="%{exam.id}"/>
-    <s:submit value="Teilnehmer hinzufügen" type="button" class="btn btn-secondary"/>
+<s:select label="Fügen Sie einen Teilnehmer hinzu"
+          list="students"
+          listValue="%{name + '  ' +  surname}"
+          listKey="id"
+          name="user"/>
+
+    <s:hidden name="examId" value="%{examId}"/>
+    <s:submit value="Teilnehmer hinzufügen" type="button" class="btn btn-secondary" name="submit"/>
 </s:form>
