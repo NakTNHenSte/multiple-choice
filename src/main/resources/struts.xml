@@ -147,6 +147,16 @@
             </result>
         </action>
 
+        <action name='viewAnswerEdit'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="saveAnswerEdit">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <!--<result name="input">questionEdit</result>-->
+            <result>
+                Welcome
+            </result>
+        </action>
+
         <action name='cancelQuestionEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="cancel">
@@ -213,7 +223,6 @@
             <interceptor-ref name="loginStack" />
             <result>userList</result>
         </action>
-
 
         <action name="login" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
                 method="login">

@@ -55,7 +55,8 @@ public class QuestionEditAction extends ActionSupport {
 
     public String getForm() {
         exam = examService.findOne(examId);
-        return SUCCESS; }
+        return SUCCESS;
+    }
 
     public String saveQuestion() {
 
@@ -76,6 +77,23 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String saveAnswerEdit() {
+
+
+        List<Answer> answersFromDatabase = answerService.findAll(questionId);
+
+        if (answerList.size() == answersFromDatabase.size()) {
+            for (int i = 0; i < answerList.size(); i++) {
+            answerList.get(i).setQuestion(answersFromDatabase.get(i).getQuestion());
+            answerList.get(i).setAnswerID(answersFromDatabase.get(i).getAnswerID());
+            answerList.get(i).setPositionOfAnswer(answersFromDatabase.get(i).getPositionOfAnswer());
+            answerService.update(answerList.get(i));
+
+            }
+        }
+
+        return SUCCESS;
+    }
 
     public String saveQuestionEdit() {
 
@@ -91,13 +109,13 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String deleteAnswer(){
+    public String deleteAnswer() {
         answerList = answerService.findAll(questionId);
         answerService.delete(answerList.get(positionOfAnswer).getAnswerID());
         return SUCCESS;
     }
 
-    public String deleteQuestion(){
+    public String deleteQuestion() {
         answerList = answerService.findAll(questionId);
         for (Answer answer : answerList) {
             answerService.delete(answer.getAnswerID());

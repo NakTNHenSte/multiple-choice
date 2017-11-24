@@ -19,21 +19,25 @@
     <s:textfield name="question.scorePerMissingChoice" label="Punkte fehlende Antwort*"/>
     <s:label value="* Minuszeichen nicht vergessen."/>
 
-
-    <s:submit value="Speichern" type="button" class="btn btn-primary"/>
+    <s:submit value="Frage speichern" type="button" class="btn btn-primary"/>
 
 </s:form>
-
-<%--    <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
-        <s:textfield name="answerList[%{#stat.index}].answerText" label="Antwort %{#stat.index + 1}"/>
-        <s:radio label="Wahr/Falsch" name="answerList[%{#stat.index}].trueOrFalse" list="#{'true':'Wahr','false':'Falsch'}"/>
-        <s:form action="deleteAnswer">
-            <s:hidden name="positionOfAnswer" value="%{#stat.index}"/>
-            <s:hidden name="questionId" value="%{questionId}"/>
+<s:form action="viewAnswerEdit">
+<table>
+    <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
+        <tr>
+            <td><s:textfield name="answerList[%{#stat.index}].answerText" label="Antwort %{#stat.index + 1}"/></td>
+            <td><s:radio label="Wahr/Falsch" name="answerList[%{#stat.index}].trueOrFalse" list="#{'true':'Wahr','false':'Falsch'}"/></td>
+            <td><s:form action="deleteAnswer">
+                <s:hidden name="positionOfAnswer" value="%{#stat.index}"/>
+                <s:hidden name="questionId" value="%{questionId}"/>
             <s:submit value="löschen" type="button" class="btn btn-danger"/>
-        </s:form>
-    </s:iterator>--%>
-
+        </s:form></td>
+        </tr>
+    </s:iterator>
+        <s:submit value="Antworten speichern" type="button" class="btn btn-primary"/>
+</table>
+</s:form>
 
 <s:form action="cancelQuestionEdit">
     <s:hidden name="examId" value="%{examId}"/>
