@@ -20,11 +20,9 @@ public class QuestionEditAction extends ActionSupport {
     private final QuestionService questionService;
     private final AnswerService answerService;
     private Question question;
-
     private long questionId;
-
+    private int positionOfAnswer;
     private List<Answer> answerList = new ArrayList<Answer>();
-
     private int answerCount;
     private Answer answer;
     private long examId;
@@ -75,6 +73,21 @@ public class QuestionEditAction extends ActionSupport {
             answer.setQuestion(question);
             answerService.create(answer);
         }
+        return SUCCESS;
+    }
+
+    public String deleteAnswer(){
+        answerList = answerService.findAll(questionId);
+        answerService.delete(answerList.get(positionOfAnswer).getAnswerID());
+        return SUCCESS;
+    }
+
+    public String deleteQuestion(){
+        answerList = answerService.findAll(questionId);
+        for (Answer answer : answerList) {
+            answerService.delete(answer.getAnswerID());
+        }
+        questionService.delete(questionId);
         return SUCCESS;
     }
 
@@ -137,5 +150,13 @@ public class QuestionEditAction extends ActionSupport {
 
     public void setQuestionId(long questionId) {
         this.questionId = questionId;
+    }
+
+    public int getPositionOfAnswer() {
+        return positionOfAnswer;
+    }
+
+    public void setPositionOfAnswer(int positionOfAnswer) {
+        this.positionOfAnswer = positionOfAnswer;
     }
 }

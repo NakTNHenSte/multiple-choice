@@ -47,4 +47,14 @@ public class QuestionService {
         return questionRepository.findByExam(examId);
     }
 
+    @Transactional
+    public void delete(final long questionId){
+        final Question question = questionRepository.findOne(questionId);
+        questionRepository.delete(question);
+    }
+
+    @Transactional
+    public void update(Question question) {
+        questionRepository.update(question);
+    }
 }

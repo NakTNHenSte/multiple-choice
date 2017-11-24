@@ -27,6 +27,7 @@ public class QuestionListAction implements Action {
         return SUCCESS;
     }
 
+
     public List<Question> getQuestions() {
         return questions;
     }

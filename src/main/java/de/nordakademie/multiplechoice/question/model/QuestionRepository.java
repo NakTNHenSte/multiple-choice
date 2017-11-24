@@ -37,4 +37,9 @@ public class QuestionRepository {
         return entityManager.createQuery("SELECT q FROM Question q WHERE exam_id = :examId", Question.class)
                 .setParameter("examId", examId).getResultList();
     }
+
+    public void update(Question question) {
+        entityManager.merge(question);
+    }
+
 }
