@@ -23,16 +23,18 @@
             <td><s:property value="scorePerWrongChoice"/></td>
             <td><s:property value="scorePerMissingChoice"/></td>
 
-            <s:form action="questionEdit">
+            <td><s:form action="questionEdit">
                 <s:hidden name="questionId" value="%{id}"/>
                 <s:submit value="editieren" type="button" class="btn btn-primary"/>
             </s:form>
+            </td>
 
-            <s:form action="deleteQuestion">
+            <td><s:form action="deleteQuestion">
                 <s:hidden name="questionId" value="%{id}"/>
                 <s:hidden name="examId" value="%{examId}"/>
                 <s:submit value="löschen" type="button" class="btn btn-danger"/>
             </s:form>
+            </td>
         </tr>
     </s:iterator>
 
