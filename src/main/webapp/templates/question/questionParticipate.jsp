@@ -15,16 +15,34 @@
     <s:hidden name="examId" value="1234"/>
     <s:hidden name="questionId" value="1001"/>
 
-    <s:textfield name="question.questionText" label="Fragentext"/>
-    <s:textfield name="question.scorePerCorrectChoice" label="Punkte richtige Antwort"/>
-    <s:textfield name="question.scorePerWrongChoice" label="Punkte falsche Antwort*"/>
-    <s:textfield name="question.scorePerMissingChoice" label="Punkte fehlende Antwort*"/>
-    <s:label value="* Minuszeichen nicht vergessen."/>
+    <s:label name="question.questionText" class="h3"/>
+
+    <table class="table">
+        <tr>
+            <th scope="col">Punkte gesamt</th>
+            <th scope="col">Abzug Antwort falsch</th>
+            <th scope="col">Abzug Antwort fehlt</th>
+        </tr>
+        <tr>
+            <td><s:property value="question.scorePerCorrectChoice"/></td>
+            <td><s:property value="question.scorePerWrongChoice"/> <s:property value="user.surname"/></td>
+            <td><s:property value="question.scorePerMissingChoice"/></td>
+        </tr>
+    </table>
+
+    <s:label value="Mögliche Antworten" class="h5"/>
 
     <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
-        <s:textfield name="answerList[%{#stat.index}].answerText" label="Antwort %{#stat.index + 1}"/>
-        <s:radio label="Wahr/Falsch" name="answerList[%{#stat.index}].trueOrFalse" list="#{'true':'Wahr','false':'Falsch'}"/>
+        <div align="left">
+            <s:textarea name="answerList[%{#stat.index}].answerText" readonly="true"/>
+            <%--<s:label name="answerList[%{#stat.index}].answerText" class="h5"/>--%>
+            <%--Statt name="answer" muss hier später der Wert des Studenten stehen, z.B. student.givenAnswer mit
+            den String-Werten false, true und ""--%>
+            <s:radio name="givenAnswers[%{#stat.index}]"
+                     list="#{'true':'Wahr','false':'Falsch'}"/>
+        </div>
     </s:iterator>
+
 
     <s:submit value="Antwort(en) senden" type="button" class="btn btn-primary"/>
 </s:form>
