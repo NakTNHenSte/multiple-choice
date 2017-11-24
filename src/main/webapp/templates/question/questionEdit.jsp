@@ -9,7 +9,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 
-<s:form action="questionEdit">
+<s:form action="viewQuestionEdit" method="post">
     <s:hidden name="examId" value="%{exam.id}"/>
     <s:hidden name="questionId" value="%{questionId}"/>
     <%--<s:hidden name="questionId" value="1005"/>--%>
@@ -19,7 +19,12 @@
     <s:textfield name="question.scorePerMissingChoice" label="Punkte fehlende Antwort*"/>
     <s:label value="* Minuszeichen nicht vergessen."/>
 
-    <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
+
+    <s:submit value="Speichern" type="button" class="btn btn-primary"/>
+
+</s:form>
+
+<%--    <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
         <s:textfield name="answerList[%{#stat.index}].answerText" label="Antwort %{#stat.index + 1}"/>
         <s:radio label="Wahr/Falsch" name="answerList[%{#stat.index}].trueOrFalse" list="#{'true':'Wahr','false':'Falsch'}"/>
         <s:form action="deleteAnswer">
@@ -27,10 +32,8 @@
             <s:hidden name="questionId" value="%{questionId}"/>
             <s:submit value="löschen" type="button" class="btn btn-danger"/>
         </s:form>
-    </s:iterator>
+    </s:iterator>--%>
 
-    <s:submit value="Speichern" type="button" class="btn btn-primary"/>
-</s:form>
 
 <s:form action="cancelQuestionEdit">
     <s:hidden name="examId" value="%{examId}"/>

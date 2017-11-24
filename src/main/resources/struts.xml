@@ -123,6 +123,17 @@
             <result>questionEdit</result>
         </action>
 
+        <action name='viewQuestionEdit'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="saveQuestionEdit">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <!--<result name="input">questionEdit</result>-->
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param>
+            </result>
+        </action>
+
         <action name='cancelQuestionEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="cancel">
