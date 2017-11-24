@@ -52,7 +52,7 @@
     <put-attribute name="content" value="/templates/user/Welcome.jsp"/>
   </definition>
   <definition name="Login" extends="pageFrame">
-    <put-attribute name="content" value="/templates/user/Login.jsp"/>
+    <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
   </definition>
 
   <!-- answer -->

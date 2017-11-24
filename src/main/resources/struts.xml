@@ -21,7 +21,6 @@
         <!--</action>-->
     <!--</package>-->
 
-
     <package name='default' extends="tiles-default">
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
@@ -57,7 +56,7 @@
             <!--<exception-mapping exception="java.lang.Exception" result="genericError" />-->
         <!--</global-exception-mappings>-->
 
-        <action name="" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+        <action name="" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
             method="login">
             <result type="redirectAction">examList</result>
             <result name="input">Login</result>
@@ -174,26 +173,14 @@
             <result>userList</result>
         </action>
 
-        <action name='loginUser'
-                class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
-                method="loginUser">
-            <result type="redirectAction">examList</result>
-            <result name="input">userLogin</result>
-        </action>
 
-        <action name='userLogin'
-                class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
-                method="getForm">
-            <result>userLogin</result>
-        </action>
-
-        <action name="login" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+        <action name="login" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
                 method="login">
             <result type="redirectAction">examList</result>
             <result name="input">Login</result>
         </action>
 
-        <action name="logout" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+        <action name="logout" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
                 method="logout">
             <result name="success">Login</result>
         </action>

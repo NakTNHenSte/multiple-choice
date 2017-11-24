@@ -40,9 +40,9 @@ public class QuestionEditAction extends ActionSupport {
         question = questionService.findOne(questionId);
         answerList = answerService.findAll(questionId);
         answerCount = answerList.size();
-
         exam = examService.findOne(question.getExam().getId());
         examId = exam.getId();
+
         return SUCCESS;
     }
 
