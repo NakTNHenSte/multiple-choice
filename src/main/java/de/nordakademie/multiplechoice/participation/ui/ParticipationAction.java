@@ -3,17 +3,19 @@ package de.nordakademie.multiplechoice.participation.ui;
 /**
  * Created by Steven on 12.11.2017.
  */
-import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
+import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import de.nordakademie.multiplechoice.user.model.User;
 import de.nordakademie.multiplechoice.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class ParticipationAction extends ActionSupport implements Preparable{
@@ -45,6 +47,13 @@ public class ParticipationAction extends ActionSupport implements Preparable{
     }
 
     public String getForm() {
+        List<Participation> particis = new ArrayList<>(participationService.findAll(examId));
+        Set<User> studentsToRemove = new HashSet<>();
+        for (Participation each : particis) {
+            studentsToRemove.add(each.getUser());
+        }
+
+        students.removeAll(studentsToRemove);
         return SUCCESS;
     }
 
@@ -81,6 +90,7 @@ public class ParticipationAction extends ActionSupport implements Preparable{
     @Override
     public void prepare() throws Exception {
         students = userService.findStudents();
+
     }
 
     public String removeParticipation(){

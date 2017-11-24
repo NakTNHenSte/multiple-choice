@@ -9,7 +9,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <s:form action="participationAddition">
-    <s:hidden name="examId" value="%{exam.id}"/>
+    <s:hidden name="examId" value="%{examId}"/>
     <s:submit value="Teilnehmer hinzufügen" type="button" class="btn btn-secondary"/>
 </s:form>
 
