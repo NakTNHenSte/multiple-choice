@@ -60,6 +60,14 @@ public class ParticipationService {
     }
 
     @Transactional
+    public void deleteExam(long examId) {
+        List<Participation> participations = participationRepository.findAll(examId);
+        for (Participation participation : participations) {
+            participationRepository.delete(participation);
+        }
+    }
+
+    @Transactional
     public void update(Participation participation) {
         participationRepository.update(participation);
     }

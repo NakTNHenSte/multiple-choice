@@ -81,6 +81,7 @@ public class ExamDetailAction implements Action, SessionAware {
             }
             questionService.delete(question.getId());
         }
+        participationService.deleteExam(examId);
         examService.removeExam(this.getExamId());
         return SUCCESS;
     }
