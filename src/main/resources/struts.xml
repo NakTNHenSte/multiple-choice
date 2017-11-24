@@ -160,6 +160,14 @@
             <result name="input">questionFillTheBlankText</result>
         </action>
 
+        <action name='participateQuestion'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionParticipationAction"
+                method="participate">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <!--<result name="input">questionEdit</result>-->
+            <result>questionParticipate</result>
+        </action>
+
         <!-- user -->
         <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
             <interceptor-ref name="loginStack" />
