@@ -1,5 +1,6 @@
 package de.nordakademie.multiplechoice.participation.service;
 
+import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.model.ParticipationRepository;
@@ -47,8 +48,8 @@ public class ParticipationService {
     }
 
     @Transactional
-    public void delete(final long participationID) {
-        final Participation participation = participationRepository.findOne(participationID);
+    public void delete(final long participationId) {
+        Participation participation = participationRepository.findOne(participationId);
         participationRepository.delete(participation);
     }
 

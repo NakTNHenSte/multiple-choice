@@ -1,8 +1,10 @@
 package de.nordakademie.multiplechoice.exam.ui;
 
 import com.opensymphony.xwork2.Action;
+import de.nordakademie.multiplechoice.answer.model.Answer;
 import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
+import de.nordakademie.multiplechoice.answer.service.AnswerService;
 import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import de.nordakademie.multiplechoice.question.model.Question;
@@ -21,6 +23,7 @@ public class ExamDetailAction implements Action, SessionAware {
     private UserService userService;
     private QuestionService questionService;
     private ParticipationService participationService;
+    private AnswerService answerService;
 
 
     Map<String, Object> session;
@@ -36,13 +39,15 @@ public class ExamDetailAction implements Action, SessionAware {
 
     private List<Participation> participations;
     private List<Question> questions;
+    private List<Answer> answers;
 
     @Autowired
-    public ExamDetailAction(final ExamService examService, UserService userService, QuestionService questionService, ParticipationService participationService) {
+    public ExamDetailAction(final ExamService examService, UserService userService, QuestionService questionService, ParticipationService participationService, AnswerService answerService) {
         this.examService = examService;
         this.userService = userService;
         this.questionService = questionService;
         this.participationService = participationService;
+        this.answerService = answerService;
     }
 
     @Override
@@ -68,6 +73,14 @@ public class ExamDetailAction implements Action, SessionAware {
     }
 
     public String removeExam() {
+        questions = questionService.findByExam(examId);
+        for (Question question : questions) {
+            answers = answerService.findAll(question.getId());
+            for (Answer answer : answers) {
+                answerService.delete(answer.getAnswerID());
+            }
+            questionService.delete(question.getId());
+        }
         examService.removeExam(this.getExamId());
         return SUCCESS;
     }
@@ -75,8 +88,6 @@ public class ExamDetailAction implements Action, SessionAware {
     public String viewExam() {
 
         participations = participationService.findAll(this.getExamId());
-
-
         exam = examService.findOne(this.getExamId());
         questions = questionService.findByExam(exam.getId());
 

@@ -30,6 +30,7 @@
 
             <s:form action="deleteQuestion">
                 <s:hidden name="questionId" value="%{id}"/>
+                <s:hidden name="examId" value="%{examId}"/>
                 <s:submit value="löschen" type="button" class="btn btn-danger"/>
             </s:form>
         </tr>

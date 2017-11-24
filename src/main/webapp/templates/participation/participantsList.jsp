@@ -23,6 +23,11 @@
             <td><s:property value="user.name"/></td>
             <td><s:property value="user.surname"/></td>
             <td><s:property value="oneTimePassword"/></td>
+            <s:form action="removeParticipation">
+                <s:hidden name="participationId" value="%{id}"/>
+                <s:hidden name="examId" value="%{examId}"/>
+                <s:submit value="Teilnehmer entfernen" type="button" class="btn btn-danger"/>
+            </s:form>
         </tr>
     </s:iterator>
 </table>

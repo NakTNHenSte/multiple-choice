@@ -94,6 +94,14 @@
             <result>participationAddition</result>
         </action>
 
+        <action name="removeParticipation" class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction"
+                method="removeParticipation">
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param>
+            </result>
+        </action>
+
         <!-- question -->
         <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
             <!--<interceptor-ref name="loginStack"/>-->
@@ -135,7 +143,7 @@
                 method="deleteQuestion">
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
-                <param name="examId">${exam.id}</param></result>
+                <param name="examId">${examId}</param></result>
         </action>
 
         <action name='questionFillTheBlankText'

@@ -20,6 +20,7 @@ public class ParticipationAction implements Action{
 
     private List<User> students;
     private User student;
+    private long participationId;
 
     private long examId;
 
@@ -41,6 +42,11 @@ public class ParticipationAction implements Action{
 
     public String getForm() {
         students = userService.findStudents();
+        return SUCCESS;
+    }
+
+    public String removeParticipation(){
+        participationService.delete(participationId);
         return SUCCESS;
     }
 
@@ -76,5 +82,13 @@ public class ParticipationAction implements Action{
     @Override
     public String execute(){
         return SUCCESS;
+    }
+
+    public void setParticipationId(long participationId) {
+        this.participationId = participationId;
+    }
+
+    public long getParticipationId(){
+        return participationId;
     }
 }
