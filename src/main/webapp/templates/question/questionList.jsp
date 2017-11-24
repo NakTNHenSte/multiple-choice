@@ -7,12 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<table>
+<table class="table table-sm">
     <tr>
         <th>Frage</th>
         <th>richtig</th>
         <th>falsch</th>
         <th>fehlt</th>
+        <th>Aktionen</th>
+
     </tr>
     <s:iterator var="question" value="questions" status="stat">
         <tr>

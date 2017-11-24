@@ -13,15 +13,20 @@
     <s:submit value="Teilnehmer hinzufügen" type="button" class="btn btn-secondary"/>
 </s:form>
 
-<table>
+<table class="table table-sm">
     <tr>
         <th>Name</th>
         <th>Nachname</th>
+        <th>Einmalpasswort</th>
+        <th>Gültigkeit des PW</th>
+        <th>Aktionen</th>
     </tr>
     <s:iterator value="participations">
         <tr>
             <td><s:property value="user.name"/></td>
             <td><s:property value="user.surname"/></td>
+            <td><s:property value="oneTimePassword"/></td>
+            <td><s:property value="valid"/></td>
             <td><s:form action="removeParticipation">
                 <s:hidden name="participationId" value="%{id}"/>
                 <s:hidden name="examId" value="%{examId}"/>

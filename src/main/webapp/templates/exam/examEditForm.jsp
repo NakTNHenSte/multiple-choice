@@ -7,17 +7,23 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<div class="row">
+    <div class="col">
+        <s:include value="/templates/exam/examCreationForm.jsp"></s:include>
+    </div>
+    <div class="col">
+        <s:include value="/templates/participation/participantsList.jsp"></s:include>
+    </div>
+</div>
 
-
-<s:include value="/templates/exam/examCreationForm.jsp"></s:include>
-
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">
-Frage anlegen
-</button>
-
-<s:include value="/templates/question/questionList.jsp"></s:include>
-
+<div class="row">
+    <div class="col">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">
+            Frage anlegen
+        </button>
+        <s:include value="/templates/question/questionList.jsp"></s:include>
+    </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
      aria-hidden="true">
@@ -46,4 +52,3 @@ Frage anlegen
     </div>
 </div>
 
-<s:include value="/templates/participation/participantsList.jsp"></s:include>
