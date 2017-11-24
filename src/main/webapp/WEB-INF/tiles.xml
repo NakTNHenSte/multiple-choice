@@ -32,9 +32,14 @@
   <definition name="questionEdit" extends="pageFrame">
      <put-attribute name="content" value="/templates/question/questionEdit.jsp"/>
   </definition>
-    <definition name="questionFillTheBlankText" extends="pageFrame">
-        <put-attribute name="content" value="/templates/question/questionFillTheBlankText.jsp"/>
-    </definition>
+  <definition name="questionFillTheBlankText" extends="pageFrame">
+     <put-attribute name="content" value="/templates/question/questionFillTheBlankText.jsp"/>
+  </definition>
+  <definition name="questionParticipate" extends="pageFrame">
+     <put-attribute name="content" value="/templates/question/questionParticipate.jsp"/>
+  </definition>
+
+
 
   <!-- user -->
   <definition name="userList" extends="pageFrame">
@@ -47,7 +52,7 @@
     <put-attribute name="content" value="/templates/user/Welcome.jsp"/>
   </definition>
   <definition name="Login" extends="pageFrame">
-    <put-attribute name="content" value="/templates/user/Login.jsp"/>
+    <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
   </definition>
 
   <!-- answer -->

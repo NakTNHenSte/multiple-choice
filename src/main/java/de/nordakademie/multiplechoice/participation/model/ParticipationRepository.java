@@ -35,4 +35,5 @@ public class ParticipationRepository {
 
     public Participation findOne(final long participationID) {return entityManager.find(Participation.class, participationID);
     }
+
 }

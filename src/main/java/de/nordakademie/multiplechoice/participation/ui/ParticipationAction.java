@@ -23,6 +23,8 @@ public class ParticipationAction extends ActionSupport implements Preparable{
 
     private List<User> students;
     private Long user;
+    private long participationId;
+
 
     private long examId;
 
@@ -79,5 +81,18 @@ public class ParticipationAction extends ActionSupport implements Preparable{
     @Override
     public void prepare() throws Exception {
         students = userService.findStudents();
+    }
+
+    public String removeParticipation(){
+        participationService.delete(participationId);
+        return SUCCESS;
+    }
+
+    public void setParticipationId(long participationId) {
+        this.participationId = participationId;
+    }
+
+    public long getParticipationId(){
+        return participationId;
     }
 }

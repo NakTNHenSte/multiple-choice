@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by chris on 18.11.17.
  */
-public class QuestionEditAction extends ActionSupport {
+public class QuestionParticipationAction extends ActionSupport {
 
     private final QuestionService questionService;
     private final AnswerService answerService;
@@ -29,67 +29,50 @@ public class QuestionEditAction extends ActionSupport {
     private Exam exam;
     private ExamService examService;
 
+    private List<String> givenAnswers = new ArrayList<String>();
+
+    public List<String> getGivenAnswers() {
+        return givenAnswers;
+    }
+
+    public void setGivenAnswers(List<String> givenAnswers) {
+        this.givenAnswers = givenAnswers;
+    }
+
     @Autowired
-    public QuestionEditAction(final QuestionService questionService, final AnswerService answerService, ExamService examService) {
+    public QuestionParticipationAction(final QuestionService questionService, final AnswerService answerService, final ExamService examService) {
         this.questionService = questionService;
         this.answerService = answerService;
         this.examService = examService;
     }
 
-    public String editQuestion() {
-        question = questionService.findOne(questionId);
-        answerList = answerService.findAll(questionId);
+    public String participate() {
+//        question = questionService.findOne(questionId);
+//        answerList = answerService.findAll(questionId);
+
+        //TODO: oberes einkommentieren und die unteren zwei Zeilen loeschen
+        question = questionService.findOne(1001);
+        answerList = answerService.findAll(1001);
+
         answerCount = answerList.size();
+
         exam = examService.findOne(question.getExam().getId());
         examId = exam.getId();
 
-        return SUCCESS;
-    }
+        /**
+         * Hier muss noch das Speichern der gegebenen Antworten rein. Das geht jedoch erst,
+         * wenn wir die Tabelle dazu besprochen und erstellt haben.
+         */
 
-    public String cancel() {
-
-        exam = examService.findOne(examId);
-        return "cancel";
-    }
-
-
-    public String getForm() {
-        exam = examService.findOne(examId);
-        return SUCCESS; }
-
-    public String saveQuestion() {
-
-        exam = question.getExam();
-
-        for (int i = 0; i < answerCount; i++) {
-            answerList.add(new Answer());
+        //TODO: anpassen an das Antwortenattribut der Studenten-Klasse (die es noch nicht gibt)
+        for (int i=0; i < answerCount; i++) {
+            givenAnswers.add("");
         }
 
-        exam = examService.findOne(examId);
 
-        questionService.create(question, examId);
-
-        for (Answer answer : answerList) {
-            answer.setQuestion(question);
-            answerService.create(answer);
-        }
         return SUCCESS;
     }
 
-    public String deleteAnswer(){
-        answerList = answerService.findAll(questionId);
-        answerService.delete(answerList.get(positionOfAnswer).getAnswerID());
-        return SUCCESS;
-    }
-
-    public String deleteQuestion(){
-        answerList = answerService.findAll(questionId);
-        for (Answer answer : answerList) {
-            answerService.delete(answer.getAnswerID());
-        }
-        questionService.delete(questionId);
-        return SUCCESS;
-    }
 
     public Question getQuestion() {
         return question;

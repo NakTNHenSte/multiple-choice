@@ -21,7 +21,7 @@
 
     <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
         <s:textfield name="answerList[%{#stat.index}].answerText" label="Antwort %{#stat.index + 1}"/>
-        <s:checkbox name="answerList[%{#stat.index}].trueOrFalse" fieldValue="true" label="wahr"/>
+        <s:radio label="Wahr/Falsch" name="answerList[%{#stat.index}].trueOrFalse" list="#{'true':'Wahr','false':'Falsch'}"/>
         <s:form action="deleteAnswer">
             <s:hidden name="positionOfAnswer" value="%{#stat.index}"/>
             <s:hidden name="questionId" value="%{questionId}"/>

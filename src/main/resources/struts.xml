@@ -21,7 +21,6 @@
         <!--</action>-->
     <!--</package>-->
 
-
     <package name='default' extends="tiles-default">
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
@@ -57,7 +56,7 @@
             <!--<exception-mapping exception="java.lang.Exception" result="genericError" />-->
         <!--</global-exception-mappings>-->
 
-        <action name="" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+        <action name="" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
             method="login">
             <result type="redirectAction">examList</result>
             <result name="input">Login</result>
@@ -101,6 +100,15 @@
                 <param name="examId">${examId}</param>
             </result>
         </action>
+
+        <action name="removeParticipation" class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction"
+                method="removeParticipation">
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param>
+            </result>
+        </action>
+
         <!-- question -->
         <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
             <!--<interceptor-ref name="loginStack"/>-->
@@ -142,7 +150,7 @@
                 method="deleteQuestion">
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
-                <param name="examId">${exam.id}</param></result>
+                <param name="examId">${examId}</param></result>
         </action>
 
         <action name='questionFillTheBlankText'
@@ -159,32 +167,28 @@
             <result name="input">questionFillTheBlankText</result>
         </action>
 
+        <action name='participateQuestion'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionParticipationAction"
+                method="participate">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <!--<result name="input">questionEdit</result>-->
+            <result>questionParticipate</result>
+        </action>
+
         <!-- user -->
         <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
             <interceptor-ref name="loginStack" />
             <result>userList</result>
         </action>
 
-        <action name='loginUser'
-                class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
-                method="loginUser">
-            <result type="redirectAction">examList</result>
-            <result name="input">userLogin</result>
-        </action>
 
-        <action name='userLogin'
-                class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
-                method="getForm">
-            <result>userLogin</result>
-        </action>
-
-        <action name="login" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+        <action name="login" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
                 method="login">
             <result type="redirectAction">examList</result>
             <result name="input">Login</result>
         </action>
 
-        <action name="logout" class="de.nordakademie.multiplechoice.user.ui.LoginAction"
+        <action name="logout" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
                 method="logout">
             <result name="success">Login</result>
         </action>
