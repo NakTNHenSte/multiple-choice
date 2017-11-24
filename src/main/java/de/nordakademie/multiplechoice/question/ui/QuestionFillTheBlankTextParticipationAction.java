@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by chris on 18.11.17.
  */
-public class QuestionParticipationAction extends ActionSupport {
+public class QuestionFillTheBlankTextParticipationAction extends ActionSupport {
 
     private final QuestionService questionService;
     private final AnswerService answerService;
@@ -29,10 +29,15 @@ public class QuestionParticipationAction extends ActionSupport {
     private Exam exam;
     private ExamService examService;
 
+    private final String startRegex = "§§";
+    private final String endRegex = "%%";
+
     private List<String> givenAnswers = new ArrayList<String>();
 
+    private String formattedQuestion;
+
     @Autowired
-    public QuestionParticipationAction(final QuestionService questionService, final AnswerService answerService, final ExamService examService) {
+    public QuestionFillTheBlankTextParticipationAction(final QuestionService questionService, final AnswerService answerService, final ExamService examService) {
         this.questionService = questionService;
         this.answerService = answerService;
         this.examService = examService;
@@ -43,13 +48,15 @@ public class QuestionParticipationAction extends ActionSupport {
 //        answerList = answerService.findAll(questionId);
 
         //TODO: oberes einkommentieren und die unteren zwei Zeilen loeschen
-        question = questionService.findOne(1001);
-        answerList = answerService.findAll(1001);
+        question = questionService.findOne(1003);
+        answerList = answerService.findAll(1003);
 
         answerCount = answerList.size();
 
         exam = examService.findOne(question.getExam().getId());
         examId = exam.getId();
+
+        formattedQuestion = formatQuestion(question.getQuestionText());
 
         /**
          * Hier muss noch das Speichern der gegebenen Antworten rein. Das geht jedoch erst,
@@ -65,14 +72,30 @@ public class QuestionParticipationAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String formatQuestion(String blankText) {
+        int count = 1;
+        while (blankText.contains(startRegex)) {
+            int startGap = blankText.indexOf(startRegex);
+            int endGap = blankText.indexOf(endRegex) + endRegex.length();
+            String blank = blankText.substring(startGap, endGap);
+            blankText = blankText.replaceFirst(blank, "| LÜCKE " + count + " |");
+            count++;
+        }
+        return blankText;
+    }
+
+
     public Question getQuestion() {
         return question;
     }
 
 
+
+
     public void setQuestion(final Question question) {
         this.question = question;
     }
+
 
     public Answer getAnswer() {
         return answer;
@@ -106,10 +129,10 @@ public class QuestionParticipationAction extends ActionSupport {
         return exam;
     }
 
-
     public void setExam(Exam exam) {
         this.exam = exam;
     }
+
 
     public long getExamId() {
         return examId;
@@ -141,5 +164,13 @@ public class QuestionParticipationAction extends ActionSupport {
 
     public void setGivenAnswers(List<String> givenAnswers) {
         this.givenAnswers = givenAnswers;
+    }
+
+    public String getFormattedQuestion() {
+        return formattedQuestion;
+    }
+
+    public void setFormattedQuestion(String formattedQuestion) {
+        this.formattedQuestion = formattedQuestion;
     }
 }

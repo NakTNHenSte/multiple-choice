@@ -14,7 +14,7 @@ INSERT INTO EXAM VALUES (1238, 2, 90, '2017-10-31', 30, 'Malen mit Zahlen', '201
 
 INSERT INTO QUESTION VALUES (1001, 'Hier steht eine Frage', 1, -0.5, 0,  1234);
 INSERT INTO QUESTION VALUES (1002, 'Die ist $$ein Test für den $$Lückentext%%, um zu sehen ob er %%funktioniert.', 4, -1, 0,  1234);
-INSERT INTO QUESTION VALUES (1003, 'Wirtschaftsinformatik ist die Kombination aus $$Betriebswirtschaftslehre%% und Informatik.', 6, 0, 0,  1234);
+INSERT INTO QUESTION VALUES (1003, 'Wirtschaftsinformatik ist die Kombination aus §§Betriebswirtschaftslehre%% und §§Informatik%%.', 6, 0, 0,  1234);
 INSERT INTO QUESTION VALUES (1004, 'Wie heißt die Hauptstadt von China?', 1, 0, 0,  1234);
 INSERT INTO QUESTION VALUES (1005, 'Was kann ein Wirtschaftsinformatiker alles nach seiner Ausbildung?', 1, -1, -0.5,  1234);
 
@@ -22,7 +22,8 @@ INSERT INTO ANSWER VALUES (100, 'Softwaretechnik existiert seit 1969.', 1, 'fals
 INSERT INTO ANSWER VALUES (200, 'Das ist die richtige Antwort.', 2, 'true', 1001);
 INSERT INTO ANSWER VALUES (300, 'Das ist die falsche Antwort.', 3, 'true', 1001);
 INSERT INTO ANSWER VALUES (400, 'ein Test für den $$Lückentext', 1, 'true', 1002);
-INSERT INTO ANSWER VALUES (500, '$$Betriebswirtschaftslehre', 1, 'true', 1003);
+INSERT INTO ANSWER VALUES (500, 'Betriebswirtschaftslehre', 1, 'true', 1003);
+INSERT INTO ANSWER VALUES (510, 'Informatik', 2, 'true', 1003);
 INSERT INTO ANSWER VALUES (600, 'Paris', 1, 'false', 1004);
 INSERT INTO ANSWER VALUES (700, 'New York', 2, 'false', 1004);
 INSERT INTO ANSWER VALUES (800, 'Peking', 3, 'true', 1004);

@@ -41,6 +41,9 @@
   <definition name="questionParticipate" extends="pageFrame">
      <put-attribute name="content" value="/templates/question/questionParticipate.jsp"/>
   </definition>
+    <definition name="questionFillTheBlankTextParticipate" extends="pageFrame">
+    <put-attribute name="content" value="/templates/question/questionFillTheBlankTextParticipate.jsp"/>
+    </definition>
 
 
 

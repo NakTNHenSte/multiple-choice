@@ -23,7 +23,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     private List<Answer> answerList = new ArrayList<Answer>();
 
-    private final String startRegex = "$$";
+    private final String startRegex = "§§";
     private final String endRegex = "%%";
     private Exam exam;
 

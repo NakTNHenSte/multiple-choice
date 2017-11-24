@@ -199,6 +199,15 @@
             <result>questionParticipate</result>
         </action>
 
+        <action name='participateFillTheBlankTextQuestion'
+        class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextParticipationAction"
+        method="participate">
+        <!--<interceptor-ref name="loginStack"/>-->
+        <!--<result name="input">questionEdit</result>-->
+        <result>questionFillTheBlankTextParticipate</result>
+        </action>
+
+
         <!-- user -->
         <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
             <interceptor-ref name="loginStack" />

@@ -9,13 +9,14 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 
-<s:form action="participateQuestion">
+<%--<s:form action="questionEdit">--%>
+<s:form action="participateFillTheBlankTextQuestion">
     <%--<s:hidden name="examId" value="%{exam.id}"/>--%>
     <%--<s:hidden name="questionId" value="%{questionId}"/>--%>
     <s:hidden name="examId" value="1234"/>
     <s:hidden name="questionId" value="1001"/>
 
-    <s:label name="question.questionText" class="h3"/>
+    <s:label name="formattedQuestion" class="h3"/>
 
     <table class="table">
         <tr>
@@ -30,14 +31,11 @@
         </tr>
     </table>
 
-    <s:label value="Mögliche Antworten" class="h5"/>
+    <s:label value="Bitte die Lücken hier füllen" class="h5"/>
 
     <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
         <div align="left">
-            <s:textarea name="answerList[%{#stat.index}].answerText" readonly="true"/>
-            <%--<s:label name="answerList[%{#stat.index}].answerText" class="h5"/>--%>
-            <s:radio name="givenAnswers[%{#stat.index}]"
-                     list="#{'true':'Wahr','false':'Falsch'}"/>
+            <s:textfield name="givenAnswers[%{#stat.index}]" label="Lücke %{#stat.index + 1}"/>
         </div>
     </s:iterator>
 
