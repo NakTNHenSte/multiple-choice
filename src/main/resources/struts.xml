@@ -80,6 +80,12 @@
             <result type="redirectAction">examList</result>
         </action>
 
+        <!-- participation -->
+
+        <action name='participationAddition' class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction" method="getForm">
+            <result>participationAddition</result>
+        </action>
+
         <!-- question -->
         <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
             <!--<interceptor-ref name="loginStack"/>-->

@@ -1,5 +1,6 @@
 package de.nordakademie.multiplechoice.exam.model;
 
+import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.user.model.User;
 
 import javax.persistence.*;
@@ -23,7 +24,6 @@ public class Exam {
     private byte credits;
     private String seminar;
     private User user;
-    private List<User> participants;
 
     public Exam() {
     }
@@ -122,15 +122,5 @@ public class Exam {
     public void setDuration(short duration) {
         this.duration = duration;
     }
-
-    @ManyToMany
-    public List<User> getParticipants() {
-        return participants;
-    }
-
-    public void setParticipants(List<User> participants) {
-        this.participants = participants;
-    }
-
 
 }

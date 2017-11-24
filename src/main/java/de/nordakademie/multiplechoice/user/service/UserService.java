@@ -36,4 +36,8 @@ public class UserService {
         return userRepository.find(userId);
     }
 
+    @Transactional(readOnly = true)
+    public List<User> findStudents() {
+        return userRepository.findStudents();
+    }
 }

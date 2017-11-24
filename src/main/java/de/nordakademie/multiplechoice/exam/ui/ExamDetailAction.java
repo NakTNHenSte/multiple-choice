@@ -3,9 +3,10 @@ package de.nordakademie.multiplechoice.exam.ui;
 import com.opensymphony.xwork2.Action;
 import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
+import de.nordakademie.multiplechoice.participation.model.Participation;
+import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
-import de.nordakademie.multiplechoice.user.model.User;
 import de.nordakademie.multiplechoice.user.service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class ExamDetailAction implements Action, SessionAware {
     private final ExamService examService;
     private UserService userService;
     private QuestionService questionService;
+    private ParticipationService participationService;
 
 
     Map<String, Object> session;
@@ -32,14 +34,15 @@ public class ExamDetailAction implements Action, SessionAware {
     private long userId;
     private boolean editableExam;
 
-    private List<User> participants;
+    private List<Participation> participations;
     private List<Question> questions;
 
     @Autowired
-    public ExamDetailAction(final ExamService examService, UserService userService, QuestionService questionService) {
+    public ExamDetailAction(final ExamService examService, UserService userService, QuestionService questionService, ParticipationService participationService) {
         this.examService = examService;
         this.userService = userService;
         this.questionService = questionService;
+        this.participationService = participationService;
     }
 
     @Override
@@ -71,12 +74,17 @@ public class ExamDetailAction implements Action, SessionAware {
 
     public String viewExam() {
 
+        participations = participationService.findAll(this.getExamId());
+
+
         exam = examService.findOne(this.getExamId());
         questions = questionService.findByExam(exam.getId());
+
         return SUCCESS;
     }
 
     public String saveExam() {
+
 
         exam.setUser(userService.find(userId));
         if (this.getExamId() == 0) {
@@ -119,11 +127,11 @@ public class ExamDetailAction implements Action, SessionAware {
         this.questions = questions;
     }
 
-    public List<User> getParticipants() {
-        return participants;
+    public List<Participation> getParticipations() {
+        return participations;
     }
 
-    public void setParticipants(List<User> participants) {
-        this.participants = participants;
+    public void setParticipations(List<Participation> participations) {
+        this.participations = participations;
     }
 }

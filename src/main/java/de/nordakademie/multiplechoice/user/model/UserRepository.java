@@ -37,4 +37,14 @@ public class UserRepository {
     public User find(long userId) {
         return entityManager.find(User.class, userId);
     }
+
+    public List<User> findStudents() {
+
+        try {
+            return entityManager.createQuery("SELECT r FROM User r WHERE typ = :typ", User.class).
+                    setParameter("typ", "S").getResultList();
+        } catch (final NoResultException e) {
+            return null;
+        }
+    }
 }

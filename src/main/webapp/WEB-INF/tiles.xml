@@ -20,7 +20,12 @@
         <put-attribute name="content" value="/templates/exam/examCreationForm.jsp"/>
     </definition>
 
-    <!-- question -->
+  <!-- participation -->
+  <definition name="participationAddition" extends="pageFrame">
+    <put-attribute name="content" value="/templates/participation/participationAddition.jsp"/>
+  </definition>
+
+  <!-- question -->
   <definition name="questionList" extends="pageFrame">
     <put-attribute name="content" value="/templates/question/questionList.jsp"/>
   </definition>

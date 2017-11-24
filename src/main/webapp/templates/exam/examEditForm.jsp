@@ -46,4 +46,4 @@ Frage anlegen
     </div>
 </div>
 
-<s:include value="/templates/user/userList.jsp"></s:include>
+<s:include value="/templates/participation/participantsList.jsp"></s:include>

@@ -1,4 +1,8 @@
 INSERT INTO USER VALUES (1234, 'Hans', 'password', 'Petersen', 'S', 'hans.petersen');
+INSERT INTO USER VALUES (1235, 'Diecke', 'password', 'Lübberstadt', 'S', 'diecke.luebber');
+INSERT INTO USER VALUES (1236, 'Chris', 'password', 'West', 'S', 'christ.west');
+INSERT INTO USER VALUES (1237, 'Schtiewn', 'password', 'Hens', 'S', 'schtiewn.hens');
+
 INSERT INTO USER VALUES (4321, 'Uwe', 'nimda', 'Mayer', 'D', 'uwe.mayer');
 INSERT INTO USER VALUES (1000, 'Karl', '', 'Karlson', 'D', '');
 
@@ -28,3 +32,9 @@ INSERT INTO ANSWER VALUES (1100, 'Programmieren', 'true', 1005);
 INSERT INTO ANSWER VALUES (1200, 'Software entwickeln', 'true', 1005);
 INSERT INTO ANSWER VALUES (1300, 'Geschäftsprozesse modellieren', 'true', 1005);
 INSERT INTO ANSWER VALUES (1400, 'echt leckeren Kuchen backen', 'false', 1005);
+
+INSERT INTO PARTICIPATION VALUES (1, 'abcd', TRUE, 1234, 1234);
+INSERT INTO PARTICIPATION VALUES (2, 'abcd', TRUE, 1234, 1235);
+INSERT INTO PARTICIPATION VALUES (3, 'abcd', TRUE, 1234, 1236);
+INSERT INTO PARTICIPATION VALUES (4, 'abcd', TRUE, 1234, 1237);
+
