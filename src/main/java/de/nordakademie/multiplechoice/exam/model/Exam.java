@@ -5,7 +5,7 @@ import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.user.model.User;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -20,8 +20,8 @@ public class Exam {
     private String title;
     private short duration;
     private short percentualSuccessThreshold;
-    private Timestamp start;
-    private Timestamp end;
+    private Date start;
+    private Date end;
     private byte credits;
     private String seminar;
     private User user;
@@ -30,7 +30,7 @@ public class Exam {
     }
 
     public Exam(final long id, final String title, User user, short duration,short percentualSuccessThreshold,
-                Timestamp start, Timestamp end, byte credits, String seminar) {
+                Date start, Date end, byte credits, String seminar) {
         this.id = id;
         this.title = title;
         this.user = user;
@@ -90,20 +90,20 @@ public class Exam {
     }
 
     @Basic
-    public Timestamp getEnd() {
+    public Date getEnd() {
         return end;
     }
 
-    public void setEnd(Timestamp end) {
+    public void setEnd(Date end) {
         this.end = end;
     }
 
     @Basic
-    public Timestamp getStart() {
+    public Date getStart() {
         return start;
     }
 
-    public void setStart(Timestamp start) {
+    public void setStart(Date start) {
         this.start = start;
     }
 

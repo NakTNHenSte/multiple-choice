@@ -35,4 +35,9 @@ public class ExamRepository {
     public void update(Exam exam) {
         entityManager.merge(exam);
     }
+
+    public List<Exam> findByUser(long userId) {
+        return entityManager.createQuery("SELECT q FROM Exam q WHERE user_id = :userId", Exam.class)
+                .setParameter("userId", userId).getResultList();
+    }
 }
