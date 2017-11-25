@@ -3,6 +3,7 @@ package de.nordakademie.multiplechoice.exam.ui;
 import com.opensymphony.xwork2.Action;
 import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
+import de.nordakademie.multiplechoice.user.ui.UserType;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,8 +25,7 @@ public class ExamListAction implements Action, SessionAware {
 
     @Override
     public String execute() {
-     //   if(sessionMap.get("userTyp") == "S")
-        exams = examService.findAll();
+        exams = examService.findByUser((long) sessionMap.get("userId"));
         return SUCCESS;
     }
 

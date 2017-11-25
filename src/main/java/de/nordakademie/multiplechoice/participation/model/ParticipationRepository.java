@@ -41,4 +41,9 @@ public class ParticipationRepository {
                 "AND user_id = :userId", Participation.class)
                 .setParameter("examId", examId).setParameter("userId", userId).getSingleResult();
     }
+
+    public List<Participation> findByUser(long userId) {
+        return entityManager.createQuery("SELECT p FROM Participation p WHERE user_id = :userId", Participation.class)
+                .setParameter("userId", userId).getResultList();
+    }
 }

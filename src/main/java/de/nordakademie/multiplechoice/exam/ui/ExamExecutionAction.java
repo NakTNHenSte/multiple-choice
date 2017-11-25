@@ -12,6 +12,7 @@ import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,6 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
 
 
     private final ExamService examService;
-
     private Exam exam;
     private long examId;
     private long userId;
@@ -110,6 +110,8 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
 
         Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
 
+        Date currentdate = new Date(System.currentTimeMillis());
+
         if(participation == null){
             addActionError("Sie sind nicht als Teilnehmer dieser Prüfung eingetragen.");
             return false;};
@@ -119,7 +121,7 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         if(!participation.isValid()){
             addActionError("Ihr Zugang wurde bereits benutzt und ist abgelaufen.");
             return false;};
-        if(!exam.getEnd().after(currentTimestamp) || !exam.getStart().after(currentTimestamp)){
+        if(!exam.getEnd().after(currentTimestamp) || exam.getStart().after(currentTimestamp)){
             addActionError("Die Anmeldung muss während des Prüfungszeitraums erfolgen.");
             return false;}
 

@@ -76,4 +76,5 @@ public class ParticipationService {
     public Participation findByUserIdAndExamId(long userId, long examId) {
         return participationRepository.findByUserIdAndExamId(userId, examId);
     }
+
 }
