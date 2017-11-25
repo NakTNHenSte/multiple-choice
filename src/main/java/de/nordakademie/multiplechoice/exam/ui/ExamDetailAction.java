@@ -1,6 +1,7 @@
 package de.nordakademie.multiplechoice.exam.ui;
 
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.multiplechoice.answer.model.Answer;
 import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
@@ -16,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.Map;
 
-public class ExamDetailAction implements Action, SessionAware {
+public class ExamDetailAction extends ActionSupport implements Action, SessionAware {
 
 
     private final ExamService examService;
@@ -108,6 +109,9 @@ public class ExamDetailAction implements Action, SessionAware {
         examId = exam.getId();
 
         return SUCCESS;
+    }
+
+    public void validate(){
     }
 
     public boolean isEditableExam() {

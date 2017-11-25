@@ -71,6 +71,7 @@
         </action>
         <action name='saveExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction"
                 method="saveExam">
+            <result name="input">/emplates/exam/examCreationForm.jsp</result>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
@@ -97,6 +98,14 @@
         </action>
 
         <action name='examExecution' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction">
+            <result>examExecution</result>
+        </action>
+
+        <action name='nextQuestion' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction" method="nextQuestion">
+            <result>examExecution</result>
+        </action>
+
+        <action name='previousQuestion' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction" method="previousQuestion">
             <result>examExecution</result>
         </action>
 

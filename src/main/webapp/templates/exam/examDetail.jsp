@@ -58,7 +58,7 @@
                 </div>
                 <div class="modal-footer">
                     <s:form action="startExam">
-                        <s:hidden name="examId" value="%{examId}"/>
+                        <s:hidden name="examId" value="%{exam.id}"/>
                         <s:hidden name="userId" value="%{#session.userId}"/>
 
                         <s:textfield name="oneTimePassword" label="Einmalpasswort"/>

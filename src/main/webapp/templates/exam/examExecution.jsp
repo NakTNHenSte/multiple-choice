@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Daniel
@@ -6,4 +7,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-Hallo, hier wird die Prüfung später durchgeführt.
+
+
+<s:include value="/templates/question/questionParticipate.jsp"></s:include>
+
+
+<s:form action="previousQuestion">
+    <s:hidden name="examId" value="%{exam.id}"/>
+    <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
+    <s:submit value="zurück" type="button" class="btn btn-secondary"/>
+</s:form>
+
+<s:form action="nextQuestion">
+    <s:hidden name="examId" value="%{exam.id}"/>
+    <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
+    <s:submit value="weiter" type="button" class="btn btn-primary"/>
+</s:form>
+
