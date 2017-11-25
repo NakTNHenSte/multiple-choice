@@ -35,7 +35,7 @@
     <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
         <div align="left">
             <s:textarea name="answerList[%{#stat.index}].answerText" readonly="true"/>
-            <%--<s:label name="answerList[%{#stat.index}].answerText" class="h5"/>--%>
+                <%--<s:label name="answerList[%{#stat.index}].answerText" class="h5"/>--%>
             <s:radio name="givenAnswers[%{#stat.index}]"
                      list="#{'true':'Wahr','false':'Falsch'}"/>
         </div>
