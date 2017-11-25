@@ -225,11 +225,11 @@
         </action>
 
         <action name='participateQuestion'
-                class="de.nordakademie.multiplechoice.question.ui.QuestionParticipationAction"
+                class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction"
                 method="participate">
             <!--<interceptor-ref name="loginStack"/>-->
             <!--<result name="input">questionEdit</result>-->
-            <result>questionParticipate</result>
+            <result>examExecution</result>
         </action>
 
         <action name='participateFillTheBlankTextQuestion'

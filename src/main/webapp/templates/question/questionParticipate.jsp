@@ -12,8 +12,6 @@
 <s:form action="participateQuestion">
     <%--<s:hidden name="examId" value="%{exam.id}"/>--%>
     <%--<s:hidden name="questionId" value="%{questionId}"/>--%>
-    <s:hidden name="examId" value="1234"/>
-    <s:hidden name="questionId" value="1001"/>
 
     <s:label name="question.questionText" class="h3"/>
 
@@ -41,6 +39,7 @@
         </div>
     </s:iterator>
 
-
+    <s:hidden name="examId" value="%{exam.id}"/>
+    <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
     <s:submit value="Antwort(en) senden" type="button" class="btn btn-primary"/>
 </s:form>

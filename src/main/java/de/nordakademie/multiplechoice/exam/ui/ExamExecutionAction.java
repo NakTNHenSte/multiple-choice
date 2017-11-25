@@ -105,6 +105,25 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         return ERROR;
     }
 
+    public String participate() {
+        loadQuestions();
+        loadCurrentQuestion();
+
+        for(Answer answer : givenAnswers){
+            answerService.update(answer);
+        }
+
+        /**
+         * Hier muss noch das Speichern der gegebenen Antworten rein. Das geht jedoch erst,
+         * wenn wir die Tabelle dazu besprochen und erstellt haben.
+         */
+
+        //TODO: anpassen an das Antwortenattribut der Studenten-Klasse (die es noch nicht gibt)
+        for (int i=0; i < answerCount; i++) {
+            givenAnswers.add("");
+        }
+        return SUCCESS;};
+
     public Exam getExam() {
         return exam;
     }
