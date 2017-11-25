@@ -25,8 +25,8 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     private List<Answer> answerList = new ArrayList<Answer>();
 
-    private final String startRegex = "§§";
-    private final String endRegex = "%%";
+    private final String startRegex = "_%";
+    private final String endRegex = "%_";
     private Exam exam;
     private long examId;
     private long questionId;

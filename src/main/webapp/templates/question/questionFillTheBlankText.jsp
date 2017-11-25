@@ -9,8 +9,8 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <s:form action="saveQuestionBlankText">
-    <s:label value="Den Text eingeben und die Worte, welche später Lücken sein sollen mit §§ und %% umschließen.
-    Beispiel: Wirtschaftsinformatik ist die Kombination aus §§Betriebswirtschaftslehre%% und Informatik."/>
+    <s:label value="Den Text eingeben und die Worte, welche später Lücken sein sollen mit _% und %_ umschließen.
+    Beispiel: Wirtschaftsinformatik ist die Kombination aus _%Betriebswirtschaftslehre%_ und Informatik."/>
     <s:textfield name="question.questionText" label="Lückentext"/>
     <s:textfield name="question.scorePerCorrectChoice" label="Punkte richtige Antwort"/>
     <s:textfield name="question.scorePerWrongChoice" label="Punkte falsche Antwort*"/>
