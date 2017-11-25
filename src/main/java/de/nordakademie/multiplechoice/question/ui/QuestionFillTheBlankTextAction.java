@@ -53,19 +53,34 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
         question.setId(this.getQuestionId());
         if (this.getQuestionId() == 0) {
             questionService.create(question, getExamId());
-            List<String> blanksList = extractAnswers(question.getQuestionText());
-
-            answerList = createAnswerList(blanksList);
-
-            for (Answer answer : answerList) {
-                answer.setQuestion(question);
-                answerService.create(answer);
-            }
+            parseAnswers();
         } else {
             questionService.update(question);
+
+            answerList = answerService.findAll(question.getId());
+
+            for (Answer answer : answerList) {
+                answerService.delete(answer.getAnswerID());
+            }
+            parseAnswers();
         }
 
         return SUCCESS;
+    }
+
+    private void parseAnswers() {
+        List<String> blanksList = extractAnswers(question.getQuestionText());
+
+        answerList = createAnswerList(blanksList);
+        int positionOfAnswer = 1;
+
+
+        for (Answer answer : answerList) {
+            answer.setQuestion(question);
+            answer.setPositionOfAnswer(positionOfAnswer);
+            answerService.create(answer);
+            positionOfAnswer++;
+        }
     }
 
     private List<Answer> createAnswerList(List<String> blanksList) {

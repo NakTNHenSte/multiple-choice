@@ -120,7 +120,7 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
 
         //TODO: anpassen an das Antwortenattribut der Studenten-Klasse (die es noch nicht gibt)
         for (int i=0; i < answerCount; i++) {
-            givenAnswers.add("");
+      //      givenAnswers.add("");
         }
         return SUCCESS;};
 
