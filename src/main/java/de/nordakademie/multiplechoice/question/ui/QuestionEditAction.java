@@ -79,7 +79,6 @@ public class QuestionEditAction extends ActionSupport {
 
     public String saveAnswerEdit() {
 
-
         List<Answer> answersFromDatabase = answerService.findAll(questionId);
 
         if (answerList.size() == answersFromDatabase.size()) {
@@ -88,7 +87,6 @@ public class QuestionEditAction extends ActionSupport {
             answerList.get(i).setAnswerID(answersFromDatabase.get(i).getAnswerID());
             answerList.get(i).setPositionOfAnswer(answersFromDatabase.get(i).getPositionOfAnswer());
             answerService.update(answerList.get(i));
-
             }
         }
 

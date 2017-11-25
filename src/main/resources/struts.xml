@@ -152,8 +152,9 @@
                 method="saveAnswerEdit">
             <!--<interceptor-ref name="loginStack"/>-->
             <!--<result name="input">questionEdit</result>-->
-            <result>
-                Welcome
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param>
             </result>
         </action>
 
