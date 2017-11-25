@@ -11,12 +11,10 @@
 
 <%--<s:form action="questionEdit">--%>
 <s:form action="participateFillTheBlankTextQuestion">
-    <%--<s:hidden name="examId" value="%{exam.id}"/>--%>
-    <%--<s:hidden name="questionId" value="%{questionId}"/>--%>
-    <s:hidden name="examId" value="1234"/>
-    <s:hidden name="questionId" value="1001"/>
+    <s:hidden name="examId" value="%{exam.id}"/>
+    <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
 
-    <s:label name="formattedQuestion" class="h3"/>
+    <s:label name="question.questionText" class="h3"/>
 
     <table class="table">
         <tr>

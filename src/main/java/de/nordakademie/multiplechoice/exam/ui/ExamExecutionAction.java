@@ -33,7 +33,7 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
     private List<Answer> answerList;
     private AnswerService answerService;
     private int answerCount;
-    private List<Answer> givenAnswers = new ArrayList<>();
+    private List<String> givenAnswers = new ArrayList<>();
 
 
     @Autowired
@@ -65,7 +65,7 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         answerCount = answerList.size();
 
         for (int i=0; i < answerCount; i++) {
-            givenAnswers.add(new Answer());
+            givenAnswers.add("");
         }
     }
 
@@ -130,9 +130,6 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         loadQuestions();
         loadCurrentQuestion();
 
-        for(Answer answer : givenAnswers){
-            answerService.update(answer);
-        }
 
         /**
          * Hier muss noch das Speichern der gegebenen Antworten rein. Das geht jedoch erst,
@@ -218,11 +215,11 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         this.answerCount = answerCount;
     }
 
-    public void setGivenAnswers(List<Answer> givenAnswers) {
+    public void setGivenAnswers(List<String> givenAnswers) {
         this.givenAnswers = givenAnswers;
     }
 
-    public List<Answer> getGivenAnswers() {
+    public List<String> getGivenAnswers() {
         return givenAnswers;
     }
 

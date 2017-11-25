@@ -9,8 +9,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
+<s:if test='%{question.questionTyp == ("multiple")}'>
 <s:include value="/templates/question/questionParticipate.jsp"></s:include>
+</s:if>
 
+<s:if test='%{question.questionTyp == ("gap")}'>
+<s:include value="/templates/question/questionFillTheBlankTextParticipate.jsp"></s:include>
+</s:if>
 
 <s:form action="previousQuestion">
     <s:hidden name="examId" value="%{exam.id}"/>

@@ -10,8 +10,6 @@
 
 
 <s:form action="participateQuestion">
-    <%--<s:hidden name="examId" value="%{exam.id}"/>--%>
-    <%--<s:hidden name="questionId" value="%{questionId}"/>--%>
 
     <s:label name="question.questionText" class="h3"/>
 

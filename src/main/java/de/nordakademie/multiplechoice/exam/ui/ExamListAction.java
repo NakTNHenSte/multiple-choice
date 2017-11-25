@@ -24,7 +24,7 @@ public class ExamListAction implements Action, SessionAware {
 
     @Override
     public String execute() {
-        if(sessionMap.get("userTyp") == "S")
+     //   if(sessionMap.get("userTyp") == "S")
         exams = examService.findAll();
         return SUCCESS;
     }
