@@ -1,86 +1,85 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
-  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-  <definition name="pageFrame" template="/templates/layout/pageFrame.jsp">
-    <put-attribute name="header" value="/templates/layout/header.jsp"/>
-  </definition>
+    <definition name="pageFrame" template="/templates/layout/pageFrame.jsp">
+        <put-attribute name="header" value="/templates/layout/header.jsp"/>
+    </definition>
 
-  <!-- exam -->
-  <definition name="examList" extends="pageFrame">
-    <put-attribute name="content" value="/templates/exam/examList.jsp"/>
-  </definition>
-  <definition name="examDetail" extends="pageFrame">
-     <put-attribute name="content" value="/templates/exam/examDetail.jsp"/>
-  </definition>
+    <!-- exam -->
+    <definition name="examList" extends="pageFrame">
+        <put-attribute name="content" value="/templates/exam/examList.jsp"/>
+    </definition>
+    <definition name="examDetail" extends="pageFrame">
+        <put-attribute name="content" value="/templates/exam/examDetail.jsp"/>
+    </definition>
     <definition name="examEditForm" extends="pageFrame">
         <put-attribute name="content" value="/templates/exam/examEditForm.jsp"/>
     </definition>
     <definition name="examCreationForm" extends="pageFrame">
         <put-attribute name="content" value="/templates/exam/examCreationForm.jsp"/>
     </definition>
-  <definition name="examExecution" extends="pageFrame">
-    <put-attribute name="content" value="/templates/exam/examExecution.jsp"/>
-  </definition>
+    <definition name="examExecution" extends="pageFrame">
+        <put-attribute name="content" value="/templates/exam/examExecution.jsp"/>
+    </definition>
 
-  <!-- participation -->
-  <definition name="participationAddition" extends="pageFrame">
-    <put-attribute name="content" value="/templates/participation/participationAddition.jsp"/>
-  </definition>
+    <!-- participation -->
+    <definition name="participationAddition" extends="pageFrame">
+        <put-attribute name="content" value="/templates/participation/participationAddition.jsp"/>
+    </definition>
 
-  <!-- question -->
-  <definition name="questionList" extends="pageFrame">
-    <put-attribute name="content" value="/templates/question/questionList.jsp"/>
-  </definition>
-  <definition name="questionEdit" extends="pageFrame">
-     <put-attribute name="content" value="/templates/question/questionEdit.jsp"/>
-  </definition>
-  <definition name="questionFillTheBlankText" extends="pageFrame">
-     <put-attribute name="content" value="/templates/question/questionFillTheBlankText.jsp"/>
-  </definition>
-  <definition name="questionParticipate" extends="pageFrame">
-     <put-attribute name="content" value="/templates/question/questionParticipate.jsp"/>
-  </definition>
+    <!-- question -->
+    <definition name="questionList" extends="pageFrame">
+        <put-attribute name="content" value="/templates/question/questionList.jsp"/>
+    </definition>
+    <definition name="questionEdit" extends="pageFrame">
+        <put-attribute name="content" value="/templates/question/questionEdit.jsp"/>
+    </definition>
+    <definition name="questionFillTheBlankText" extends="pageFrame">
+        <put-attribute name="content" value="/templates/question/questionFillTheBlankText.jsp"/>
+    </definition>
+    <definition name="questionParticipate" extends="pageFrame">
+        <put-attribute name="content" value="/templates/question/questionParticipate.jsp"/>
+    </definition>
     <definition name="questionFillTheBlankTextParticipate" extends="pageFrame">
-    <put-attribute name="content" value="/templates/question/questionFillTheBlankTextParticipate.jsp"/>
+        <put-attribute name="content" value="/templates/question/questionFillTheBlankTextParticipate.jsp"/>
     </definition>
 
 
+    <!-- user -->
+    <definition name="userList" extends="pageFrame">
+        <put-attribute name="content" value="/templates/user/userList.jsp"/>
+    </definition>
+    <definition name="userLogin" extends="pageFrame">
+        <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
+    </definition>
+    <definition name="Welcome" extends="pageFrame">
+        <put-attribute name="content" value="/templates/user/Welcome.jsp"/>
+    </definition>
+    <definition name="Login" extends="pageFrame">
+        <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
+    </definition>
 
-  <!-- user -->
-  <definition name="userList" extends="pageFrame">
-    <put-attribute name="content" value="/templates/user/userList.jsp"/>
-  </definition>
-  <definition name="userLogin" extends="pageFrame">
-    <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
-  </definition>
-  <definition name="Welcome" extends="pageFrame">
-    <put-attribute name="content" value="/templates/user/Welcome.jsp"/>
-  </definition>
-  <definition name="Login" extends="pageFrame">
-    <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
-  </definition>
+    <!-- answer -->
+    <definition name="lecturerAnswerList" extends="pageFrame">
+        <put-attribute name="content" value="/templates/answer/lecturerAnswerList.jsp"/>
+    </definition>
+    <definition name="studentAnswerList" extends="pageFrame">
+        <put-attribute name="content" value="/templates/answer/studentAnswerList.jsp"/>
+    </definition>
+    <definition name="embeddedAnswerEdit" extends="pageFrame">
+        <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
+    </definition>
 
-  <!-- answer -->
-  <definition name="lecturerAnswerList" extends="pageFrame">
-    <put-attribute name="content" value="/templates/answer/lecturerAnswerList.jsp"/>
-  </definition>
-  <definition name="studentAnswerList" extends="pageFrame">
-    <put-attribute name="content" value="/templates/answer/studentAnswerList.jsp"/>
-  </definition>
-  <definition name="embeddedAnswerEdit" extends="pageFrame">
-     <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
-  </definition>
-
-  <!-- errors -->
-  <definition name="notFoundError" extends="pageFrame">
-    <put-attribute name="content" value="/templates/error/pageNotFoundError.jsp" />
-  </definition>
-  <definition name="genericError" extends="pageFrame">
-    <put-attribute name="content" value="/templates/error/genericError.jsp" />
-  </definition>
-  <definition name="forbiddenError" extends="pageFrame">
-    <put-attribute name="content" value="/templates/error/forbiddenError.jsp" />
-  </definition>
+    <!-- errors -->
+    <definition name="notFoundError" extends="pageFrame">
+        <put-attribute name="content" value="/templates/error/pageNotFoundError.jsp"/>
+    </definition>
+    <definition name="genericError" extends="pageFrame">
+        <put-attribute name="content" value="/templates/error/genericError.jsp"/>
+    </definition>
+    <definition name="forbiddenError" extends="pageFrame">
+        <put-attribute name="content" value="/templates/error/forbiddenError.jsp"/>
+    </definition>
 
 </tiles-definitions>

@@ -89,11 +89,8 @@
         </action>
 
         <action name='startExam' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction" method="runExam">
+            <result name="input">examDetail</result>
             <result name="success">examExecution</result>
-            <result name="error" type="redirectAction">
-                <param name="actionName">examDetail</param>
-                <param name="examId">${examId}</param>
-            </result>
 
         </action>
 
