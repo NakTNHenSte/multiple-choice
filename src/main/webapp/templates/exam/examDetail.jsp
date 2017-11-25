@@ -72,6 +72,12 @@
     </div>
 </s:if>
 
+<s:if test="hasActionErrors()">
+    <div class="alert alert-danger" role="alert">
+        <s:actionerror/>
+    </div>
+</s:if>
+
 <s:if test='%{#session.userTyp == ("D")}'>
     <s:form action="editExam">
         <s:hidden name="examId" value="%{exam.id}"/>

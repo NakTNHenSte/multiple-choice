@@ -12,6 +12,7 @@ import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,15 +95,35 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         currentQuestionIndex = 0;
         loadCurrentQuestion();
 
-
         Participation participation = participationService.findByUserIdAndExamId(userId, examId);
 
-        if (participation != null && participation.getOneTimePassword().equals(oneTimePassword)) {
+        if (isParticipationAllowed(participation)) {
             participation.setValid(true); // TODO: zu false ändern und in condition packen
             participationService.update(participation);
             return SUCCESS;
+        } else {
+            return INPUT;
         }
-        return ERROR;
+    }
+
+    private boolean isParticipationAllowed(Participation participation) {
+
+        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+
+        if(participation == null){
+            addActionError("Sie sind nicht als Teilnehmer dieser Prüfung eingetragen.");
+            return false;};
+        if(!participation.getOneTimePassword().equals(oneTimePassword)){
+            addActionError("Das Passwort stimmt nicht.");
+            return false;};
+        if(!participation.isValid()){
+            addActionError("Ihr Zugang wurde bereits benutzt und ist abgelaufen.");
+            return false;};
+        if(!exam.getEnd().after(currentTimestamp) || !exam.getStart().after(currentTimestamp)){
+            addActionError("Die Anmeldung muss während des Prüfungszeitraums erfolgen.");
+            return false;}
+
+        return true;
     }
 
     public String participate() {

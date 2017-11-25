@@ -7,7 +7,7 @@ INSERT INTO USER VALUES (1238, 'Daniela', 'password', 'Katzenburger', 'S', 'dani
 INSERT INTO USER VALUES (4321, 'Uwe', 'nimda', 'Mayer', 'D', 'uwe.mayer');
 INSERT INTO USER VALUES (1000, 'Karl', '', 'Karlson', 'D', '');
 
-INSERT INTO EXAM VALUES (1234, 1, 30, '2017-10-31', 30, 'Allgemeine Betriebswirtschaftslehre', '2017-10-10','Pruefung zum Seminar',4321);
+INSERT INTO EXAM VALUES (1234, 1, 30, '2017-12-01', 30, 'Allgemeine Betriebswirtschaftslehre', '2017-10-10','Pruefung zum Seminar',4321);
 INSERT INTO EXAM VALUES (1235, 0.5, 30, '2017-09-30', 40, 'Controlling', '2017-10-10','Pruefung zum Seminar',4321);
 INSERT INTO EXAM VALUES (1236, 2, 30, '2017-10-31', 30, 'Wissenschaftliches Arbeiten', '2017-10-10','Pruefung zum Seminar',4321);
 INSERT INTO EXAM VALUES (1237, 4, 60, '2017-10-31', 30, 'Selbstbewusst fuehren', '2017-10-10','BWL',4321);

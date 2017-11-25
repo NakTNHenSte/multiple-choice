@@ -1,10 +1,11 @@
 package de.nordakademie.multiplechoice.exam.model;
 
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.user.model.User;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -19,8 +20,8 @@ public class Exam {
     private String title;
     private short duration;
     private short percentualSuccessThreshold;
-    private Date start;
-    private Date end;
+    private Timestamp start;
+    private Timestamp end;
     private byte credits;
     private String seminar;
     private User user;
@@ -29,7 +30,7 @@ public class Exam {
     }
 
     public Exam(final long id, final String title, User user, short duration,short percentualSuccessThreshold,
-                Date start, Date end, byte credits, String seminar) {
+                Timestamp start, Timestamp end, byte credits, String seminar) {
         this.id = id;
         this.title = title;
         this.user = user;
@@ -56,6 +57,7 @@ public class Exam {
         return title;
     }
 
+    @RequiredStringValidator(message = "Please enter your name.")
     public void setTitle(final String title) {
         this.title = title;
     }
@@ -88,20 +90,20 @@ public class Exam {
     }
 
     @Basic
-    public Date getEnd() {
+    public Timestamp getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(Timestamp end) {
         this.end = end;
     }
 
     @Basic
-    public Date getStart() {
+    public Timestamp getStart() {
         return start;
     }
 
-    public void setStart(Date start) {
+    public void setStart(Timestamp start) {
         this.start = start;
     }
 
