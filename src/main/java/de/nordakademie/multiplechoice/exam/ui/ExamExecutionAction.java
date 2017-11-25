@@ -132,7 +132,6 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         loadQuestions();
         loadCurrentQuestion();
 
-
         /**
          * Hier muss noch das Speichern der gegebenen Antworten rein. Das geht jedoch erst,
          * wenn wir die Tabelle dazu besprochen und erstellt haben.

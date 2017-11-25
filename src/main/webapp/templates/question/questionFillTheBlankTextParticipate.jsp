@@ -14,7 +14,7 @@
     <s:hidden name="examId" value="%{exam.id}"/>
     <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
 
-    <s:label name="question.questionText" class="h3"/>
+    <s:label value="Bitte den Lueckentext ausfuellen" class="h3"/>
 
     <table class="table">
         <tr>
@@ -29,7 +29,9 @@
         </tr>
     </table>
 
-    <s:label value="Bitte die Lücken hier füllen" class="h5"/>
+   <p><s:label name="question.questionText" class="h5"/></p>
+
+    <p><s:label value="Bitte die Lücken hier füllen" class="h5"/></p>
 
     <s:iterator var="answer" value="answerList.answer" status="stat" begin="1" end="answerCount">
         <div align="left">
