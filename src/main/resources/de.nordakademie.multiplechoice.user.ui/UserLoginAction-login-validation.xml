@@ -1,8 +1,8 @@
-<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//DE"
   "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 <validators>
-  <field name="exam.title">
-    <field-validator type="required">
+  <field name="username">
+    <field-validator type="requiredstring">
       <message>Bitte fügen sie einen Titel hinzu.</message>
     </field-validator>
   </field>

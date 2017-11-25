@@ -5,28 +5,37 @@ import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;
+import de.nordakademie.multiplechoice.question.model.Question;
+import de.nordakademie.multiplechoice.question.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class ExamExecutionAction implements Action {
 
 
     private final ExamService examService;
+
     private Exam exam;
     private long examId;
     private long userId;
     private String oneTimePassword;
     private ParticipationService participationService;
+    private List<Question> questions;
+    private QuestionService questionService;
 
 
     @Autowired
-    public ExamExecutionAction(final ExamService examService, ParticipationService participationService) {
+    public ExamExecutionAction(final ExamService examService, ParticipationService participationService, QuestionService questionService) {
         this.examService = examService;
         this.participationService = participationService;
+        this.questionService = questionService;
     }
 
     @Override
     public String execute() {
         exam = examService.findOne(this.getExamId());
+        questions = questionService.findByExam(exam.getId());
         return SUCCESS;
     }
 
@@ -73,5 +82,13 @@ public class ExamExecutionAction implements Action {
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
     }
 }

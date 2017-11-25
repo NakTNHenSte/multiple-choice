@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Daniel
@@ -7,3 +8,4 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 Hallo, hier wird die Prüfung später durchgeführt.
+    <s:iterator value="questions">
