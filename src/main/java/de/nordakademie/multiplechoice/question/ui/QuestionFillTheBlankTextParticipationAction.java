@@ -29,8 +29,8 @@ public class QuestionFillTheBlankTextParticipationAction extends ActionSupport {
     private Exam exam;
     private ExamService examService;
 
-    private final String startRegex = "§§";
-    private final String endRegex = "%%";
+    private final String startRegex = "_%";
+    private final String endRegex = "%_";
 
     private List<String> givenAnswers = new ArrayList<String>();
 
