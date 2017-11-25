@@ -141,8 +141,9 @@
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="editQuestion">
             <!--<interceptor-ref name="loginStack"/>-->
-            <!--<result name="input">questionEdit</result>-->
-            <result>questionEdit</result>
+            <result name="input">questionEdit</result>
+            <result>questionFillTheBlankText
+            </result>
         </action>
 
         <action name='viewQuestionEdit'

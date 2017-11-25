@@ -98,7 +98,6 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
 
     public String saveExam() {
 
-
         exam.setUser(userService.find(userId));
         if (this.getExamId() == 0) {
             examService.create(getExam());
