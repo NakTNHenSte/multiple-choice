@@ -37,12 +37,17 @@ public class QuestionEditAction extends ActionSupport {
     }
 
     public String editQuestion() {
+
         question = questionService.findOne(questionId);
         answerList = answerService.findAll(questionId);
         answerCount = answerList.size();
         exam = examService.findOne(question.getExam().getId());
         examId = exam.getId();
+        questionId = question.getId();
 
+        if(question.getQuestionTyp().equals("multiple")){
+            return INPUT;
+        }
         return SUCCESS;
     }
 
@@ -58,9 +63,14 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String saveBlankText(){
+        return SUCCESS;
+    }
+
     public String saveQuestion() {
 
         exam = question.getExam();
+        question.setQuestionTyp("multiple");
 
         for (int i = 0; i < answerCount; i++) {
             answerList.add(new Answer());
@@ -96,6 +106,7 @@ public class QuestionEditAction extends ActionSupport {
     public String saveQuestionEdit() {
 
         question.setExam(examService.findOne(examId));
+        question.setQuestionTyp("multiple");
         if (this.getQuestionId() == 0) {
             questionService.create(getQuestion(), examId);
         } else {

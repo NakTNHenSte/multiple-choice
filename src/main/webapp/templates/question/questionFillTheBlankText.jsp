@@ -18,7 +18,8 @@
     <s:label value="* Minuszeichen nicht vergessen."/>
     <%--examID und questionID nur temporaer zum Testen--%>
     <%--<s:textfield name="question.exam.id" label="ExamID"/>--%>
-    <s:textfield name="exam.id" label="ExamID"/>
+    <s:hidden name="examId" value="%{examId}"/>
+    <s:hidden name="questionId" value="%{questionId}"/>
 
     <s:submit value="Speichern"/>
 </s:form>

@@ -6,6 +6,7 @@ import de.nordakademie.multiplechoice.answer.service.AnswerService;
 import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
+import de.nordakademie.multiplechoice.exam.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     private final QuestionService questionService;
     private final AnswerService answerService;
+    private final ExamService examService;
     private Question question;
 
     private List<Answer> answerList = new ArrayList<Answer>();
@@ -26,31 +28,43 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
     private final String startRegex = "§§";
     private final String endRegex = "%%";
     private Exam exam;
+    private long examId;
+    private long questionId;
 
 
     @Autowired
-    public QuestionFillTheBlankTextAction(final QuestionService questionService, final AnswerService answerService) {
+    public QuestionFillTheBlankTextAction(final QuestionService questionService, final AnswerService answerService, final ExamService examService) {
         this.questionService = questionService;
         this.answerService = answerService;
+        this.examService = examService;
     }
 
     public String getForm() { return SUCCESS; }
 
     /**
      * Die Methode speichert den Lueckentext und die daraus extrahierten Antworten.
+     *
      * @return
      */
     public String saveQuestionBlankText() {
 
-        questionService.create(question, exam.getId());
-        List<String> blanksList = extractAnswers(question.getQuestionText());
+        question.setExam(examService.findOne(this.getExamId()));
+        question.setQuestionTyp("gap");
+        question.setId(this.getQuestionId());
+        if (this.getQuestionId() == 0) {
+            questionService.create(question, getExamId());
+            List<String> blanksList = extractAnswers(question.getQuestionText());
 
-        answerList = createAnswerList(blanksList);
+            answerList = createAnswerList(blanksList);
 
-        for (Answer answer : answerList) {
-            answer.setQuestion(question);
-            answerService.create(answer);
+            for (Answer answer : answerList) {
+                answer.setQuestion(question);
+                answerService.create(answer);
+            }
+        } else {
+            questionService.update(question);
         }
+
         return SUCCESS;
     }
 
@@ -109,6 +123,22 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     public void setAnswerList(List<Answer> answerList) {
         this.answerList = answerList;
+    }
+
+    public long getExamId() {
+        return examId;
+    }
+
+    public void setExamId(long examId) {
+        this.examId = examId;
+    }
+
+    public long getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(long questionId) {
+        this.questionId = questionId;
     }
 }
 

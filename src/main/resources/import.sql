@@ -2,6 +2,7 @@ INSERT INTO USER VALUES (1234, 'Hans', 'password', 'Petersen', 'S', 'hans.peters
 INSERT INTO USER VALUES (1235, 'Diecke', 'password', 'Lübberstadt', 'S', 'diecke.luebber');
 INSERT INTO USER VALUES (1236, 'Chris', 'password', 'West', 'S', 'christ.west');
 INSERT INTO USER VALUES (1237, 'Schtiewn', 'password', 'Hens', 'S', 'schtiewn.hens');
+INSERT INTO USER VALUES (1238, 'Daniela', 'password', 'Katzenburger', 'S', 'daniela.katzenburger');
 
 INSERT INTO USER VALUES (4321, 'Uwe', 'nimda', 'Mayer', 'D', 'uwe.mayer');
 INSERT INTO USER VALUES (1000, 'Karl', '', 'Karlson', 'D', '');
@@ -12,11 +13,11 @@ INSERT INTO EXAM VALUES (1236, 2, 30, '2017-10-31', 30, 'Wissenschaftliches Arbe
 INSERT INTO EXAM VALUES (1237, 4, 60, '2017-10-31', 30, 'Selbstbewusst fuehren', '2017-10-10','BWL',4321);
 INSERT INTO EXAM VALUES (1238, 2, 90, '2017-10-31', 30, 'Malen mit Zahlen', '2017-10-10','CSS & HTML',4321);
 
-INSERT INTO QUESTION VALUES (1001, 'Hier steht eine Frage', 1, -0.5, 0,  1234);
-INSERT INTO QUESTION VALUES (1002, 'Die ist $$ein Test für den $$Lückentext%%, um zu sehen ob er %%funktioniert.', 4, -1, 0,  1234);
-INSERT INTO QUESTION VALUES (1003, 'Wirtschaftsinformatik ist die Kombination aus §§Betriebswirtschaftslehre%% und §§Informatik%%.', 6, 0, 0,  1234);
-INSERT INTO QUESTION VALUES (1004, 'Wie heißt die Hauptstadt von China?', 1, 0, 0,  1234);
-INSERT INTO QUESTION VALUES (1005, 'Was kann ein Wirtschaftsinformatiker alles nach seiner Ausbildung?', 1, -1, -0.5,  1234);
+INSERT INTO QUESTION VALUES (1001, 'Hier steht eine Frage', 'multiple', 1, -0.5, 0,  1234);
+INSERT INTO QUESTION VALUES (1002, 'Die ist $$ein Test für den $$Lückentext%%, um zu sehen ob er %%funktioniert.', 'gap', 4, -1, 0,  1234);
+INSERT INTO QUESTION VALUES (1003, 'Wirtschaftsinformatik ist die Kombination aus §§Betriebswirtschaftslehre%% und §§Informatik%%.', 'gap', 6, 0, 0,  1234);
+INSERT INTO QUESTION VALUES (1004, 'Wie heißt die Hauptstadt von China?', 'multiple', 1, 0, 0,  1234);
+INSERT INTO QUESTION VALUES (1005, 'Was kann ein Wirtschaftsinformatiker alles nach seiner Ausbildung?', 'multiple,' 1, -1, -0.5,  1234);
 
 INSERT INTO ANSWER VALUES (100, 'Softwaretechnik existiert seit 1969.', 1, 'false', 1001);
 INSERT INTO ANSWER VALUES (200, 'Das ist die richtige Antwort.', 2, 'true', 1001);

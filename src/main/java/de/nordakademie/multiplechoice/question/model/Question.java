@@ -19,6 +19,7 @@ public class Question {
     private double scorePerWrongChoice;
     private double scorePerMissingChoice;
     private String questionText;
+    private String questionTyp;
     private Exam exam;
 
 
@@ -26,12 +27,13 @@ public class Question {
     }
 
     public Question(long id, double scorePerCorrectChoice, double scorePerWrongChoice,
-                    double scorePerMissingChoice, String questionText, Exam exam) {
+                    double scorePerMissingChoice, String questionText, String questionTyp, Exam exam) {
         this.id = id;
         this.scorePerCorrectChoice = scorePerCorrectChoice;
         this.scorePerWrongChoice = scorePerWrongChoice;
         this.scorePerMissingChoice = scorePerMissingChoice;
         this.questionText = questionText;
+        this.questionTyp = questionTyp;
         this.exam = exam;
     }
 
@@ -88,5 +90,13 @@ public class Question {
 
     public void setExam(Exam exam) {
         this.exam = exam;
+    }
+
+    public String getQuestionTyp() {
+        return questionTyp;
+    }
+
+    public void setQuestionTyp(String questionTyp) {
+        this.questionTyp = questionTyp;
     }
 }

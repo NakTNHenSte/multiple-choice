@@ -18,7 +18,6 @@
     <s:label value="* Minuszeichen nicht vergessen."/>
 
     <s:submit value="Frage speichern" type="button" class="btn btn-primary"/>
-
 </s:form>
 
 <s:form action="viewAnswerEdit">

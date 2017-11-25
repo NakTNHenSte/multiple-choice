@@ -138,8 +138,9 @@
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="editQuestion">
             <!--<interceptor-ref name="loginStack"/>-->
-            <!--<result name="input">questionEdit</result>-->
-            <result>questionEdit</result>
+            <result name="input">questionEdit</result>
+            <result>questionFillTheBlankText
+            </result>
         </action>
 
         <action name='viewQuestionEdit'
@@ -186,6 +187,16 @@
             <!-- <result name="input">questionEdit</result>-->
         </action>
 
+        <action name='saveBlankText'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="saveBlankText">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <result type="redirectAction">
+                <param name="actionName">questionFillTheBlankText</param>
+                <param name="examId">${examId}</param>
+            </result>
+        </action>
+
         <action name='deleteQuestion'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="deleteQuestion">
@@ -204,16 +215,19 @@
         <action name='saveQuestionBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
                 method="saveQuestionBlankText">
-            <result type="redirectAction">questionList</result>
-            <result name="input">questionFillTheBlankText</result>
+<!--            <result type="redirectAction">questionList</result>
+            <result name="input">questionFillTheBlankText</result>-->
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param></result>
         </action>
 
         <action name='participateQuestion'
-                class="de.nordakademie.multiplechoice.question.ui.QuestionParticipationAction"
+                class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction"
                 method="participate">
             <!--<interceptor-ref name="loginStack"/>-->
             <!--<result name="input">questionEdit</result>-->
-            <result>questionParticipate</result>
+            <result>examExecution</result>
         </action>
 
         <action name='participateFillTheBlankTextQuestion'
