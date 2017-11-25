@@ -1,5 +1,5 @@
 INSERT INTO USER VALUES (1234, 'Hans', 'password', 'Petersen', 'S', 'hans.petersen');
-INSERT INTO USER VALUES (1235, 'Diecke', 'password', 'Lübberstadt', 'S', 'diecke.luebber');
+INSERT INTO USER VALUES (1235, 'Diecke', 'password', 'Luebberstadt', 'S', 'diecke.luebberstedt');
 INSERT INTO USER VALUES (1236, 'Chris', 'password', 'West', 'S', 'christ.west');
 INSERT INTO USER VALUES (1237, 'Schtiewn', 'password', 'Hens', 'S', 'schtiewn.hens');
 INSERT INTO USER VALUES (1238, 'Daniela', 'password', 'Katzenburger', 'S', 'daniela.katzenburger');
@@ -16,7 +16,7 @@ INSERT INTO EXAM VALUES (1238, 2, 90, '2017-10-31', 30, 'Malen mit Zahlen', '201
 INSERT INTO QUESTION VALUES (1001, 'Hier steht eine Frage', 'multiple', 1, -0.5, 0,  1234);
 INSERT INTO QUESTION VALUES (1002, 'Die ist die _%richtige%_ Antwort.', 'gap', 4, -1, 0,  1234);
 INSERT INTO QUESTION VALUES (1003, 'Wirtschaftsinformatik ist die Kombination aus _%Betriebswirtschaftslehre%_ und _%Informatik%_.', 'gap', 6, 0, 0,  1234);
-INSERT INTO QUESTION VALUES (1004, 'Wie heißt die Hauptstadt von China?', 'multiple', 1, 0, 0,  1234);
+INSERT INTO QUESTION VALUES (1004, 'Wie heisst die Hauptstadt von China?', 'multiple', 1, 0, 0,  1234);
 INSERT INTO QUESTION VALUES (1005, 'Was kann ein Wirtschaftsinformatiker alles nach seiner Ausbildung?', 'multiple,' 1, -1, -0.5,  1234);
 
 INSERT INTO ANSWER VALUES (100, 'Softwaretechnik existiert seit 1969.', 1, 'false', 1001);
@@ -32,7 +32,7 @@ INSERT INTO ANSWER VALUES (900, 'Elmshorn', 4, 'false', 1004);
 INSERT INTO ANSWER VALUES (1000, 'Programmieren', 1, 'true', 1005);
 INSERT INTO ANSWER VALUES (1100, 'Programmieren', 2, 'true', 1005);
 INSERT INTO ANSWER VALUES (1200, 'Software entwickeln', 3, 'true', 1005);
-INSERT INTO ANSWER VALUES (1300, 'Geschäftsprozesse modellieren', 4, 'true', 1005);
+INSERT INTO ANSWER VALUES (1300, 'Geschaeftsprozesse modellieren', 4, 'true', 1005);
 INSERT INTO ANSWER VALUES (1400, 'echt leckeren Kuchen backen', 5, 'false', 1005);
 
 INSERT INTO PARTICIPATION VALUES (1, 'a', TRUE,1234, 1234);
