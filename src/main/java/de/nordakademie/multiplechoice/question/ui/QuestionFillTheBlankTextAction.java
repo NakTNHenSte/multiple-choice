@@ -26,6 +26,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
     private final String startRegex = "§§";
     private final String endRegex = "%%";
     private Exam exam;
+    private long examId;
 
 
     @Autowired
@@ -42,7 +43,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
      */
     public String saveQuestionBlankText() {
 
-        questionService.create(question, exam.getId());
+        questionService.create(question, getExamId());
         List<String> blanksList = extractAnswers(question.getQuestionText());
 
         answerList = createAnswerList(blanksList);
@@ -109,6 +110,14 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
 
     public void setAnswerList(List<Answer> answerList) {
         this.answerList = answerList;
+    }
+
+    public long getExamId() {
+        return examId;
+    }
+
+    public void setExamId(long examId) {
+        this.examId = examId;
     }
 }
 

@@ -180,6 +180,16 @@
             <!-- <result name="input">questionEdit</result>-->
         </action>
 
+        <action name='saveBlankText'
+                class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
+                method="saveBlankText">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <result type="redirectAction">
+                <param name="actionName">questionFillTheBlankText</param>
+                <param name="examId">${examId}</param>
+            </result>
+        </action>
+
         <action name='deleteQuestion'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="deleteQuestion">
@@ -198,8 +208,11 @@
         <action name='saveQuestionBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
                 method="saveQuestionBlankText">
-            <result type="redirectAction">questionList</result>
-            <result name="input">questionFillTheBlankText</result>
+<!--            <result type="redirectAction">questionList</result>
+            <result name="input">questionFillTheBlankText</result>-->
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param></result>
         </action>
 
         <action name='participateQuestion'

@@ -58,6 +58,11 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String saveBlankText(){
+
+        return SUCCESS;
+    }
+
     public String saveQuestion() {
 
         exam = question.getExam();

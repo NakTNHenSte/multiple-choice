@@ -21,10 +21,15 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">
             Frage anlegen
         </button>
+        <s:form action="saveBlankText">
+            <s:hidden name="examId" value="%{examId}"/>
+            <s:submit value="Lückentext anlegen" type="button" class="btn btn-secondary"/>
+        </s:form>
+        <%--<button type="button" class="btn btn-primary" onclick="window.location='/questionFillTheBlankText';">Lückentext erstellen</button>--%>
         <s:include value="/templates/question/questionList.jsp"></s:include>
     </div>
 </div>
-<!-- Modal -->
+
 <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
