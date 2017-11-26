@@ -65,6 +65,7 @@
 
         <!-- exam -->
         <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
+            <interceptor-ref name="loginStack"/>
             <result>examList</result>
         </action>
         <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="viewExam">
@@ -259,6 +260,7 @@
 
         <action name="logout" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
                 method="logout">
+            <interceptor-ref name="loginStack"/>
             <result name="success">Login</result>
         </action>
 
