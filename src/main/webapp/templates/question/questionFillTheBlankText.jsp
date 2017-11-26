@@ -21,5 +21,5 @@
     <s:hidden name="examId" value="%{examId}"/>
     <s:hidden name="questionId" value="%{questionId}"/>
 
-    <s:submit value="Speichern"/>
+    <s:submit value="Speichern" type="button" class="btn btn-primary"/>
 </s:form>

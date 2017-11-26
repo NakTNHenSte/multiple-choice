@@ -41,6 +41,8 @@ public class ParticipationAction extends ActionSupport implements Preparable{
     public String saveParticipation(){
 
         Participation participation = new Participation();
+        participation.setExamResult("Nicht teilgenommen");
+        participation.setValid(true);
         participationService.create(participation, examId, user);
 
         return SUCCESS;

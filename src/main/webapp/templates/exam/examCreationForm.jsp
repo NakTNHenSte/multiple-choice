@@ -15,10 +15,9 @@
     <s:textfield name="exam.title" label="Prüfungstitel"/>
     <s:textfield name="exam.credits" label="Credits"/>
     <s:textfield name="exam.seminar" label="Seminar"/>
-    <s:textfield name="exam.duration" label="Dauer eines Prüfungsdurchlaufs (in Minuten)"/>
+    <s:textfield name="exam.duration" label="Dauer (in Minuten)"/>
     <s:textfield name="exam.start" label="Startdatum"/>
     <s:textfield name="exam.end" label="Enddatum"/>
-    <s:textfield name="exam.percentualSuccessThreshold" label="Prozentuale Punktzahl zum bestehen der Prüfung"/>
-
+    <s:textfield name="exam.percentualSuccessThreshold" label="Prozentuale Bestehensgrenze"/>
     <s:submit value="Speichern" type="button" class="btn btn-primary"/>
 </s:form>

@@ -40,5 +40,5 @@
     <s:hidden name="questionId" value="%{question.id}"/>
     <s:hidden name="examId" value="%{exam.id}"/>
     <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
-    <s:submit value="Antwort(en) senden" type="button" class="btn btn-primary"/>
+    <s:submit value="Antwort(en) speichern" type="button" class="btn btn-primary"/>
 </s:form>
