@@ -37,6 +37,8 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
     private int answerCount;
     private List<String> givenAnswers = new ArrayList<>();
     private TestAnswerService testAnswerService;
+    private final String startRegex = "_%";
+    private final String endRegex = "%_";
 
 
     @Autowired
@@ -66,6 +68,8 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
 
     private void loadCurrentQuestion() {
         question = questions.get(currentQuestionIndex);
+        String questionText = formatQuestion(question.getQuestionText());
+        question.setQuestionText(questionText);
         answerList = answerService.findAll(question.getId());
         answerCount = answerList.size();
 
@@ -115,6 +119,18 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         } else {
             return INPUT;
         }
+    }
+
+    private String formatQuestion(String blankText) {
+        int count = 1;
+        while (blankText.contains(startRegex)) {
+            int startGap = blankText.indexOf(startRegex);
+            int endGap = blankText.indexOf(endRegex) + endRegex.length();
+            String blank = blankText.substring(startGap, endGap);
+            blankText = blankText.replaceFirst(blank, "| ____ |");
+            count++;
+        }
+        return blankText;
     }
 
     private boolean isParticipationAllowed(Participation participation) {
