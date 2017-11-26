@@ -20,7 +20,7 @@ public class TestAnswer {
     private Exam exam;
     private User user;
     private Answer answer;
-    private boolean correctness;
+    private String correctness;
 
     public TestAnswer() {
     }
@@ -70,12 +70,13 @@ public class TestAnswer {
         this.user = user;
     }
 
-    public boolean isCorrectness() {
-        return correctness;
+    public void setCorrectness(String correctness) {
+        this.correctness = correctness;
     }
 
-    public void setCorrectness(boolean correctness) {
-        this.correctness = correctness;
+    @Basic
+    public String getCorrectness() {
+        return correctness;
     }
 }
 

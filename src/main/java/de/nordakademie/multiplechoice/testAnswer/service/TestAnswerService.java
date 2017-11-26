@@ -3,6 +3,8 @@ package de.nordakademie.multiplechoice.testAnswer.service;
 import de.nordakademie.multiplechoice.answer.model.Answer;
 import de.nordakademie.multiplechoice.answer.service.AnswerService;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
+import de.nordakademie.multiplechoice.question.model.Question;
+import de.nordakademie.multiplechoice.question.service.QuestionService;
 import de.nordakademie.multiplechoice.testAnswer.model.TestAnswer;
 import de.nordakademie.multiplechoice.testAnswer.model.TestAnswerRepository;
 import de.nordakademie.multiplechoice.user.service.UserService;
@@ -19,13 +21,15 @@ public class TestAnswerService {
     private ExamService examService;
     private AnswerService answerService;
     private UserService userService;
+    private QuestionService questionService;
 
     @Autowired
-    public TestAnswerService(final TestAnswerRepository testAnswerRepository, final ExamService examService, AnswerService answerService, UserService userService) {
+    public TestAnswerService(final TestAnswerRepository testAnswerRepository, final ExamService examService, AnswerService answerService, UserService userService, QuestionService questionService) {
         this.testAnswerRepository = testAnswerRepository;
         this.examService = examService;
         this.answerService = answerService;
         this.userService = userService;
+        this.questionService = questionService;
     }
 
     @Transactional(readOnly = true)
@@ -67,9 +71,11 @@ public class TestAnswerService {
         testAnswer.setUser(userService.find(userId));
 
         if (answerFromDatabase.getTrueOrFalse().equals(answerFromUser)) {
-            testAnswer.setCorrectness(true);
-        } else {
-            testAnswer.setCorrectness(false);
+            testAnswer.setCorrectness(CorrectnessEnum.CORRECT.getCorrectness());
+        } else if (answerFromUser == null)
+            testAnswer.setCorrectness(CorrectnessEnum.MISSING.getCorrectness());
+        else {
+            testAnswer.setCorrectness(CorrectnessEnum.WRONG.getCorrectness());
         }
         return testAnswer;
     }
@@ -89,5 +95,44 @@ public class TestAnswerService {
     public void update(TestAnswer testAnswer) {
         testAnswerRepository.update(testAnswer);
     }
+
+    @Transactional
+    public List<TestAnswer> findByUserIdAndExamId(long userId, long examId) {
+        return testAnswerRepository.findByUserIdAndExamId(userId, examId);
+    }
+
+    @Transactional
+    public double getAchievedPointsInExam(long userId, long examId) {
+        double points = 0;
+
+        List<Question> questions = questionService.findByExam(examId);
+
+        for (Question question : questions) {
+            double currentPointsForCorrectChoice = question.getScorePerCorrectChoice();
+            double currentPointsForMissingChoice = question.getScorePerMissingChoice();
+            double currentPointsWrongChoice = question.getScorePerWrongChoice();
+
+            List<Answer> answers = answerService.findAll(question.getId());
+
+            for (Answer answer : answers) {
+                TestAnswer testAnswer = testAnswerRepository.findByUserIdAndExamIdAndAnswerId(userId, examId, answer.getAnswerID());
+
+                String correctness = testAnswer.getCorrectness();
+                if (correctness.equals(CorrectnessEnum.CORRECT.getCorrectness())) {
+                    points = points + currentPointsForCorrectChoice;
+                } else if (correctness.equals(CorrectnessEnum.WRONG.getCorrectness())) {
+                    points = points + currentPointsWrongChoice;
+                } else {
+                    points = points + currentPointsForMissingChoice;
+                }
+
+            }
+
+        }
+
+        return points;
+    }
+
+
 }
 
