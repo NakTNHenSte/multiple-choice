@@ -8,6 +8,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<div align="right">
+<s:form action="finishExam">
+    <s:hidden name="examId" value="%{exam.id}"/>
+    <s:submit value="Prüfung beenden" type="button" class="btn btn-primary"/>
+</s:form>
+</div>
 
 <s:if test='%{question.questionTyp == ("multiple")}'>
 <s:include value="/templates/question/questionParticipate.jsp"></s:include>
