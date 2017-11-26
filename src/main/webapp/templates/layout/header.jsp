@@ -10,10 +10,32 @@
             <s:a action="userList">
                 ${sessionScope.userFullName}
             </s:a>
-            <s:a action="logout">
-                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
-            </s:a>
+            <button class="fa fa-sign-out fa-2x" data-toggle="modal" data-target="#confirmationModal" aria-hidden="true">
+            </button>
         </div>
 
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Abmeldevorgang bestätigen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Sind Sie sicher, dass Sie sich abmelden wollen?
+                </div>
+                <div class="modal-footer">
+                    <s:form action="logout">
+                        <s:submit value="Abmelden" type="button" class="btn btn-primary"/>
+                    </s:form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                </div>
+            </div>
+        </div>
     </div>
 </nav>
