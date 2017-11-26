@@ -32,7 +32,7 @@
 
 <div class="row">
     <div class="col"><b>Bestehensgrenze: </b><s:property
-            value="exam.percentualSuccessThreshold"/></div> %</div>
+            value="exam.percentualSuccessThreshold"/> %</div>
 </div>
 <div class="row">
     <div class="col"><b>Dauer: </b><s:property value="exam.duration"/> Minuten</div>

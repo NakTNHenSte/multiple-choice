@@ -41,8 +41,8 @@ public class UserRepository {
     public List<User> findStudents() {
 
         try {
-            return entityManager.createQuery("SELECT r FROM User r WHERE typ = :typ", User.class).
-                    setParameter("typ", "S").getResultList();
+            return entityManager.createQuery("SELECT r FROM User r WHERE type = :type", User.class).
+                    setParameter("type", "S").getResultList();
         } catch (final NoResultException e) {
             return null;
         }

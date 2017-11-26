@@ -22,9 +22,6 @@
     <div class="col"><b>Benutzername: </b><s:property value="user.username"/></div>
 </div>
 
-<div class="row">
-    <div class="col"><b>Rolle: </b><s:property value="user.type"/></div>
-</div>
 
 <br>
 <p>
