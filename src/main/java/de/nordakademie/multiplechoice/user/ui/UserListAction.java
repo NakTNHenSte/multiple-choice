@@ -1,8 +1,10 @@
 package de.nordakademie.multiplechoice.user.ui;
 
 import com.opensymphony.xwork2.Action;
+import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.user.model.User;
 import de.nordakademie.multiplechoice.user.service.UserService;
+import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,22 +18,23 @@ import java.util.Map;
 public class UserListAction implements Action, SessionAware{
 
     private final UserService userService;
-    private List<User> users;
+    private final ParticipationService participationService;
+    private List<Participation> participations;
     private User user;
     private Map<String, Object> sessionMap;
 
+
     @Autowired
-    public UserListAction(final UserService userService) { this.userService = userService; }
+    public UserListAction(final UserService userService, final ParticipationService participationService) { this.userService = userService; this.participationService = participationService;}
 
     @Override
     public String execute() {
         user = userService.find((long) sessionMap.get("userId"));
+        participations = participationService.findByUser((long) sessionMap.get("userId"));
+
         return SUCCESS;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
 
     public User getUser() {
         return user;
@@ -45,4 +48,11 @@ public class UserListAction implements Action, SessionAware{
         this.sessionMap = sessionMap;
     }
 
+    public List<Participation> getParticipations() {
+        return participations;
+    }
+
+    public void setParticipations(List<Participation> participations) {
+        this.participations = participations;
+    }
 }

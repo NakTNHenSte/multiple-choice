@@ -66,6 +66,10 @@ public class ParticipationService {
             participationRepository.delete(participation);
         }
     }
+    @Transactional
+    public List<Participation> findByUser(long userId){
+        return participationRepository.findByUser(userId);
+    }
 
     @Transactional
     public void update(Participation participation) {
