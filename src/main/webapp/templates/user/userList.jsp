@@ -22,8 +22,7 @@
     <div class="col"><b>Benutzername: </b><s:property value="user.username"/></div>
 </div>
 
-
-<br>
+<s:if test='%{#session.userType == ("S")}'>
 <p>
 <table class="table table-sm">
         <tr>
@@ -51,3 +50,4 @@
 
 </table>
 </p>
+</s:if>
