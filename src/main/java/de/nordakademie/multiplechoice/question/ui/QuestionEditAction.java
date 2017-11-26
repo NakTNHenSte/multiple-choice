@@ -95,7 +95,6 @@ public class QuestionEditAction extends ActionSupport {
             for (int i = 0; i < answerList.size(); i++) {
             answerList.get(i).setQuestion(answersFromDatabase.get(i).getQuestion());
             answerList.get(i).setAnswerID(answersFromDatabase.get(i).getAnswerID());
-            answerList.get(i).setPositionOfAnswer(answersFromDatabase.get(i).getPositionOfAnswer());
             answerService.update(answerList.get(i));
             }
         }
