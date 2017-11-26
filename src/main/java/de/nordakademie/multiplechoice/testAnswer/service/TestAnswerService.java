@@ -81,6 +81,11 @@ public class TestAnswerService {
     }
 
     @Transactional
+    public void deleteAllByExam(final long examId) {
+        testAnswerRepository.deleteAllByExam(examId);
+    }
+
+    @Transactional
     public void update(TestAnswer testAnswer) {
         testAnswerRepository.update(testAnswer);
     }

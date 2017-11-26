@@ -63,4 +63,9 @@ public class TestAnswerRepository {
             return null;
         }
     }
+
+    public void deleteAllByExam(long examId) {
+         entityManager.createQuery("DELETE FROM TestAnswer WHERE examId = :examId")
+                .setParameter("examId", examId);
+    }
 }

@@ -10,10 +10,13 @@ import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
+import de.nordakademie.multiplechoice.testAnswer.service.TestAnswerService;
 import de.nordakademie.multiplechoice.user.service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +31,7 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
 
 
     Map<String, Object> session;
+    private TestAnswerService testAnswerService;
 
     public void setExam(Exam exam) {
         this.exam = exam;
@@ -43,12 +47,13 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     private List<Answer> answers;
 
     @Autowired
-    public ExamDetailAction(final ExamService examService, UserService userService, QuestionService questionService, ParticipationService participationService, AnswerService answerService) {
+    public ExamDetailAction(final ExamService examService, UserService userService, QuestionService questionService, ParticipationService participationService, AnswerService answerService, TestAnswerService testAnswerService) {
         this.examService = examService;
         this.userService = userService;
         this.questionService = questionService;
         this.participationService = participationService;
         this.answerService = answerService;
+        this.testAnswerService = testAnswerService;
     }
 
     @Override
@@ -74,27 +79,50 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     }
 
     public String removeExam() {
-        questions = questionService.findByExam(examId);
-        for (Question question : questions) {
-            answers = answerService.findAll(question.getId());
-            for (Answer answer : answers) {
-                answerService.delete(answer.getAnswerID());
+        exam = examService.findOne(examId);
+
+        if (!isEditableExam(examId, exam.getEnd())) {
+            questions = questionService.findByExam(examId);
+            for (Question question : questions) {
+                answers = answerService.findAll(question.getId());
+                for (Answer answer : answers) {
+                    answerService.delete(answer.getAnswerID());
+                }
+                questionService.delete(question.getId());
             }
-            questionService.delete(question.getId());
+            participationService.deleteExam(examId);
+            examService.removeExam(examId);
+            testAnswerService.deleteAllByExam(examId);
+            return SUCCESS;
+        } else {
+            addActionError("Prüfung kann erst nach Ende des Prüfungszeitraums nicht mehr gelöscht werden");
+            return INPUT;
         }
-        participationService.deleteExam(examId);
-        examService.removeExam(this.getExamId());
-        return SUCCESS;
     }
 
-    public String viewExam() {
-
+    private void loadExamData() {
         participations = participationService.findAll(this.getExamId());
         exam = examService.findOne(this.getExamId());
         questions = questionService.findByExam(exam.getId());
+    }
 
+    public String editExam() {
+        exam = examService.findOne(examId);
+
+        if (isEditableExam(examId, exam.getStart())) {
+            loadExamData();
+            return SUCCESS;
+        } else {
+            addActionError("Prüfung kann nach Beginn des Prüfungszeitraums nicht mehr editiert werden");
+            return INPUT;
+        }
+    }
+
+    public String viewExam() {
+        loadExamData();
         return SUCCESS;
     }
+
 
     public String saveExam() {
 
@@ -110,11 +138,17 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
         return SUCCESS;
     }
 
-    public void validate(){
+    public void validate() {
     }
 
-    public boolean isEditableExam() {
-        return editableExam;
+
+    private boolean isEditableExam(long examId, Date date) {
+        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+        if (date.before(currentTimestamp)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void setEditableExam(boolean editableExam) {

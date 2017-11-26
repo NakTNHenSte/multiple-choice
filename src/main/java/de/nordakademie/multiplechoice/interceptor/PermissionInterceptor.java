@@ -26,7 +26,7 @@ public class PermissionInterceptor extends AbstractInterceptor {
 
 //            Ueberpruefen, ob der angemeldete User ein Dozent ist. Ansonsten den Zugriff auf die Zeite verweigern
 
-            if (user.getTyp().equals("D")) {
+            if (user.getType().equals("D")) {
 
                 return invocation.invoke();
 

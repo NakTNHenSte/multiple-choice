@@ -45,7 +45,7 @@ public class QuestionEditAction extends ActionSupport {
         examId = exam.getId();
         questionId = question.getId();
 
-        if(question.getQuestionTyp().equals("multiple")){
+        if(question.getQuestionType().equals("multiple")){
             return INPUT;
         }
         return SUCCESS;
@@ -70,7 +70,7 @@ public class QuestionEditAction extends ActionSupport {
     public String saveQuestion() {
 
         exam = question.getExam();
-        question.setQuestionTyp("multiple");
+        question.setQuestionType("multiple");
 
         for (int i = 0; i < answerCount; i++) {
             answerList.add(new Answer());
@@ -105,7 +105,7 @@ public class QuestionEditAction extends ActionSupport {
     public String saveQuestionEdit() {
 
         question.setExam(examService.findOne(examId));
-        question.setQuestionTyp("multiple");
+        question.setQuestionType("multiple");
         if (this.getQuestionId() == 0) {
             questionService.create(getQuestion(), examId);
         } else {
