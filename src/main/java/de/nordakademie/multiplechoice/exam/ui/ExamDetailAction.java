@@ -81,7 +81,7 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     public String removeExam() {
         exam = examService.findOne(examId);
 
-        if (!isEditableExam(examId, exam.getEnd())) {
+        if (isEditableExam(examId, exam.getEnd(),exam.getStart())) {
             questions = questionService.findByExam(examId);
             for (Question question : questions) {
                 answers = answerService.findAll(question.getId());
@@ -95,7 +95,7 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
             testAnswerService.deleteAllByExam(examId);
             return SUCCESS;
         } else {
-            addActionError("Prüfung kann erst nach Ende des Prüfungszeitraums nicht mehr gelöscht werden");
+            addActionError("Prüfung kann erst nach Ende des Prüfungszeitraums gelöscht werden");
             return INPUT;
         }
     }
@@ -109,7 +109,7 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     public String editExam() {
         exam = examService.findOne(examId);
 
-        if (isEditableExam(examId, exam.getStart())) {
+        if (isEditableExam(examId, exam.getEnd(),exam.getStart())) {
             loadExamData();
             return SUCCESS;
         } else {
@@ -142,12 +142,15 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     }
 
 
-    private boolean isEditableExam(long examId, Date date) {
+    private boolean isEditableExam(long examId, Date endDate, Date startDate) {
         Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-        if (date.before(currentTimestamp)) {
-            return false;
-        } else {
+        if(startDate.after(currentTimestamp)){
             return true;
+        }
+        if (endDate.before(currentTimestamp)) {
+            return true;
+        } else {
+            return false;
         }
     }
 

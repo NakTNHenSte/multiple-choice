@@ -85,6 +85,7 @@ public class TestAnswerAction extends ActionSupport implements SessionAware {
 
         if (((now.getTime() / 1000) - (examStartTimestamp.getTime() / 1000)) / 60 < participation.getExam().getDuration()) {
             addActionError("Die Bearbeitungszeit ist abgelaufen.");
+            finishExam();
             return true;
 
         } else {
