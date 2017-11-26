@@ -40,28 +40,28 @@
         <div class="row">
             <div class="col"><b>Dauer: </b><s:property value="exam.duration"/> Minuten</div>
         </div>
+        <br>
+        <s:if test="hasActionErrors()">
+            <div class="alert alert-danger" role="alert">
+                <s:actionerror/>
+            </div>
+        </s:if>
+
+        <s:if test='%{#session.userType == ("D")}'>
+        <td>
+            <s:form action="editExam">
+                <s:hidden name="examId" value="%{exam.id}"/>
+                <s:submit value="editieren" type="button" class="btn btn-secondary"/>
+            </s:form>
+        </td>
+        <td>
+            <s:form action="removeExam">
+                <s:hidden name="examId" value="%{exam.id}"/>
+                <s:submit value="löschen" type="button" class="btn btn-danger"/>
+            </s:form>
+        </td>
     </tr>
-    <br>
-
-    <s:if test="hasActionErrors()">
-        <div class="alert alert-danger" role="alert">
-            <s:actionerror/>
-        </div>
-    </s:if>
-
-    <s:if test='%{#session.userType == ("D")}'>
-
-        <s:form action="editExam">
-            <s:hidden name="examId" value="%{exam.id}"/>
-            <s:submit value="editieren" type="button" class="btn btn-secondary"/>
-        </s:form>
-
-        <s:form action="removeExam">
-            <s:hidden name="examId" value="%{exam.id}"/>
-            <s:submit value="löschen" type="button" class="btn btn-danger"/>
-        </s:form>
-
-        <p>
+    <tr>
         <table class="table table-sm">
             <tr>
                 <th>Name</th>
@@ -78,8 +78,9 @@
                 </tr>
             </s:iterator>
         </table>
+    </tr>
     </s:if>
-    </p>
+
 </table>
 
 
