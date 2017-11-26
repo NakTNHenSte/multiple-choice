@@ -72,14 +72,11 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
         List<String> blanksList = extractAnswers(question.getQuestionText());
 
         answerList = createAnswerList(blanksList);
-        int positionOfAnswer = 1;
 
 
         for (Answer answer : answerList) {
             answer.setQuestion(question);
-            answer.setPositionOfAnswer(positionOfAnswer);
             answerService.create(answer);
-            positionOfAnswer++;
         }
     }
 
