@@ -14,19 +14,19 @@ public class User {
     private long id;
     private String name;
     private String surname;
-    private String typ;
+    private String type;
     private String username;
     private String password;
 
     public User(){
     }
 
-    public User(final long id, final String name, final String surname, final String username, final String typ, final String password){
+    public User(final long id, final String name, final String surname, final String username, final String type, final String password){
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.username = username;
-        this.typ = typ;
+        this.type = type;
         this.password = password;
     }
 
@@ -68,12 +68,12 @@ public class User {
     }
 
     @Basic
-    public String getTyp() {
-        return typ;
+    public String getType() {
+        return type;
     }
 
-    public void setTyp(String typ) {
-        this.typ = typ;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Basic

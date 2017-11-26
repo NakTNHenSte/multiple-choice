@@ -65,9 +65,9 @@ public class ExamService {
         List<Exam> exams = new ArrayList<>();
         User user = userService.find(userId);
 
-        if (user.getTyp().equals(UserType.D.name())) {
+        if (user.getType().equals(UserType.D.name())) {
             exams = examRepository.findByUser(userId);
-        } else if (user.getTyp().equals(UserType.S.name())) {
+        } else if (user.getType().equals(UserType.S.name())) {
             List<Participation> participations = participationRepository.findByUser(userId);
             for (Participation participation : participations) {
                 exams.add(participation.getExam());

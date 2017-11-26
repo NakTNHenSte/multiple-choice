@@ -35,7 +35,7 @@ public class UserLoginAction extends ActionSupport implements SessionAware {
 
                     // add userName to the session
                     sessionMap.put("userId", user.getId());
-                    sessionMap.put("userTyp", user.getTyp());
+                    sessionMap.put("userType", user.getType());
                     sessionMap.put("userFullName", user.getName()+" "+user.getSurname());
 
                     return SUCCESS; // return welcome page
@@ -52,7 +52,7 @@ public class UserLoginAction extends ActionSupport implements SessionAware {
         // remove userName from the session
         if (sessionMap.containsKey("userId")) {
             sessionMap.remove("userId");
-            sessionMap.remove("userTyp");
+            sessionMap.remove("userType");
             sessionMap.remove("userFullName");
             addActionMessage("Erfolgreich abgemeldet.");
             return SUCCESS;
