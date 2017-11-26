@@ -47,6 +47,7 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
     @Override
     public String execute() {
         loadQuestions();
+        loadCurrentQuestion();
         return SUCCESS;
     }
 
@@ -64,9 +65,9 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         answerList = answerService.findAll(question.getId());
         answerCount = answerList.size();
 
-        for (int i=0; i < answerCount; i++) {
-            givenAnswers.add("");
-        }
+//        for (int i=0; i < answerCount; i++) {
+//            givenAnswers.add("");
+//        }
     }
 
     public String nextQuestion() {
@@ -112,23 +113,31 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
 
         Date currentdate = new Date(System.currentTimeMillis());
 
-        if(participation == null){
+        if (participation == null) {
             addActionError("Sie sind nicht als Teilnehmer dieser Prüfung eingetragen.");
-            return false;};
-        if(!participation.getOneTimePassword().equals(oneTimePassword)){
+            return false;
+        }
+        ;
+        if (!participation.getOneTimePassword().equals(oneTimePassword)) {
             addActionError("Das Passwort stimmt nicht.");
-            return false;};
-        if(!participation.isValid()){
+            return false;
+        }
+        ;
+        if (!participation.isValid()) {
             addActionError("Ihr Zugang wurde bereits benutzt und ist abgelaufen.");
-            return false;};
-        if(!exam.getEnd().after(currentTimestamp) || exam.getStart().after(currentTimestamp)){
+            return false;
+        }
+        ;
+        if (!exam.getEnd().after(currentTimestamp) || exam.getStart().after(currentTimestamp)) {
             addActionError("Die Anmeldung muss während des Prüfungszeitraums erfolgen.");
-            return false;}
+            return false;
+        }
 
         return true;
     }
 
     public String participate() {
+        // TODO: DIESE METHODE ENTFERNEN
         loadQuestions();
         loadCurrentQuestion();
 
@@ -138,10 +147,11 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
          */
 
         //TODO: anpassen an das Antwortenattribut der Studenten-Klasse (die es noch nicht gibt)
-        for (int i=0; i < answerCount; i++) {
-      //      givenAnswers.add("");
+        for (String answer : givenAnswers) {
+
         }
-        return SUCCESS;};
+        return SUCCESS;
+    }
 
     public Exam getExam() {
         return exam;

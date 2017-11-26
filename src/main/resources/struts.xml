@@ -3,22 +3,22 @@
         'http://struts.apache.org/dtds/struts-2.5.dtd'>
 <struts>
 
-    <constant name="struts.action.excludePattern" value="/static/.*?" /><!-- not resolve js resources as action -->
-    <constant name="struts.action.excludePattern" value="/images/.*?" /><!-- not resolve js resources as action -->
-    <constant name="struts.action.excludePattern" value="/js/.*?" /><!--not resolve js resources as action -->
-    <constant name="struts.action.excludePattern" value="/css/.*?" /><!--not resolve css resources as action -->
-    <constant name="struts.serve.static" value="true" />
-    <constant name="struts.action.extension" value="" />
-    <constant name="struts.devMode" value="false" />
+    <constant name="struts.action.excludePattern" value="/static/.*?"/><!-- not resolve js resources as action -->
+    <constant name="struts.action.excludePattern" value="/images/.*?"/><!-- not resolve js resources as action -->
+    <constant name="struts.action.excludePattern" value="/js/.*?"/><!--not resolve js resources as action -->
+    <constant name="struts.action.excludePattern" value="/css/.*?"/><!--not resolve css resources as action -->
+    <constant name="struts.serve.static" value="true"/>
+    <constant name="struts.action.extension" value=""/>
+    <constant name="struts.devMode" value="false"/>
 
-     <!--Fange 404 Fehler ab -->
+    <!--Fange 404 Fehler ab -->
     <!--<package name="serveAll" namespace="" extends="struts-default">-->
-        <!--<result-types>-->
-            <!--<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />-->
-        <!--</result-types>-->
-        <!--<action name="*">-->
-            <!--<result type="tiles">notFoundError</result>-->
-        <!--</action>-->
+    <!--<result-types>-->
+    <!--<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />-->
+    <!--</result-types>-->
+    <!--<action name="*">-->
+    <!--<result type="tiles">notFoundError</result>-->
+    <!--</action>-->
     <!--</package>-->
 
     <package name='default' extends="tiles-default">
@@ -32,7 +32,8 @@
         <interceptors>
             <interceptor name="loginInterceptor" class="de.nordakademie.multiplechoice.interceptor.LoginInterceptor">
             </interceptor>
-            <interceptor name="permissionInterceptor" class="de.nordakademie.multiplechoice.interceptor.PermissionInterceptor">
+            <interceptor name="permissionInterceptor"
+                         class="de.nordakademie.multiplechoice.interceptor.PermissionInterceptor">
             </interceptor>
             <interceptor-stack name="loginStack">
                 <interceptor-ref name="loginInterceptor"/>
@@ -53,11 +54,11 @@
 
         <!-- Fange 500 Fehler ab -->
         <!--<global-exception-mappings>-->
-            <!--<exception-mapping exception="java.lang.Exception" result="genericError" />-->
+        <!--<exception-mapping exception="java.lang.Exception" result="genericError" />-->
         <!--</global-exception-mappings>-->
 
         <action name="" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
-            method="login">
+                method="login">
             <result type="redirectAction">examList</result>
             <result name="input">Login</result>
         </action>
@@ -98,21 +99,25 @@
             <result>examExecution</result>
         </action>
 
-        <action name='nextQuestion' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction" method="nextQuestion">
+        <action name='nextQuestion' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction"
+                method="nextQuestion">
             <result>examExecution</result>
         </action>
 
-        <action name='previousQuestion' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction" method="previousQuestion">
+        <action name='previousQuestion' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction"
+                method="previousQuestion">
             <result>examExecution</result>
         </action>
 
         <!-- participation -->
 
-        <action name='participationAddition' class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction" method="getForm">
+        <action name='participationAddition' class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction"
+                method="getForm">
             <result>participationAddition</result>
         </action>
 
-        <action name='addParticipation' class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction" method="saveParticipation">
+        <action name='addParticipation' class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction"
+                method="saveParticipation">
             <result name="input">participationAddition</result>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
@@ -180,10 +185,10 @@
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveQuestion">
             <!--<interceptor-ref name="loginStack"/>-->
-           <result type="redirectAction">
-               <param name="actionName">editExam</param>
-               <param name="examId">${examId}</param>
-           </result>
+            <result type="redirectAction">
+                <param name="actionName">editExam</param>
+                <param name="examId">${examId}</param>
+            </result>
             <!-- <result name="input">questionEdit</result>-->
         </action>
 
@@ -202,7 +207,8 @@
                 method="deleteQuestion">
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
-                <param name="examId">${examId}</param></result>
+                <param name="examId">${examId}</param>
+            </result>
         </action>
 
         <action name='questionFillTheBlankText'
@@ -215,11 +221,12 @@
         <action name='saveQuestionBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
                 method="saveQuestionBlankText">
-<!--            <result type="redirectAction">questionList</result>
-            <result name="input">questionFillTheBlankText</result>-->
+            <!--            <result type="redirectAction">questionList</result>
+                        <result name="input">questionFillTheBlankText</result>-->
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
-                <param name="examId">${examId}</param></result>
+                <param name="examId">${examId}</param>
+            </result>
         </action>
 
         <action name='participateQuestion'
@@ -231,17 +238,16 @@
         </action>
 
         <action name='participateFillTheBlankTextQuestion'
-        class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextParticipationAction"
-        method="participate">
-        <!--<interceptor-ref name="loginStack"/>-->
-        <!--<result name="input">questionEdit</result>-->
-        <result>questionFillTheBlankTextParticipate</result>
+                class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextParticipationAction"
+                method="participate">
+            <!--<interceptor-ref name="loginStack"/>-->
+            <!--<result name="input">questionEdit</result>-->
+            <result>questionFillTheBlankTextParticipate</result>
         </action>
-
 
         <!-- user -->
         <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
-            <interceptor-ref name="loginStack" />
+            <interceptor-ref name="loginStack"/>
             <result>userList</result>
         </action>
 
@@ -258,12 +264,12 @@
 
         <!-- answer -->
         <action name='lecturerAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
-            <interceptor-ref name="loginStack" />
+            <interceptor-ref name="loginStack"/>
             <result>lecturerAnswerList</result>
         </action>
 
         <action name='studentAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
-            <interceptor-ref name="loginStack" />
+            <interceptor-ref name="loginStack"/>
             <result>studentAnswerList</result>
         </action>
 
@@ -287,9 +293,22 @@
             <interceptor-ref name="loginStack"/>
             <result type="redirectAction">
                 <param name="actionName">questionEdit</param>
-                <param name="questionId">${questionId}</param></result>
+                <param name="questionId">${questionId}</param>
+            </result>
         </action>
 
+        <!-- testAnswer -->
+        <action name='saveTestAnswers'
+                class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction"
+                method="saveTestAnswers">
+            <interceptor-ref name="loginStack"/>
+            <result name="input">examExecution</result>
+            <result type="redirectAction">
+                <param name="actionName">examExecution</param>
+                <param name="examId">${examId}</param>
+                <param name="currentQuestionIndex">${currentQuestionIndex}</param>
+            </result>
+        </action>
 
     </package>
 </struts>

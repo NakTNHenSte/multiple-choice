@@ -9,7 +9,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 
-<s:form action="participateQuestion">
+<s:form action="saveTestAnswers">
 
     <s:label name="question.questionText" class="h3"/>
 
@@ -37,6 +37,7 @@
         </div>
     </s:iterator>
 
+    <s:hidden name="questionId" value="%{question.id}"/>
     <s:hidden name="examId" value="%{exam.id}"/>
     <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
     <s:submit value="Antwort(en) senden" type="button" class="btn btn-primary"/>
