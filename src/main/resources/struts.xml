@@ -69,6 +69,7 @@
         </action>
         <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="viewExam">
             <result>examDetail</result>
+
         </action>
         <action name='saveExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction"
                 method="saveExam">
@@ -82,10 +83,14 @@
         <action name='newExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
             <result>examCreationForm</result>
         </action>
-        <action name='editExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="viewExam">
+        <action name='editExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="editExam">
             <result>examEditForm</result>
+            <result name="input">
+                examDetail
+            </result>
         </action>
         <action name='removeExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="removeExam">
+            <result name="input">examDetail</result>
             <result type="redirectAction">examList</result>
         </action>
 
