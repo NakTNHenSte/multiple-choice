@@ -23,7 +23,7 @@
 </div>
 
 <div class="row">
-    <div class="col"><b>Rolle: </b><s:property value="user.typ"/></div>
+    <div class="col"><b>Rolle: </b><s:property value="user.type"/></div>
 </div>
 
 <br>

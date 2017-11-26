@@ -15,11 +15,11 @@
 </s:form>
 </div>
 
-<s:if test='%{question.questionTyp == ("multiple")}'>
+<s:if test='%{question.questionType == ("multiple")}'>
 <s:include value="/templates/question/questionParticipate.jsp"></s:include>
 </s:if>
 
-<s:if test='%{question.questionTyp == ("gap")}'>
+<s:if test='%{question.questionType == ("gap")}'>
 <s:include value="/templates/question/questionFillTheBlankTextParticipate.jsp"></s:include>
 </s:if>
 

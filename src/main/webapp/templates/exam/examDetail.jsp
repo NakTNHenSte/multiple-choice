@@ -38,7 +38,7 @@
     <div class="col"><b>Dauer eines Prüfungsdurchlaufs: </b><s:property value="exam.duration"/> Minuten</div>
 </div>
 
-<s:if test='%{#session.userTyp == ("S")}'>
+<s:if test='%{#session.userType == ("S")}'>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">
         Prüfung starten
     </button>
@@ -78,7 +78,7 @@
     </div>
 </s:if>
 
-<s:if test='%{#session.userTyp == ("D")}'>
+<s:if test='%{#session.userType == ("D")}'>
     <s:form action="editExam">
         <s:hidden name="examId" value="%{exam.id}"/>
         <s:submit value="editieren" type="button" class="btn btn-secondary"/>

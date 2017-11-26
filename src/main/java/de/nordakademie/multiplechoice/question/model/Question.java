@@ -96,7 +96,7 @@ public class Question {
         return questionType;
     }
 
-    public void setQuestionType(String questionTyp) {
+    public void setQuestionType(String questionType) {
         this.questionType = questionType;
     }
 }

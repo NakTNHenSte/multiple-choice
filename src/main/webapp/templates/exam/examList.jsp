@@ -9,7 +9,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 
-<s:if test='%{#session.userTyp == ("D")}'>
+<s:if test='%{#session.userType == ("D")}'>
     <s:form action="newExam">
         <s:submit value="Prüfung erstellen" type="button" class="btn btn-primary"/>
     </s:form>
