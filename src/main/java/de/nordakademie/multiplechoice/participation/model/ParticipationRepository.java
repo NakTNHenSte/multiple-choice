@@ -37,6 +37,7 @@ public class ParticipationRepository {
     }
 
     public Participation findByUserIdAndExamId(long userId, long examId) {
+
         return entityManager.createQuery("SELECT p FROM Participation p WHERE exam_id = :examId " +
                 "AND user_id = :userId", Participation.class)
                 .setParameter("examId", examId).setParameter("userId", userId).getSingleResult();

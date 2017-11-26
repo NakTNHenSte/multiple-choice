@@ -4,6 +4,7 @@ import org.aspectj.weaver.ast.Test;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
@@ -38,6 +39,16 @@ public class TestAnswerRepository {
         return entityManager.createQuery("SELECT p FROM TestAnswer p WHERE exam_id = :examId " +
                 "AND user_id = :userId", TestAnswer.class)
                 .setParameter("examId", examId).setParameter("userId", userId).getResultList();
+    }
+
+    public TestAnswer findByUserIdAndExamIdAndAnswerId(long userId, long examId, long answerId) {
+        try {
+            return entityManager.createQuery("SELECT p FROM TestAnswer p WHERE exam_id = :examId " +
+                    "AND user_id = :userId AND answer_answerID = :answerId", TestAnswer.class)
+                    .setParameter("examId", examId).setParameter("userId", userId).setParameter("answerId", answerId).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
     }
 
     public void update(TestAnswer testAnswer) {

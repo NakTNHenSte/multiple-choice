@@ -1,5 +1,6 @@
 package de.nordakademie.multiplechoice.testAnswer.service;
 
+import de.nordakademie.multiplechoice.answer.model.Answer;
 import de.nordakademie.multiplechoice.answer.service.AnswerService;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.testAnswer.model.TestAnswer;
@@ -33,20 +34,41 @@ public class TestAnswerService {
     }
 
     @Transactional
-    public TestAnswer findOne(final long testAnswerId){
+    public TestAnswer findOne(final long testAnswerId) {
         return testAnswerRepository.findOne(testAnswerId);
     }
 
     @Transactional
-    public void create(final TestAnswer testAnswer, long examId, long userId, long answerId) {
+    public void create(String answerFromUser, long examId, long userId, long answerId) {
+
+        TestAnswer testAnswerFromDatabase = testAnswerRepository.findByUserIdAndExamIdAndAnswerId(examId, userId, answerId);
+        TestAnswer testAnswer = prepareTestAnswer(answerFromUser, examId, userId, answerId);
+        if (testAnswerFromDatabase == null) {
+            testAnswerRepository.create(testAnswer);
+        } else {
+            testAnswer.setId(testAnswerFromDatabase.getId());
+            testAnswerRepository.update(testAnswer);
+        }
+    }
+
+    private TestAnswer prepareTestAnswer(String answerFromUser, long examId, long userId, long answerId) {
+        Answer answerFromDatabase = answerService.findOne(answerId);
+
+        TestAnswer testAnswer = new TestAnswer();
+        testAnswer.setStudentAnswer(answerFromUser);
         testAnswer.setExam(examService.findOne(examId));
-        testAnswer.setAnswer(answerService.findOne(answerId));
+        testAnswer.setAnswer(answerFromDatabase);
         testAnswer.setUser(userService.find(userId));
-        testAnswerRepository.create(testAnswer);
+
+        if (answerFromDatabase.getTrueOrFalse().equals(answerFromUser)) {
+            testAnswer.setCorrectness(true);
+        }
+        testAnswer.setCorrectness(false);
+        return testAnswer;
     }
 
     @Transactional
-    public void delete(final long testAnswerId){
+    public void delete(final long testAnswerId) {
         final TestAnswer testAnswer = testAnswerRepository.findOne(testAnswerId);
         testAnswerRepository.delete(testAnswer);
     }
