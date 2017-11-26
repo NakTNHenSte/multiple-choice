@@ -55,4 +55,12 @@ public class TestAnswerRepository {
         entityManager.merge(testAnswer);
     }
 
+    public TestAnswer findByAnswerId(long answerId) {
+        try {
+            return entityManager.createQuery("SELECT p FROM TestAnswer p WHERE answer_answerID = :answerId", TestAnswer.class)
+                    .setParameter("answerId", answerId).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 }

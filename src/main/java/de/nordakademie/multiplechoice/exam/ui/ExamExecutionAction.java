@@ -10,6 +10,8 @@ import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
+import de.nordakademie.multiplechoice.testAnswer.model.TestAnswer;
+import de.nordakademie.multiplechoice.testAnswer.service.TestAnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
@@ -34,14 +36,16 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
     private AnswerService answerService;
     private int answerCount;
     private List<String> givenAnswers = new ArrayList<>();
+    private TestAnswerService testAnswerService;
 
 
     @Autowired
-    public ExamExecutionAction(final ExamService examService, ParticipationService participationService, QuestionService questionService, AnswerService answerService) {
+    public ExamExecutionAction(final ExamService examService, ParticipationService participationService, QuestionService questionService, AnswerService answerService, TestAnswerService testAnswerService) {
         this.examService = examService;
         this.participationService = participationService;
         this.questionService = questionService;
         this.answerService = answerService;
+        this.testAnswerService = testAnswerService;
     }
 
     @Override
@@ -65,9 +69,15 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         answerList = answerService.findAll(question.getId());
         answerCount = answerList.size();
 
-//        for (int i=0; i < answerCount; i++) {
-//            givenAnswers.add("");
-//        }
+
+        for (int i = 0; i < answerCount; i++) {
+            TestAnswer testAnswer = testAnswerService.findByAnswerId(answerList.get(i).getAnswerID());
+            if (testAnswer == null) {
+                givenAnswers.add("");
+            } else {
+                givenAnswers.add(testAnswer.getStudentAnswer());
+            }
+        }
     }
 
     public String nextQuestion() {

@@ -10,9 +10,8 @@
 
 
 <%--<s:form action="questionEdit">--%>
-<s:form action="participateFillTheBlankTextQuestion">
-    <s:hidden name="examId" value="%{exam.id}"/>
-    <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
+<s:form action="saveTestAnswers">
+
 
     <s:label value="Bitte den Lückentext ausfüllen" class="h3"/>
 
@@ -39,6 +38,8 @@
         </div>
     </s:iterator>
 
-
+    <s:hidden name="examId" value="%{exam.id}"/>
+    <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
+    <s:hidden name="questionId" value="%{question.id}"/>
     <s:submit value="Antwort(en) senden" type="button" class="btn btn-primary"/>
 </s:form>
