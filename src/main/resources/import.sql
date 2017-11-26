@@ -1,5 +1,5 @@
 INSERT INTO USER VALUES (123400, 'Hans', 'password', 'Petersen', 'S', 'hans.petersen');
-INSERT INTO USER VALUES (123500, 'Diecke', 'password', 'Luebberstadt', 'S', 'diecke.luebberstedt');
+INSERT INTO USER VALUES (123500, 'Diecke', 'password', 'Luebberstadt', 'S', 'diecke.luebberstadt');
 INSERT INTO USER VALUES (123600, 'Chris', 'password', 'West', 'S', 'chris.west');
 INSERT INTO USER VALUES (123700, 'Schtiewn', 'password', 'Hens', 'S', 'schtiewn.hens');
 INSERT INTO USER VALUES (123800, 'Daniela', 'password', 'Katzenburger', 'S', 'daniela.katzenburger');
