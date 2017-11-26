@@ -33,7 +33,7 @@
     <s:form action="login" method="post">
         <s:textfield name="username" label="Benutzername" />
         <s:password name="password" label="Passwort" />
-        <s:submit value="Anmelden" />
+        <s:submit value="Anmelden" type="button" class="btn btn-primary" />
     </s:form>
 
     <s:if test="hasActionErrors()">

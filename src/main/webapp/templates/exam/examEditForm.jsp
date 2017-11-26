@@ -15,27 +15,28 @@
         <s:include value="/templates/participation/participantsList.jsp"></s:include>
     </div>
 </div>
-
+<table>
+<tr>
 <div class="row">
     <div class="col">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">
             Frage anlegen
-        </button>
-        <s:form action="saveBlankText">
+        </button></td>
+        <td><s:form action="saveBlankText">
             <s:hidden name="examId" value="%{examId}"/>
             <s:submit value="Lückentext anlegen" type="button" class="btn btn-secondary"/>
-        </s:form>
-        <%--<button type="button" class="btn btn-primary" onclick="window.location='/questionFillTheBlankText';">Lückentext erstellen</button>--%>
+        </s:form></td>
         <s:include value="/templates/question/questionList.jsp"></s:include>
     </div>
 </div>
-
+</tr>
+</table>
 <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="confirmationModalLabel">Prüfungsstart bestätigen</h5>
+                <h5 class="modal-title" id="confirmationModalLabel">Frage hinzufügen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -49,7 +50,6 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
                     <s:submit value="Bestätigen" type="button" class="btn btn-primary"/>
                 </div>
             </s:form>
