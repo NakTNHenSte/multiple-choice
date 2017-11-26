@@ -4,6 +4,7 @@ import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.user.model.User;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * Created by Daniel Fiolka on 23.11.17.
@@ -20,6 +21,7 @@ public class Participation {
     private boolean valid;
     private Exam exam;
     private String examResult;
+    private Timestamp examStartTimestamp;
 
     public Participation() {
     }
@@ -82,5 +84,14 @@ public class Participation {
 
     public void setExamResult(String examResult) {
         this.examResult = examResult;
+    }
+
+    @Basic
+    public Timestamp getExamStartTimestamp() {
+        return examStartTimestamp;
+    }
+
+    public void setExamStartTimestamp(Timestamp examStartTimestamp) {
+        this.examStartTimestamp = examStartTimestamp;
     }
 }

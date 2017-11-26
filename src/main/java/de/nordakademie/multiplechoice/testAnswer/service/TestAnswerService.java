@@ -116,16 +116,16 @@ public class TestAnswerService {
 
             for (Answer answer : answers) {
                 TestAnswer testAnswer = testAnswerRepository.findByUserIdAndExamIdAndAnswerId(userId, examId, answer.getAnswerID());
-
-                String correctness = testAnswer.getCorrectness();
-                if (correctness.equals(CorrectnessEnum.CORRECT.getCorrectness())) {
-                    points = points + currentPointsForCorrectChoice;
-                } else if (correctness.equals(CorrectnessEnum.WRONG.getCorrectness())) {
-                    points = points + currentPointsWrongChoice;
-                } else {
-                    points = points + currentPointsForMissingChoice;
+                if (testAnswer != null) {
+                    String correctness = testAnswer.getCorrectness();
+                    if (correctness.equals(CorrectnessEnum.CORRECT.getCorrectness())) {
+                        points = points + currentPointsForCorrectChoice;
+                    } else if (correctness.equals(CorrectnessEnum.WRONG.getCorrectness())) {
+                        points = points + currentPointsWrongChoice;
+                    } else {
+                        points = points + currentPointsForMissingChoice;
+                    }
                 }
-
             }
 
         }

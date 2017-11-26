@@ -101,6 +101,10 @@
 
         </action>
 
+        <action name='finishExam' class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction" method="finishExam">
+            <result type="redirectAction">userList</result>
+        </action>
+
         <action name='examExecution' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction">
             <result>examExecution</result>
         </action>
@@ -247,11 +251,11 @@
                 class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction"
                 method="saveTestAnswer">
             <interceptor-ref name="loginStack"/>
-            <result name="input">questionFillTheBlankText</result>
+            <result name="error">examTimeOver</result>
             <result type="redirectAction">
-            <param name="actionName">questionFillTheBlankText</param>
-            <param name="examId">${examId}</param>
-            <param name="currentQuestionIndex">${currentQuestionIndex}</param>
+                <param name="actionName">questionFillTheBlankText</param>
+                <param name="examId">${examId}</param>
+                <param name="currentQuestionIndex">${currentQuestionIndex}</param>
             </result>
         </action>
 
@@ -313,12 +317,19 @@
                 class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction"
                 method="saveTestAnswers">
             <interceptor-ref name="loginStack"/>
-            <result name="input">examExecution</result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">examTimeOver</param>
+                <param name="examId">${examId}</param></result>
             <result type="redirectAction">
                 <param name="actionName">examExecution</param>
                 <param name="examId">${examId}</param>
                 <param name="currentQuestionIndex">${currentQuestionIndex}</param>
             </result>
+        </action>
+        <action name='examTimeOver'
+                class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction">
+            <interceptor-ref name="loginStack"/>
+            <result>examTimeOver</result>
         </action>
 
     </package>

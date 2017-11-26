@@ -4,9 +4,10 @@ import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.model.ExamRepository;
 import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.model.ParticipationRepository;
-import de.nordakademie.multiplechoice.participation.service.ParticipationService;
+import de.nordakademie.multiplechoice.question.model.Question;
+import de.nordakademie.multiplechoice.question.model.QuestionRepository;
+import de.nordakademie.multiplechoice.question.service.QuestionService;
 import de.nordakademie.multiplechoice.user.model.User;
-import de.nordakademie.multiplechoice.user.model.UserRepository;
 import de.nordakademie.multiplechoice.user.service.UserService;
 import de.nordakademie.multiplechoice.user.ui.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,14 @@ public class ExamService {
     private final ExamRepository examRepository;
     private UserService userService;
     private ParticipationRepository participationRepository;
+    private QuestionRepository questionRepository;
 
     @Autowired
-    public ExamService(final ExamRepository examRepository, UserService userService, ParticipationRepository participationRepository) {
+    public ExamService(final ExamRepository examRepository, UserService userService, ParticipationRepository participationRepository, QuestionRepository questionRepository) {
         this.examRepository = examRepository;
         this.userService = userService;
         this.participationRepository = participationRepository;
+        this.questionRepository = questionRepository;
     }
 
     @Transactional(readOnly = true)
@@ -74,5 +77,16 @@ public class ExamService {
             }
         }
         return exams;
+    }
+
+    @Transactional
+    public double getMaximumPointsInExam(long examId) {
+        double maximumPoints = 0;
+        List<Question> questions = questionRepository.findByExam(examId);
+
+        for (Question question : questions) {
+            maximumPoints = maximumPoints + question.getScorePerCorrectChoice();
+        }
+        return maximumPoints;
     }
 }

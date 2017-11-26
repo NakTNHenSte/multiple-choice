@@ -22,6 +22,9 @@
     <definition name="examExecution" extends="pageFrame">
         <put-attribute name="content" value="/templates/exam/examExecution.jsp"/>
     </definition>
+    <definition name="embeddedExamFinishButton." extends="pageFrame">
+        <put-attribute name="content" value="/templates/exam/embeddedExamFinishButton.jsp"/>
+    </definition>
 
     <!-- participation -->
     <definition name="participationAddition" extends="pageFrame">
@@ -81,5 +84,9 @@
     <definition name="forbiddenError" extends="pageFrame">
         <put-attribute name="content" value="/templates/error/forbiddenError.jsp"/>
     </definition>
+    <definition name="examTimeOver" extends="pageFrame">
+        <put-attribute name="content" value="/templates/exam/examTimeOver.jsp"/>
+    </definition>
+
 
 </tiles-definitions>
