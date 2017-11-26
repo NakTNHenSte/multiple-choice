@@ -3,12 +3,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
 
-        <a class="navbar-brand" href="examList"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+        <a class="navbar-brand"><i class="fa fa-check-square-o" aria-hidden="true"></i>
             Multiple Choice</a>
 
         <div class="navbar-right">
+            <s:a action="userList">
+                ${sessionScope.userFullName}
+            </s:a>
             <s:a action="logout">
-                <i>${sessionScope.userFullName}</i>
                 <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
             </s:a>
         </div>

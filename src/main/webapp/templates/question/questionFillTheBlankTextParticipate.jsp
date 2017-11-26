@@ -14,7 +14,7 @@
     <s:hidden name="examId" value="%{exam.id}"/>
     <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
 
-    <s:label value="Bitte den Lueckentext ausfuellen" class="h3"/>
+    <s:label value="Bitte den Lückentext ausfüllen" class="h3"/>
 
     <table class="table">
         <tr>
