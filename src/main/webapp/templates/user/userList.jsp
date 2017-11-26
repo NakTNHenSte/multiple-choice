@@ -7,35 +7,39 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Nachname</th>
-        <th>Benutzername</th>
-        <th>Rolle</th>
-    </tr>
-        <tr>
-            <td><s:property value="user.id"/></td>
-            <td><s:property value="user.name"/></td>
-            <td><s:property value="user.surname"/></td>
-            <td><s:property value="user.username"/></td>
-            <td><s:property value="user.typ"/></td>
-        </tr>
-</table>
 
-<table>
-    <s:iterator value="participations">
+
+<div class="row">
+    <div class="col"><b>Id: </b><s:property value="user.id"/></div>
+</div>
+<div class="row">
+    <div class="col"><b>Name: </b><s:property value="user.name"/></div>
+</div>
+<div class="row">
+    <div class="col"><b>Nachname: </b><s:property value="user.surname"/></div>
+</div>
+<div class="row">
+    <div class="col"><b>Benutzername: </b><s:property value="user.username"/></div>
+</div>
+
+<div class="row">
+    <div class="col"><b>Rolle: </b><s:property value="user.typ"/></div>
+</div>
+
+<br>
+<p>
+<table class="table table-sm">
         <tr>
             <th>Titel</th>
-            <th>Dauer</th>
+            <th>Dauer (in Minuten)</th>
             <th>Start</th>
             <th>Ende</th>
             <th>Credits</th>
             <th>Seminar</th>
-            <th>Bestehensgrenze</th>
-            <th>Prüfungsergebnis</th>
+            <th>Bestehensgrenze (in %)</th>
+            <th>Prüfungsergebnis </th>
         </tr>
+    <s:iterator value="participations">
         <tr>
             <td><s:property value="exam.title"/></td>
             <td><s:property value="exam.duration"/></td>
@@ -49,3 +53,4 @@
     </s:iterator>
 
 </table>
+</p>

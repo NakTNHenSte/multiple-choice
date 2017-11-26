@@ -65,6 +65,7 @@
 
         <!-- exam -->
         <action name='examList' class="de.nordakademie.multiplechoice.exam.ui.ExamListAction">
+            <interceptor-ref name="loginStack"/>
             <result>examList</result>
         </action>
         <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="viewExam">
@@ -242,12 +243,16 @@
             <result>examExecution</result>
         </action>
 
-        <action name='participateFillTheBlankTextQuestion'
-                class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextParticipationAction"
-                method="participate">
-            <!--<interceptor-ref name="loginStack"/>-->
-            <!--<result name="input">questionEdit</result>-->
-            <result>questionFillTheBlankTextParticipate</result>
+        <action name='saveFillTheBlankText'
+                class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction"
+                method="saveTestAnswer">
+            <interceptor-ref name="loginStack"/>
+            <result name="input">questionFillTheBlankText</result>
+            <result type="redirectAction">
+            <param name="actionName">questionFillTheBlankText</param>
+            <param name="examId">${examId}</param>
+            <param name="currentQuestionIndex">${currentQuestionIndex}</param>
+            </result>
         </action>
 
         <!-- user -->
@@ -264,6 +269,7 @@
 
         <action name="logout" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
                 method="logout">
+            <interceptor-ref name="loginStack"/>
             <result name="success">Login</result>
         </action>
 
