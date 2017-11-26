@@ -24,6 +24,7 @@
         <th scope="col">Credits</th>
         <th scope="col">Prüfungszeitraum</th>
     </tr>
+
     <s:iterator value="exams">
         <tr>
             <td><s:a href="examDetail?examId=%{id}"> <s:property value="id"/></s:a></td>
@@ -34,4 +35,5 @@
             <td><s:property value="start"/> - <s:property value="end"/></td>
         </tr>
     </s:iterator>
+
 </table>

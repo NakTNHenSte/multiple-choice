@@ -2,36 +2,41 @@ package de.nordakademie.multiplechoice.exam.ui;
 
 import com.opensymphony.xwork2.Action;
 import de.nordakademie.multiplechoice.exam.model.Exam;
-import de.nordakademie.multiplechoice.exam.service.ExamService;
-import de.nordakademie.multiplechoice.user.ui.UserType;
+import de.nordakademie.multiplechoice.participation.model.Participation;
+import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class ExamListAction implements Action, SessionAware {
 
 
-    private final ExamService examService;
     private Exam exam;
-    private List<Exam> exams;
     private Map<String, Object> sessionMap;
+    private ParticipationService participationService;
+    private List<Participation> participations;
+    private List<Exam> exams = new ArrayList<Exam>();
 
     @Autowired
-    public ExamListAction(final ExamService examService) {
-        this.examService = examService;
+    public ExamListAction(final ParticipationService participationService) {
+        this.participationService = participationService;
     }
 
     @Override
     public String execute() {
-        exams = examService.findByUser((long) sessionMap.get("userId"));
+
+        participations = participationService.findByUser((long) sessionMap.get("userId"));
+        for (Participation participation :participations){
+            if(participation.getExamResult().equals("Nicht teilgenommen")){
+                exams.add(participation.getExam());
+            }
+        }
         return SUCCESS;
     }
 
-    public List<Exam> getExams() {
-        return exams;
-    }
 
     public Exam getExam() {
         return exam;
@@ -46,4 +51,17 @@ public class ExamListAction implements Action, SessionAware {
     }
 
 
+    public List<Participation> getParticipations() {
+        return participations;
+    }
+
+    public void setParticipations(List<Participation> participations) {
+        this.participations = participations;
+    }
+
+    public void setExams(List<Exam> exams) {
+        this.exams = exams;
+    }
+
+    public List<Exam> getExams(){return exams;}
 }

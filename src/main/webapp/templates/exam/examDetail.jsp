@@ -31,11 +31,11 @@
 </div>
 
 <div class="row">
-    <div class="col"><b>Prozentuale Punktzahl zum bestehen der Prüfung: </b><s:property
-            value="exam.percentualSuccessThreshold"/></div>
+    <div class="col"><b>Bestehensgrenze: </b><s:property
+            value="exam.percentualSuccessThreshold"/></div> %</div>
 </div>
 <div class="row">
-    <div class="col"><b>Dauer eines Prüfungsdurchlaufs: </b><s:property value="exam.duration"/> Minuten</div>
+    <div class="col"><b>Dauer: </b><s:property value="exam.duration"/> Minuten</div>
 </div>
 
 <s:if test='%{#session.userType == ("S")}'>
@@ -54,7 +54,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Bitten geben Sie ihr vom Dozenten erhaltenes Einmalpasswort ein, um die Prüfung zu starten. Beachten Sie, dass dieses Passwort nur einmal gültig ist und die Bearbeitungszeit mit dieser Anmeldnug beginnt.
+                    Bitten geben Sie ihr vom Dozenten erhaltenes Einmalpasswort ein, um die Prüfung zu starten. Beachten Sie, dass dieses Passwort nur einmal gültig ist und die Bearbeitungszeit mit dieser Anmeldung beginnt.
                 </div>
                 <div class="modal-footer">
                     <s:form action="startExam">
