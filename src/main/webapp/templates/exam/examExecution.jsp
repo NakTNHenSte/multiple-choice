@@ -17,15 +17,18 @@
 <s:include value="/templates/question/questionFillTheBlankTextParticipate.jsp"></s:include>
 </s:if>
 
+<s:if test='%{currentQuestionIndex > 0}'>
 <s:form action="previousQuestion">
     <s:hidden name="examId" value="%{exam.id}"/>
     <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
     <s:submit value="zurück" type="button" class="btn btn-secondary"/>
 </s:form>
+</s:if>
 
+<s:if test='%{currentQuestionIndex < questions.size()-1}'>
 <s:form action="nextQuestion">
     <s:hidden name="examId" value="%{exam.id}"/>
     <s:hidden name="currentQuestionIndex" value="%{currentQuestionIndex}"/>
     <s:submit value="weiter" type="button" class="btn btn-primary"/>
 </s:form>
-
+</s:if>

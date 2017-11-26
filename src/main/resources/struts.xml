@@ -238,12 +238,16 @@
             <result>examExecution</result>
         </action>
 
-        <action name='participateFillTheBlankTextQuestion'
-                class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextParticipationAction"
-                method="participate">
-            <!--<interceptor-ref name="loginStack"/>-->
-            <!--<result name="input">questionEdit</result>-->
-            <result>questionFillTheBlankTextParticipate</result>
+        <action name='saveFillTheBlankText'
+                class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction"
+                method="saveTestAnswer">
+            <interceptor-ref name="loginStack"/>
+            <result name="input">questionFillTheBlankText</result>
+            <result type="redirectAction">
+            <param name="actionName">questionFillTheBlankText</param>
+            <param name="examId">${examId}</param>
+            <param name="currentQuestionIndex">${currentQuestionIndex}</param>
+            </result>
         </action>
 
         <!-- user -->
