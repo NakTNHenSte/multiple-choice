@@ -21,6 +21,7 @@
 <div class="row">
     <div class="col"><b>Benutzername: </b><s:property value="user.username"/></div>
 </div>
+
 <div class="row">
     <div class="col"><b>Rolle: </b><s:property value="user.typ"/></div>
 </div>
@@ -28,17 +29,17 @@
 <br>
 <p>
 <table class="table table-sm">
-    <s:iterator value="participations">
         <tr>
             <th>Titel</th>
-            <th>Dauer</th>
+            <th>Dauer (in Minuten)</th>
             <th>Start</th>
             <th>Ende</th>
             <th>Credits</th>
             <th>Seminar</th>
-            <th>Bestehensgrenze</th>
-            <th>Prüfungsergebnis</th>
+            <th>Bestehensgrenze (in %)</th>
+            <th>Prüfungsergebnis </th>
         </tr>
+    <s:iterator value="participations">
         <tr>
             <td><s:property value="exam.title"/></td>
             <td><s:property value="exam.duration"/></td>
