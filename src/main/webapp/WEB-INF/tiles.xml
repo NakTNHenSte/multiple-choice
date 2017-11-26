@@ -56,9 +56,6 @@
     <definition name="userLogin" extends="pageFrame">
         <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
     </definition>
-    <definition name="Welcome" extends="pageFrame">
-        <put-attribute name="content" value="/templates/user/Welcome.jsp"/>
-    </definition>
     <definition name="Login" extends="pageFrame">
         <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
     </definition>

@@ -9,6 +9,11 @@ import de.nordakademie.multiplechoice.user.model.User;
 import de.nordakademie.multiplechoice.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Created by Dieke Luebberstedt on 18.11.17.
+ *
+ * Dieser Interceptor ueberprueft, ob der angemeldete User die Seiten aufrufen darf.
+ */
 
 public class PermissionInterceptor extends AbstractInterceptor {
 

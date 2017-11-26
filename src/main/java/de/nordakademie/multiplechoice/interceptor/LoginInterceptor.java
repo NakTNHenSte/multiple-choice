@@ -9,6 +9,9 @@ import de.nordakademie.multiplechoice.user.model.User;
 import de.nordakademie.multiplechoice.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Created by Dieke Luebberstedt on 18.11.17.
+ */
 
 public class LoginInterceptor extends AbstractInterceptor {
 
@@ -19,6 +22,7 @@ public class LoginInterceptor extends AbstractInterceptor {
     public String intercept(ActionInvocation invocation) throws Exception {
         Map<String, Object> sessionMap = ActionContext.getContext().getSession();
 
+        // pruefe ob eine session existiert. wenn nicht, dann gehe zum Login, andernfalls unternimm nichts weiteres
         if (!sessionMap.containsKey("userId"))
         {
             return "loginRedirect";
