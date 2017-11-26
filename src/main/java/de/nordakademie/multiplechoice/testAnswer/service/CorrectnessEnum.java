@@ -6,7 +6,7 @@ public enum CorrectnessEnum {
     MISSING("MISSING"),
     WRONG("WRONG");
 
-    private CorrectnessEnum(String correctness) {
+    CorrectnessEnum(String correctness) {
         this.correctness = correctness;
     }
 
