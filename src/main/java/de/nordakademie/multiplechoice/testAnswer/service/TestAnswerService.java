@@ -39,6 +39,12 @@ public class TestAnswerService {
     }
 
     @Transactional
+    public TestAnswer findByAnswerId(final long answerId) {
+        return testAnswerRepository.findByAnswerId(answerId);
+    }
+
+
+    @Transactional
     public void create(String answerFromUser, long examId, long userId, long answerId) {
 
         TestAnswer testAnswerFromDatabase = testAnswerRepository.findByUserIdAndExamIdAndAnswerId(examId, userId, answerId);
@@ -62,8 +68,9 @@ public class TestAnswerService {
 
         if (answerFromDatabase.getTrueOrFalse().equals(answerFromUser)) {
             testAnswer.setCorrectness(true);
+        } else {
+            testAnswer.setCorrectness(false);
         }
-        testAnswer.setCorrectness(false);
         return testAnswer;
     }
 
