@@ -15,13 +15,11 @@
         <th>Benutzername</th>
         <th>Rolle</th>
     </tr>
-    <s:iterator value="users">
         <tr>
-            <td><s:property value="id"/></td>
-            <td><s:property value="name"/></td>
-            <td><s:property value="surname"/></td>
-            <td><s:property value="username"/></td>
-            <td><s:property value="typ"/></td>
+            <td><s:property value="user.id"/></td>
+            <td><s:property value="user.name"/></td>
+            <td><s:property value="user.surname"/></td>
+            <td><s:property value="user.username"/></td>
+            <td><s:property value="user.typ"/></td>
         </tr>
-    </s:iterator>
 </table>
