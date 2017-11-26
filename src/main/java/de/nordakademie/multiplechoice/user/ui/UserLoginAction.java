@@ -35,7 +35,7 @@ public class UserLoginAction extends ActionSupport implements SessionAware {
 
                     // add userName to the session
                     sessionMap.put("userId", user.getId());
-                    sessionMap.put("userTyp", user.getTyp());
+                    sessionMap.put("userTyp", user.getType());
                     sessionMap.put("userFullName", user.getName()+" "+user.getSurname());
 
                     return SUCCESS; // return welcome page

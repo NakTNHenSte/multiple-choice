@@ -49,7 +49,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
     public String saveQuestionBlankText() {
 
         question.setExam(examService.findOne(this.getExamId()));
-        question.setQuestionTyp("gap");
+        question.setQuestionType("gap");
         question.setId(this.getQuestionId());
         if (this.getQuestionId() == 0) {
             questionService.create(question, getExamId());
