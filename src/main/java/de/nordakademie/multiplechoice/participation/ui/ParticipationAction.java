@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.participation.model.Participation;
+import de.nordakademie.multiplechoice.participation.service.ExamResultEnum;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import de.nordakademie.multiplechoice.user.model.User;
 import de.nordakademie.multiplechoice.user.service.UserService;
@@ -41,7 +42,7 @@ public class ParticipationAction extends ActionSupport implements Preparable{
     public String saveParticipation(){
 
         Participation participation = new Participation();
-        participation.setExamResult("Nicht teilgenommen");
+        participation.setExamResult(ExamResultEnum.NOT_PARTICIPATED.getExamResult());
         participation.setValid(true);
         participationService.create(participation, examId, user);
 

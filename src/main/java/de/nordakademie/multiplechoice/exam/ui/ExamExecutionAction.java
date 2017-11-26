@@ -113,7 +113,7 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         Participation participation = participationService.findByUserIdAndExamId(userId, examId);
 
         if (isParticipationAllowed(participation)) {
-            participation.setValid(true); // TODO: zu false ändern und in condition packen
+            participation.setValid(false);
             participation.setExamStartTimestamp(new Timestamp(System.currentTimeMillis()));
             participationService.update(participation);
             return SUCCESS;
