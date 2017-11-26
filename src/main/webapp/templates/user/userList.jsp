@@ -27,14 +27,24 @@
 <table>
     <s:iterator value="participations">
         <tr>
-            <td><s:property value="participation.exam.title"/></td>
-            <td><s:property value="participation.exam.duration"/></td>
-            <td><s:property value="participation.exam.percentualSuccessThreshold"/></td>
-            <td><s:property value="participation.exam.start"/></td>
-            <td><s:property value="participation.exam.end"/></td>
-            <td><s:property value="participation.exam.credits"/></td>
-            <td><s:property value="participation.exam.seminar"/></td>
-            <td><s:property value="participation.examResult"/></td>
+            <th>Titel</th>
+            <th>Dauer</th>
+            <th>Start</th>
+            <th>Ende</th>
+            <th>Credits</th>
+            <th>Seminar</th>
+            <th>Bestehensgrenze</th>
+            <th>Prüfungsergebnis</th>
+        </tr>
+        <tr>
+            <td><s:property value="exam.title"/></td>
+            <td><s:property value="exam.duration"/></td>
+            <td><s:property value="exam.start"/></td>
+            <td><s:property value="exam.end"/></td>
+            <td><s:property value="exam.credits"/></td>
+            <td><s:property value="exam.seminar"/></td>
+            <td><s:property value="exam.percentualSuccessThreshold"/></td>
+            <td><s:property value="examResult"/></td>
         </tr>
     </s:iterator>
 
