@@ -60,17 +60,6 @@
         <put-attribute name="content" value="/templates/user/userLogin.jsp"/>
     </definition>
 
-    <!-- answer -->
-    <definition name="lecturerAnswerList" extends="pageFrame">
-        <put-attribute name="content" value="/templates/answer/lecturerAnswerList.jsp"/>
-    </definition>
-    <definition name="studentAnswerList" extends="pageFrame">
-        <put-attribute name="content" value="/templates/answer/studentAnswerList.jsp"/>
-    </definition>
-    <definition name="embeddedAnswerEdit" extends="pageFrame">
-        <put-attribute name="content" value="/templates/answer/embeddedAnswerEdit.jsp"/>
-    </definition>
-
     <!-- errors -->
     <definition name="notFoundError" extends="pageFrame">
         <put-attribute name="content" value="/templates/error/pageNotFoundError.jsp"/>

@@ -97,11 +97,6 @@ public class TestAnswerService {
     }
 
     @Transactional
-    public List<TestAnswer> findByUserIdAndExamId(long userId, long examId) {
-        return testAnswerRepository.findByUserIdAndExamId(userId, examId);
-    }
-
-    @Transactional
     public double getAchievedPointsInExam(long userId, long examId) {
         double points = 0;
 

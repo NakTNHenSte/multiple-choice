@@ -40,7 +40,6 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     private Exam exam;
     private long examId;
     private long userId;
-    private boolean editableExam;
 
     private List<Participation> participations;
     private List<Question> questions;
@@ -81,7 +80,7 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     public String removeExam() {
         exam = examService.findOne(examId);
 
-        if (isEditableExam(examId, exam.getEnd(),exam.getStart())) {
+        if (isEditableExam(exam.getEnd(),exam.getStart())) {
             questions = questionService.findByExam(examId);
             for (Question question : questions) {
                 answers = answerService.findAll(question.getId());
@@ -109,7 +108,7 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     public String editExam() {
         exam = examService.findOne(examId);
 
-        if (isEditableExam(examId, exam.getEnd(),exam.getStart())) {
+        if (isEditableExam(exam.getEnd(),exam.getStart())) {
             loadExamData();
             return SUCCESS;
         } else {
@@ -142,7 +141,7 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     }
 
 
-    private boolean isEditableExam(long examId, Date endDate, Date startDate) {
+    private boolean isEditableExam(Date endDate, Date startDate) {
         Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
         if(startDate.after(currentTimestamp)){
             return true;
@@ -154,9 +153,6 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
         }
     }
 
-    public void setEditableExam(boolean editableExam) {
-        this.editableExam = editableExam;
-    }
 
     @Override
     public void setSession(Map<String, Object> map) {

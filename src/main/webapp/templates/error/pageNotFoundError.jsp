@@ -11,7 +11,7 @@
     <h2>OOPS!</h2>
     <h3>404 Not Found</h3>
     <p>
-        <s:text name="Die angeforderte Seite kann nicht gefunden werden!" />
+        Die angeforderte Seite kann nicht gefunden werden!
     </p>
 </div>
 

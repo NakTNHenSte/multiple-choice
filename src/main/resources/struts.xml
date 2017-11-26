@@ -144,10 +144,6 @@
         </action>
 
         <!-- question -->
-        <action name='questionList' class="de.nordakademie.multiplechoice.question.ui.QuestionListAction">
-            <!--<interceptor-ref name="loginStack"/>-->
-            <result>questionList</result>
-        </action>
 
         <action name='questionEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
@@ -239,26 +235,6 @@
             </result>
         </action>
 
-        <action name='participateQuestion'
-                class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction"
-                method="participate">
-            <!--<interceptor-ref name="loginStack"/>-->
-            <!--<result name="input">questionEdit</result>-->
-            <result>examExecution</result>
-        </action>
-
-        <action name='saveFillTheBlankText'
-                class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction"
-                method="saveTestAnswer">
-            <interceptor-ref name="loginStack"/>
-            <result name="error">examTimeOver</result>
-            <result type="redirectAction">
-                <param name="actionName">questionFillTheBlankText</param>
-                <param name="examId">${examId}</param>
-                <param name="currentQuestionIndex">${currentQuestionIndex}</param>
-            </result>
-        </action>
-
         <!-- user -->
         <action name='userList' class="de.nordakademie.multiplechoice.user.ui.UserListAction">
             <interceptor-ref name="loginStack"/>
@@ -278,29 +254,6 @@
         </action>
 
         <!-- answer -->
-        <action name='lecturerAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
-            <interceptor-ref name="loginStack"/>
-            <result>lecturerAnswerList</result>
-        </action>
-
-        <action name='studentAnswerList' class="de.nordakademie.multiplechoice.answer.ui.AnswerListAction">
-            <interceptor-ref name="loginStack"/>
-            <result>studentAnswerList</result>
-        </action>
-
-        <action name='saveAnswer'
-                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
-                method="saveAnswer">
-            <interceptor-ref name="permissionStack"/>
-            <result type="redirectAction">lecturerAnswerList</result>
-            <result name="input">answerEdit</result>
-        </action>
-
-        <action name='embeddedAnswerEdit'
-                class="de.nordakademie.multiplechoice.answer.ui.AnswerEditAction"
-                method="getForm">
-            <result>embeddedAnswerEdit</result>
-        </action>
 
         <action name='deleteAnswer'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"

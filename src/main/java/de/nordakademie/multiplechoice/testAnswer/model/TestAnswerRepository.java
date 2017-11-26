@@ -29,17 +29,6 @@ public class TestAnswerRepository {
         return entityManager.find(TestAnswer.class, testAnswerId);
     }
 
-    public List<TestAnswer> findByUser(long userId) {
-        return entityManager.createQuery("SELECT p FROM TestAnswer p WHERE user_id = :userId", TestAnswer.class)
-                .setParameter("userId", userId).getResultList();
-    }
-
-    public List<TestAnswer> findByUserIdAndExamId(long userId, long examId) {
-        return entityManager.createQuery("SELECT p FROM TestAnswer p WHERE exam_id = :examId " +
-                "AND user_id = :userId", TestAnswer.class)
-                .setParameter("examId", examId).setParameter("userId", userId).getResultList();
-    }
-
     public TestAnswer findByUserIdAndExamIdAndAnswerId(long userId, long examId, long answerId) {
         try {
             return entityManager.createQuery("SELECT p FROM TestAnswer p WHERE exam_id = :examId " +

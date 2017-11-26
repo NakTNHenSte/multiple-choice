@@ -9,9 +9,9 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <div class="jumbotron">
     <h2>
-        <s:text name="Zugriff verweigert" />
+        Zugriff verweigert"
     </h2>
     <p>
-        <s:text name="Sie haben nicht die Berechtigung, um auf diese Seite zuzugreifen!" />
+        Sie haben nicht die Berechtigung, um auf diese Seite zuzugreifen!
     </p>
 </div>

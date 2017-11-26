@@ -68,6 +68,7 @@
                 <th>Nachname</th>
                 <th>Einmalpasswort</th>
                 <th>Gültigkeit des PW</th>
+                <th>Prüfungsergebnis</th>
             </tr>
             <s:iterator value="participations">
                 <tr>
@@ -75,6 +76,7 @@
                     <td><s:property value="user.surname"/></td>
                     <td><s:property value="oneTimePassword"/></td>
                     <td><s:property value="valid"/></td>
+                    <td><s:property value="examResult"/></td>
                 </tr>
             </s:iterator>
         </table>
@@ -110,7 +112,7 @@
                         <s:hidden name="userId" value="%{#session.userId}"/>
 
                         <s:textfield name="oneTimePassword" label="Einmalpasswort"/>
-                        <s:submit value="Prüfen starten" type="button" class="btn btn-primary"/>
+                        <s:submit value="Prüfung starten" type="button" class="btn btn-primary"/>
                     </s:form>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
 

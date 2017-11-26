@@ -21,7 +21,6 @@ public class TestAnswerAction extends ActionSupport implements SessionAware {
 
 
     private long examId;
-    private long answerId;
     private long questionId;
     private Exam exam;
     private List<String> givenAnswers = new ArrayList<>();
@@ -84,11 +83,11 @@ public class TestAnswerAction extends ActionSupport implements SessionAware {
         examStartTimestamp = participation.getExamStartTimestamp();
 
         if (((now.getTime() / 1000) - (examStartTimestamp.getTime() / 1000)) / 60 < participation.getExam().getDuration()) {
-            addActionError("Die Bearbeitungszeit ist abgelaufen.");
-            finishExam();
             return true;
 
         } else {
+            finishExam();
+            addActionError("Die Bearbeitungszeit ist abgelaufen.");
             return false;
         }
 
@@ -114,14 +113,6 @@ public class TestAnswerAction extends ActionSupport implements SessionAware {
 
     public void setExamId(long examId) {
         this.examId = examId;
-    }
-
-    public long getAnswerId() {
-        return answerId;
-    }
-
-    public void setAnswerId(long answerId) {
-        this.answerId = answerId;
     }
 
     public List<String> getGivenAnswers() {

@@ -114,6 +114,7 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
 
         if (isParticipationAllowed(participation)) {
             participation.setValid(false);
+            participation.setExamResult("Prüfung abgebrochen");
             participation.setExamStartTimestamp(new Timestamp(System.currentTimeMillis()));
             participationService.update(participation);
             return SUCCESS;
@@ -161,23 +162,6 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         }
 
         return true;
-    }
-
-    public String participate() {
-        // TODO: DIESE METHODE ENTFERNEN
-        loadQuestions();
-        loadCurrentQuestion();
-
-        /**
-         * Hier muss noch das Speichern der gegebenen Antworten rein. Das geht jedoch erst,
-         * wenn wir die Tabelle dazu besprochen und erstellt haben.
-         */
-
-        //TODO: anpassen an das Antwortenattribut der Studenten-Klasse (die es noch nicht gibt)
-        for (String answer : givenAnswers) {
-
-        }
-        return SUCCESS;
     }
 
     public Exam getExam() {
