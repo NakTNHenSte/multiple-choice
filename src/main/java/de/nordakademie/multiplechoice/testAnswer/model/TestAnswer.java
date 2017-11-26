@@ -6,7 +6,6 @@ package de.nordakademie.multiplechoice.testAnswer.model;
 
 import de.nordakademie.multiplechoice.answer.model.Answer;
 import de.nordakademie.multiplechoice.exam.model.Exam;
-import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.user.model.User;
 
 import javax.persistence.*;

@@ -1,6 +1,5 @@
 package de.nordakademie.multiplechoice.question.service;
 
-import de.nordakademie.multiplechoice.exam.model.ExamRepository;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.model.QuestionRepository;

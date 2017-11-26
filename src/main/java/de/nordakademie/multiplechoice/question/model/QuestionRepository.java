@@ -1,6 +1,5 @@
 package de.nordakademie.multiplechoice.question.model;
 
-import de.nordakademie.multiplechoice.user.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

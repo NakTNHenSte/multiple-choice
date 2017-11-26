@@ -6,7 +6,6 @@ import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.model.ParticipationRepository;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.model.QuestionRepository;
-import de.nordakademie.multiplechoice.question.service.QuestionService;
 import de.nordakademie.multiplechoice.user.model.User;
 import de.nordakademie.multiplechoice.user.service.UserService;
 import de.nordakademie.multiplechoice.user.ui.UserType;
@@ -36,32 +35,59 @@ public class ExamService {
         this.questionRepository = questionRepository;
     }
 
+    /**
+     * Ruft das ExamRepository auf um alle Exam Entitäten zurückzugeben.
+     * @return alle Exam Entitäten aus der Datenbank.
+     */
     @Transactional(readOnly = true)
     public List<Exam> findAll() {
         return examRepository.findAll();
     }
 
+    /**
+     * Diese Methode übergibt dem ExamRepository ein Exam um dieses
+     * in der Datenbank zu erschaffen.
+     * @param exam ist die zu erschaffende Exam Entität.
+     */
     @Transactional
     public void create(final Exam exam) {
         examRepository.create(exam);
     }
 
+    /**
+     * Ruft das ExamRepository auf um ein Exam anhand einer examId zu finden.
+     * @param examId die Id der Prüfung die gefunden werden sollen.
+     * @return gibt ein Exam zurück.
+     */
     @Transactional
     public Exam findOne(final long examId) {
         return examRepository.findOne(examId);
     }
 
+    /**
+     * Ruft das ExamRepository auf um ein Exam aus der Datenbank zu löschen.
+     * @param examId ist die Id des zu entfernenden Exams.
+     */
     @Transactional
     public void removeExam(final long examId) {
         Exam exam = examRepository.findOne(examId);
         examRepository.remove(exam);
     }
 
+    /**
+     * Ruft das ExamRepository auf um ein Exam in der Datenbank zu aktualisieren.
+     * @param exam ist das Exam mit den aktualisierten Werten.
+     */
     @Transactional
     public void update(Exam exam) {
         examRepository.update(exam);
     }
 
+    /**
+     * Ruft das ExamRepository auf um anhand einer userId Exams zu finden.
+     * @param userId die Id eines Users zu der die Exams gefunden werden sollen.
+     * @return gibt eine Liste von Exams zurück.
+     */
     @Transactional
     public List<Exam> findByUser(long userId) {
 
@@ -79,6 +105,11 @@ public class ExamService {
         return exams;
     }
 
+    /**
+     * Gibt die maximal zu erreichende Punktzahl eines Exams zurück.
+     * @param examId die Id der Prüfung.
+     * @return die maximale Punktzahl.
+     */
     @Transactional
     public double getMaximumPointsInExam(long examId) {
         double maximumPoints = 0;

@@ -2,7 +2,6 @@ package de.nordakademie.multiplechoice.exam.ui;
 
 import com.opensymphony.xwork2.Action;
 import de.nordakademie.multiplechoice.exam.model.Exam;
-import de.nordakademie.multiplechoice.exam.model.ExamRepository;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;

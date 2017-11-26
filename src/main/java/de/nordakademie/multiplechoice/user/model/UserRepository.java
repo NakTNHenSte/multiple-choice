@@ -17,14 +17,26 @@ public class UserRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * Diese Methode erschafft eine neue User Entität in der Datenbank.
+     * @param user ist die zu erschaffende Entität.
+     */
     public void create(final User user) {
         entityManager.persist(user);
     }
 
+    /**
+     * @return alle User Entitäten aus der Datenbank.
+     */
     public List<User> findAll() {
         return entityManager.createQuery("SELECT r FROM User r", User.class).getResultList();
     }
 
+    /**
+     * Findet einen User anhand des Parameters.
+     * @param userNaturalId der username des Users.
+     * @return gibt einen User zurück.
+     */
     public User findUser(final String userNaturalId) {
         try {
             return entityManager.createQuery("SELECT r FROM User r WHERE username = :username", User.class)
@@ -34,10 +46,19 @@ public class UserRepository {
         }
     }
 
+    /**
+     * Findet einen User aus der Datenbank anhand des Parameters.
+     * @param userId die Id des Users der gefunden werden soll.
+     * @return gibt einen User zurück.
+     */
     public User find(long userId) {
         return entityManager.find(User.class, userId);
     }
 
+
+    /**
+     * @return gibt alle User vom Typ Studenten zurück.
+     */
     public List<User> findStudents() {
 
         try {

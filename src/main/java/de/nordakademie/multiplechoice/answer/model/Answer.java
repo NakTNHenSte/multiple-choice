@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.question.model.Question;
 
 @Entity

@@ -1,12 +1,10 @@
 package de.nordakademie.multiplechoice.exam.model;
 
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
-import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.user.model.User;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
 
 
 /**

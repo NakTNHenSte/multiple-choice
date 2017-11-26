@@ -31,7 +31,6 @@ public class UserListAction implements Action, SessionAware{
     public String execute() {
         user = userService.find((long) sessionMap.get("userId"));
         participations = participationService.findByUser((long) sessionMap.get("userId"));
-
         return SUCCESS;
     }
 

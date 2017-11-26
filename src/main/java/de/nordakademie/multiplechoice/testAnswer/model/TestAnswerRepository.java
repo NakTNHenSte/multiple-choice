@@ -1,6 +1,5 @@
 package de.nordakademie.multiplechoice.testAnswer.model;
 
-import org.aspectj.weaver.ast.Test;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

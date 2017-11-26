@@ -5,7 +5,6 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-import de.nordakademie.multiplechoice.user.model.User;
 import de.nordakademie.multiplechoice.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 

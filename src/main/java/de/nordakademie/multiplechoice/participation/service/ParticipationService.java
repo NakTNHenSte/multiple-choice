@@ -1,6 +1,5 @@
 package de.nordakademie.multiplechoice.participation.service;
 
-import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.model.ParticipationRepository;

@@ -3,11 +3,9 @@ package de.nordakademie.multiplechoice.answer.ui;
 /**
  * Created by Steven on 19.11.2017.
  */
-import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.multiplechoice.answer.model.Answer;
 import de.nordakademie.multiplechoice.answer.service.AnswerService;
-import org.hibernate.event.service.spi.DuplicationStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
