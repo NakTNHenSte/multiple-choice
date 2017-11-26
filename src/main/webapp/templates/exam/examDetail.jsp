@@ -42,7 +42,15 @@
         </div>
     </tr>
     <br>
+
+    <s:if test="hasActionErrors()">
+        <div class="alert alert-danger" role="alert">
+            <s:actionerror/>
+        </div>
+    </s:if>
+
     <s:if test='%{#session.userType == ("D")}'>
+
         <s:form action="editExam">
             <s:hidden name="examId" value="%{exam.id}"/>
             <s:submit value="editieren" type="button" class="btn btn-secondary"/>
@@ -52,11 +60,6 @@
             <s:hidden name="examId" value="%{exam.id}"/>
             <s:submit value="löschen" type="button" class="btn btn-danger"/>
         </s:form>
-        <s:if test="hasActionErrors()">
-            <div class="alert alert-danger" role="alert">
-                <s:actionerror/>
-            </div>
-        </s:if>
 
         <p>
         <table class="table table-sm">
