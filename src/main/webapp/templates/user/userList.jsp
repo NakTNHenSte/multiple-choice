@@ -23,3 +23,19 @@
             <td><s:property value="user.typ"/></td>
         </tr>
 </table>
+
+<table>
+    <s:iterator value="participations">
+        <tr>
+            <td><s:property value="participation.exam.title"/></td>
+            <td><s:property value="participation.exam.duration"/></td>
+            <td><s:property value="participation.exam.percentualSuccessThreshold"/></td>
+            <td><s:property value="participation.exam.start"/></td>
+            <td><s:property value="participation.exam.end"/></td>
+            <td><s:property value="participation.exam.credits"/></td>
+            <td><s:property value="participation.exam.seminar"/></td>
+            <td><s:property value="participation.examResult"/></td>
+        </tr>
+    </s:iterator>
+
+</table>

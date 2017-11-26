@@ -19,11 +19,12 @@ public class Participation {
     private String oneTimePassword;
     private boolean valid;
     private Exam exam;
+    private String examResult;
 
     public Participation() {
     }
 
-    public Participation(final long id, final String name, final String surname, final String username, final String typ, final String OneTimePassword) {
+    public Participation(final long id, final String name, final String surname, final String username, final String typ, final String OneTimePassword, final String examResult) {
         this.id = id;
     }
 
@@ -74,4 +75,12 @@ public class Participation {
     }
 
 
+    @Basic
+    public String getExamResult() {
+        return examResult;
+    }
+
+    public void setExamResult(String examResult) {
+        this.examResult = examResult;
+    }
 }
