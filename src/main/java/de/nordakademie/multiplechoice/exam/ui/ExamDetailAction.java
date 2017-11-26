@@ -10,6 +10,7 @@ import de.nordakademie.multiplechoice.participation.model.Participation;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
+import de.nordakademie.multiplechoice.testAnswer.service.TestAnswerService;
 import de.nordakademie.multiplechoice.user.service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
 
 
     Map<String, Object> session;
+    private TestAnswerService testAnswerService;
 
     public void setExam(Exam exam) {
         this.exam = exam;
@@ -45,12 +47,13 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     private List<Answer> answers;
 
     @Autowired
-    public ExamDetailAction(final ExamService examService, UserService userService, QuestionService questionService, ParticipationService participationService, AnswerService answerService) {
+    public ExamDetailAction(final ExamService examService, UserService userService, QuestionService questionService, ParticipationService participationService, AnswerService answerService, TestAnswerService testAnswerService) {
         this.examService = examService;
         this.userService = userService;
         this.questionService = questionService;
         this.participationService = participationService;
         this.answerService = answerService;
+        this.testAnswerService = testAnswerService;
     }
 
     @Override
@@ -88,7 +91,8 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
                 questionService.delete(question.getId());
             }
             participationService.deleteExam(examId);
-            examService.removeExam(this.getExamId());
+            examService.removeExam(examId);
+            testAnswerService.deleteAllByExam(examId);
             return SUCCESS;
         } else {
             addActionError("Prüfung kann erst nach Ende des Prüfungszeitraums nicht mehr gelöscht werden");
