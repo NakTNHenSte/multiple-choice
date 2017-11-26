@@ -36,7 +36,7 @@ public class ExamListAction implements Action, SessionAware {
 
         participations = participationService.findByUser((long) sessionMap.get("userId"));
         for (Participation participation :participations){
-            if(participation.getExamResult().equals("Nicht teilgenommen")){
+            if(participation.getExamResult().equals("Nicht teilgenommen") || participation.getExamResult().equals("Prüfung abgebrochen")){
                 exams.add(participation.getExam());
             }
         }}

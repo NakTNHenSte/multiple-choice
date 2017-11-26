@@ -110,7 +110,7 @@
                         <s:hidden name="userId" value="%{#session.userId}"/>
 
                         <s:textfield name="oneTimePassword" label="Einmalpasswort"/>
-                        <s:submit value="Prüfen starten" type="button" class="btn btn-primary"/>
+                        <s:submit value="Prüfung starten" type="button" class="btn btn-primary"/>
                     </s:form>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
 

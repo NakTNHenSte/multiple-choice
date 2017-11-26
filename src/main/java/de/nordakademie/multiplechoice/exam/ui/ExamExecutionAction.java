@@ -114,6 +114,7 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
 
         if (isParticipationAllowed(participation)) {
             participation.setValid(false);
+            participation.setExamResult("Prüfung abgebrochen");
             participation.setExamStartTimestamp(new Timestamp(System.currentTimeMillis()));
             participationService.update(participation);
             return SUCCESS;
