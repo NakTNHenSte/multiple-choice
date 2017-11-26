@@ -68,6 +68,7 @@
                 <th>Nachname</th>
                 <th>Einmalpasswort</th>
                 <th>Gültigkeit des PW</th>
+                <th>Prüfungsergebnis</th>
             </tr>
             <s:iterator value="participations">
                 <tr>
@@ -75,6 +76,7 @@
                     <td><s:property value="user.surname"/></td>
                     <td><s:property value="oneTimePassword"/></td>
                     <td><s:property value="valid"/></td>
+                    <td><s:property value="examResult"/></td>
                 </tr>
             </s:iterator>
         </table>

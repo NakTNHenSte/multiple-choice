@@ -10,7 +10,7 @@
 <div class="jumbotron">
     <h2>OOPS!</h2>
     <p>
-        <s:text name="Entschuldigung, aber ein Fehler ist aufgetreten! Bitte versuchen Sie es noch einmal." />
+        Entschuldigung, aber ein Fehler ist aufgetreten! Bitte versuchen Sie es noch einmal.
     </p>
 </div>
 
