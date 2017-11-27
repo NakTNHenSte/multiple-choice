@@ -17,7 +17,7 @@ INSERT INTO QUESTION VALUES (100100, 'Hier steht eine Frage', 'multiple', 1, -0.
 INSERT INTO QUESTION VALUES (100200, 'Die ist die _%richtige%_ Antwort.', 'gap', 4, -1, 0,  123400);
 INSERT INTO QUESTION VALUES (100300, 'Wirtschaftsinformatik ist die Kombination aus _%Betriebswirtschaftslehre%_ und _%Informatik%_.', 'gap', 6, 0, 0,  123400);
 INSERT INTO QUESTION VALUES (100400, 'Wie heisst die Hauptstadt von China?', 'multiple', 1, 0, 0,  123400);
-INSERT INTO QUESTION VALUES (100500, 'Was kann ein Wirtschaftsinformatiker alles nach seiner Ausbildung?', 'multiple,', 1, -1, -0.5,  123400);
+INSERT INTO QUESTION VALUES (100500, 'Was kann ein Wirtschaftsinformatiker alles nach seiner Ausbildung?', 'multiple', 1, -1, -0.5,  123400);
 
 INSERT INTO ANSWER VALUES (10000, 'Softwaretechnik existiert seit 1969.', 'false', 100100);
 INSERT INTO ANSWER VALUES (20000, 'Das ist die richtige Antwort.', 'true', 100100);
