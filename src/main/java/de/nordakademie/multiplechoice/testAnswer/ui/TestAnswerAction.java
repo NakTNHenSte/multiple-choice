@@ -40,6 +40,9 @@ public class TestAnswerAction extends ActionSupport implements SessionAware {
         this.participationService = participationService;
     }
 
+    /*
+    * Speichert die einzelnen angegebenen Antworten des Users ab
+    * */
     public String saveTestAnswers() {
 
         if (isSavingAnswersAllowed()) {
@@ -60,6 +63,9 @@ public class TestAnswerAction extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
 
+    /*
+    * Beendet den Test und wertet das Pruefungsergebnis aus
+    * */
     public String finishExam() {
 
         long userId = (long) sessionMap.get("userId");
@@ -76,6 +82,9 @@ public class TestAnswerAction extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
 
+    /*
+    * Prueft, ob die Sitzung des Tests noch aktiv ist und Antworten noch abgegspeichert werden duerfen
+    * */
     private boolean isSavingAnswersAllowed() {
         Participation participation = participationService.findByUserIdAndExamId((long) sessionMap.get("userId"), examId);
         Timestamp now = new Timestamp(System.currentTimeMillis());
