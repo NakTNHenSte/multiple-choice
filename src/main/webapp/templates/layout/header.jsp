@@ -2,21 +2,20 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-
-        <a href="/examList" class="navbar-brand"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+        <a href="/examList" class="navbar-brand">
             Multiple Choice</a>
 
         <div class="navbar-right">
             <s:a action="userList">
                 ${sessionScope.userFullName}
             </s:a>
-            <button class="fa fa-sign-out fa-2x" data-toggle="modal" data-target="#confirmationModal2" aria-hidden="true">
+            <button data-toggle="modal" data-target="#confirmationModal2" aria-hidden="true">Logout
             </button>
         </div>
-
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="confirmationModal2" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel2"
+    <div class="modal fade" id="confirmationModal2" tabindex="-1" role="dialog"
+         aria-labelledby="confirmationModalLabel2"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
