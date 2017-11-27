@@ -77,6 +77,12 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
         this.examId = examId;
     }
 
+    /**
+     * Diese Methode handled das Löschen von Prüfungen. Um eine Prüfung vollständig zu
+     * löschen werden erst die enthaltenen Fragen und Antworten gelöscht.
+     * Eine Prüfung kann nur unter bestimmten Bedingungen gelöscht werden.
+     * @return Action Result Konstante.
+     */
     public String removeExam() {
         exam = examService.findOne(examId);
 
@@ -105,6 +111,10 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
         questions = questionService.findByExam(exam.getId());
     }
 
+    /**
+     * Diese Methode handled das editieren von Exams.
+     * @return Action Result Konstante.
+     */
     public String editExam() {
         exam = examService.findOne(examId);
 
@@ -117,11 +127,19 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
         }
     }
 
+    /**
+     * Diese Methode handled das Anzeigen von Prüfungen.
+     * @return Action Result Konstante.
+     */
     public String viewExam() {
         loadExamData();
         return SUCCESS;
     }
 
+    /**
+     * Diese Methode handled das Speichern und Updaten von Prüfungen.
+     * @return Action Result Konstante.
+     */
     public String saveExam() {
 
         exam.setUser(userService.find(userId));

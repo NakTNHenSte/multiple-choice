@@ -38,6 +38,9 @@ public class ParticipationAction extends ActionSupport implements Preparable{
         this.userService = userService;
     }
 
+    /** Diese Methode speichert eine Participation bzw. eine Prüfungsteilnahme.
+     * @return
+     */
     public String saveParticipation(){
 
         Participation participation = new Participation();
@@ -95,6 +98,9 @@ public class ParticipationAction extends ActionSupport implements Preparable{
 
     }
 
+    /**
+     * Diese Methode löscht eine Teilnahme.
+     */
     public String removeParticipation(){
         participationService.delete(participationId);
         return SUCCESS;

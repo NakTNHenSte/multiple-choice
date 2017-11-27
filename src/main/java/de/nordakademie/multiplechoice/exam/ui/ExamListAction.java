@@ -4,7 +4,9 @@ import com.opensymphony.xwork2.Action;
 import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.participation.model.Participation;
+import de.nordakademie.multiplechoice.participation.service.ExamResultEnum;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;
+import de.nordakademie.multiplechoice.user.ui.UserType;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,11 +33,11 @@ public class ExamListAction implements Action, SessionAware {
     @Override
     public String execute() {
 
-        if(sessionMap.get("userType").equals("S")){
+        if(sessionMap.get("userType").equals(UserType.S.toString())){
 
         participations = participationService.findByUser((long) sessionMap.get("userId"));
         for (Participation participation :participations){
-            if(participation.getExamResult().equals("Nicht teilgenommen") || participation.getExamResult().equals("Prüfung abgebrochen")){
+            if(participation.getExamResult().equals(ExamResultEnum.NOT_PARTICIPATED.getExamResult()) || participation.getExamResult().equals(ExamResultEnum.PARTICIPATION_CANCELLED.getExamResult())){
                 exams.add(participation.getExam());
             }
         }}
