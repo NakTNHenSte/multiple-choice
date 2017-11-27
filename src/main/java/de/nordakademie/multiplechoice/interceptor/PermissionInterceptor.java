@@ -26,12 +26,12 @@ public class PermissionInterceptor extends AbstractInterceptor {
 
         if (sessionMap.containsKey("userId")) {
 
-            final long userId = (long) sessionMap.get("userId");
-            final User user = userService.find(userId);
+     //       final long userId = (long) sessionMap.get("userId");
+     //       final User user = userService.find(userId);
 
 //            Ueberpruefen, ob der angemeldete User ein Dozent ist. Ansonsten den Zugriff auf die Zeite verweigern
 
-            if (user.getType().equals("D")) {
+            if (sessionMap.get("userType").equals("D")) {
 
                 return invocation.invoke();
 

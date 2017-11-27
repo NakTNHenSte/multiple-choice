@@ -13,12 +13,12 @@
 
     <!--Fange 404 Fehler ab -->
     <package name="serveAll" namespace="" extends="struts-default">
-    <result-types>
-    <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
-    </result-types>
-    <action name="*">
-    <result type="tiles">notFoundError</result>
-    </action>
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+        </result-types>
+        <action name="*">
+            <result type="tiles">notFoundError</result>
+        </action>
     </package>
 
     <package name='default' extends="tiles-default">
@@ -30,7 +30,8 @@
 
         <!-- Interceptor, der prueft, ob User angemeldet sind -->
         <interceptors>
-            <interceptor name="loginInterceptor" class="de.nordakademie.multiplechoice.interceptor.LoginInterceptor">
+            <interceptor name="loginInterceptor"
+                         class="de.nordakademie.multiplechoice.interceptor.LoginInterceptor">
             </interceptor>
             <interceptor name="permissionInterceptor"
                          class="de.nordakademie.multiplechoice.interceptor.PermissionInterceptor">
@@ -53,9 +54,9 @@
         </global-results>
 
         <!-- Fange 500 Fehler ab -->
- <!--       <global-exception-mappings>
-        <exception-mapping exception="java.lang.Exception" result="genericError" />
-        </global-exception-mappings>-->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="genericError"/>
+        </global-exception-mappings>
 
         <action name="" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
                 method="login">
@@ -69,11 +70,13 @@
             <result>examList</result>
         </action>
         <action name='examDetail' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="viewExam">
+            <interceptor-ref name="loginStack"/>
             <result>examDetail</result>
 
         </action>
         <action name='saveExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction"
                 method="saveExam">
+            <interceptor-ref name="permissionStack"/>
             <result name="input">examCreationForm</result>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
@@ -82,40 +85,51 @@
         </action>
 
         <action name='newExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction">
+            <interceptor-ref name="permissionStack"/>
             <result>examCreationForm</result>
         </action>
+
+
         <action name='editExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="editExam">
+            <interceptor-ref name="permissionStack"/>
             <result>examEditForm</result>
             <result name="input">
                 examDetail
             </result>
         </action>
+
         <action name='removeExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction" method="removeExam">
+            <interceptor-ref name="permissionStack"/>
             <result name="input">examDetail</result>
             <result type="redirectAction">examList</result>
         </action>
 
         <action name='startExam' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction" method="runExam">
+            <interceptor-ref name="loginStack"/>
             <result name="input">examDetail</result>
             <result name="success">examExecution</result>
-
         </action>
 
-        <action name='finishExam' class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction" method="finishExam">
+        <action name='finishExam' class="de.nordakademie.multiplechoice.testAnswer.ui.TestAnswerAction"
+                method="finishExam">
+            <interceptor-ref name="loginStack"/>
             <result type="redirectAction">userList</result>
         </action>
 
         <action name='examExecution' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction">
+            <interceptor-ref name="loginStack"/>
             <result>examExecution</result>
         </action>
 
         <action name='nextQuestion' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction"
                 method="nextQuestion">
+            <interceptor-ref name="loginStack"/>
             <result>examExecution</result>
         </action>
 
         <action name='previousQuestion' class="de.nordakademie.multiplechoice.exam.ui.ExamExecutionAction"
                 method="previousQuestion">
+            <interceptor-ref name="loginStack"/>
             <result>examExecution</result>
         </action>
 
@@ -123,11 +137,13 @@
 
         <action name='participationAddition' class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction"
                 method="getForm">
+            <interceptor-ref name="permissionStack"/>
             <result>participationAddition</result>
         </action>
 
         <action name='addParticipation' class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction"
                 method="saveParticipation">
+            <interceptor-ref name="permissionStack"/>
             <result name="input">participationAddition</result>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
@@ -137,6 +153,7 @@
 
         <action name="removeParticipation" class="de.nordakademie.multiplechoice.participation.ui.ParticipationAction"
                 method="removeParticipation">
+            <interceptor-ref name="permissionStack"/>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
@@ -148,7 +165,7 @@
         <action name='questionEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="editQuestion">
-            <!--<interceptor-ref name="loginStack"/>-->
+            <interceptor-ref name="permissionStack"/>
             <result name="input">questionEdit</result>
             <result>questionFillTheBlankText
             </result>
@@ -157,8 +174,7 @@
         <action name='viewQuestionEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveQuestionEdit">
-            <!--<interceptor-ref name="loginStack"/>-->
-            <!--<result name="input">questionEdit</result>-->
+            <interceptor-ref name="permissionStack"/>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
@@ -168,8 +184,7 @@
         <action name='viewAnswerEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveAnswerEdit">
-            <!--<interceptor-ref name="loginStack"/>-->
-            <!--<result name="input">questionEdit</result>-->
+            <interceptor-ref name="permissionStack"/>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
@@ -179,7 +194,7 @@
         <action name='cancelQuestionEdit'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="cancel">
-            <!--<interceptor-ref name="loginStack"/>-->
+            <interceptor-ref name="permissionStack"/>
             <result name="cancel" type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
@@ -190,18 +205,17 @@
         <action name='saveQuestion'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveQuestion">
-            <!--<interceptor-ref name="loginStack"/>-->
+            <interceptor-ref name="permissionStack"/>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
             </result>
-            <!-- <result name="input">questionEdit</result>-->
         </action>
 
         <action name='saveBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveBlankText">
-            <!--<interceptor-ref name="loginStack"/>-->
+            <interceptor-ref name="permissionStack"/>
             <result type="redirectAction">
                 <param name="actionName">questionFillTheBlankText</param>
                 <param name="examId">${examId}</param>
@@ -211,6 +225,7 @@
         <action name='deleteQuestion'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="deleteQuestion">
+            <interceptor-ref name="permissionStack"/>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
@@ -220,15 +235,14 @@
         <action name='questionFillTheBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
                 method="getForm">
-            <!--<interceptor-ref name="loginStack"/>-->
+            <interceptor-ref name="permissionStack"/>
             <result>questionFillTheBlankText</result>
         </action>
 
         <action name='saveQuestionBlankText'
                 class="de.nordakademie.multiplechoice.question.ui.QuestionFillTheBlankTextAction"
                 method="saveQuestionBlankText">
-            <!--            <result type="redirectAction">questionList</result>
-                        <result name="input">questionFillTheBlankText</result>-->
+            <interceptor-ref name="permissionStack"/>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
@@ -272,7 +286,8 @@
             <interceptor-ref name="loginStack"/>
             <result name="error" type="redirectAction">
                 <param name="actionName">examTimeOver</param>
-                <param name="examId">${examId}</param></result>
+                <param name="examId">${examId}</param>
+            </result>
             <result type="redirectAction">
                 <param name="actionName">examExecution</param>
                 <param name="examId">${examId}</param>
