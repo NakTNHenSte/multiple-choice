@@ -122,7 +122,6 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
         return SUCCESS;
     }
 
-
     public String saveExam() {
 
         exam.setUser(userService.find(userId));

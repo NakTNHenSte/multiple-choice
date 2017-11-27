@@ -21,7 +21,7 @@ public class Exam {
     private short percentualSuccessThreshold;
     private Date start;
     private Date end;
-    private byte credits;
+    private double credits;
     private String seminar;
     private User user;
 
@@ -29,7 +29,7 @@ public class Exam {
     }
 
     public Exam(final long id, final String title, User user, short duration,short percentualSuccessThreshold,
-                Date start, Date end, byte credits, String seminar) {
+                Date start, Date end, double credits, String seminar) {
         this.id = id;
         this.title = title;
         this.user = user;
@@ -80,11 +80,11 @@ public class Exam {
     }
 
     @Basic
-    public Byte getCredits() {
+    public double getCredits() {
         return credits;
     }
 
-    public void setCredits(Byte credits) {
+    public void setCredits(double credits) {
         this.credits = credits;
     }
 

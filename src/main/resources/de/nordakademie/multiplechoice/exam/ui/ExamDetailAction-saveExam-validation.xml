@@ -2,8 +2,31 @@
   "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 <validators>
   <field name="exam.title">
-    <field-validator type="required">
+    <field-validator type="requiredstring">
       <message>Bitte fügen sie einen Titel hinzu.</message>
+    </field-validator>
+  </field>
+  <field name="exam.credits">
+  <field-validator type="regex">
+    <param name="regex"><![CDATA[(([0])(\.|,)(5))|((0)(\.|,)(7)(5))|((1)(\.|,)(0))]]></param>
+    <message>Es können nur 0,5 0,75 oder 1,0 Credits vergeben werden</message>
+  </field-validator>
+</field>
+  <field name="exam.seminar">
+    <field-validator type="requiredstring">
+      <message>Bitte fügen Sie das entsprechende Seminar der Prüfung hinzu.</message>
+    </field-validator>
+  </field>
+  <field name="exam.duration">
+    <field-validator type="regex">
+      <param name="regex"><![CDATA[([1-9]+[0-9]*)]]></param>
+      <message>Die Prüfungsdauer muss mindestens eine Minute dauern</message>
+    </field-validator>
+  </field>
+  <field name="exam.percentualSuccessThreshold">
+    <field-validator type="regex">
+      <param name="regex"><![CDATA[(\d{1,2}(?!\d)|100)]]></param>
+      <message>Die Bestehensgrenze muss zwischen 0 und 100 liegen</message>
     </field-validator>
   </field>
 </validators>
