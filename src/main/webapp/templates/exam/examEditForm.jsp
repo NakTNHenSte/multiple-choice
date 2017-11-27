@@ -46,8 +46,11 @@
 
                     <s:hidden name="examId" value="%{exam.id}"/>
                     <s:textfield name="question.questionText" label="Fragentext"/>
-                    <s:textfield name="answerCount" label="Anzahl Anwortmöglichkeiten"/>
-
+                    <s:select label="Antwortanzahl auswählen"
+                              headerKey="-1"
+                              list="#{'1':'1', '2':'2', '3':'3', '4':'4', '5':'5', '6':'6', '7':'7', '8':'8', '9':'9'}"
+                              name="answerCount"
+                              value="1" />
                 </div>
                 <div class="modal-footer">
                     <s:submit value="Bestätigen" type="button" class="btn btn-primary"/>

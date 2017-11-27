@@ -7,6 +7,7 @@ import de.nordakademie.multiplechoice.answer.service.AnswerService;
 import de.nordakademie.multiplechoice.exam.model.Exam;
 import de.nordakademie.multiplechoice.exam.service.ExamService;
 import de.nordakademie.multiplechoice.participation.model.Participation;
+import de.nordakademie.multiplechoice.participation.service.ExamResultEnum;
 import de.nordakademie.multiplechoice.participation.service.ParticipationService;
 import de.nordakademie.multiplechoice.question.model.Question;
 import de.nordakademie.multiplechoice.question.service.QuestionService;
@@ -84,6 +85,11 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         }
     }
 
+    /**
+     * Diese Methode handled das Laden der nächsten Question, abhängig
+     * von der aktuell geladenen Question.
+     * @return Action Result Konstante.
+     */
     public String nextQuestion() {
         loadQuestions();
 
@@ -94,6 +100,11 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         return SUCCESS;
     }
 
+    /**
+     * Diese Methode handled das Laden der vorherigen Question, abhängig
+     * von der aktuell geladenen Question.
+     * @return Action Result Konstante.
+     */
     public String previousQuestion() {
         loadQuestions();
 
@@ -105,6 +116,10 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
         return SUCCESS;
     }
 
+    /**
+     * Diese Methode startet das Examen unter bestimmten Bedingungen.
+     * @return Action Result Konstante.
+     */
     public String runExam() {
         loadQuestions();
         currentQuestionIndex = 0;
@@ -114,7 +129,7 @@ public class ExamExecutionAction extends ActionSupport implements Preparable {
 
         if (isParticipationAllowed(participation)) {
             participation.setValid(false);
-            participation.setExamResult("Prüfung abgebrochen");
+            participation.setExamResult(ExamResultEnum.PARTICIPATION_CANCELLED.getExamResult());
             participation.setExamStartTimestamp(new Timestamp(System.currentTimeMillis()));
             participationService.update(participation);
             return SUCCESS;

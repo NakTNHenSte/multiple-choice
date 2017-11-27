@@ -9,7 +9,8 @@ public enum ExamResultEnum {
 
     PASSED("Bestanden"),
     FAILED("Nicht bestanden"),
-    NOT_PARTICIPATED("Nicht teilgenommen");
+    NOT_PARTICIPATED("Nicht teilgenommen"),
+    PARTICIPATION_CANCELLED("Prüfung abgebrochen");
 
     private ExamResultEnum(String examResult) {
         this.examResult = examResult;
