@@ -53,9 +53,9 @@
         </global-results>
 
         <!-- Fange 500 Fehler ab -->
-        <global-exception-mappings>
+ <!--       <global-exception-mappings>
         <exception-mapping exception="java.lang.Exception" result="genericError" />
-        </global-exception-mappings>
+        </global-exception-mappings>-->
 
         <action name="" class="de.nordakademie.multiplechoice.user.ui.UserLoginAction"
                 method="login">
@@ -191,7 +191,6 @@
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveQuestion">
             <!--<interceptor-ref name="loginStack"/>-->
-            <result name="input">examEditForm</result>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
