@@ -29,5 +29,15 @@
       <message>Die Bestehensgrenze muss zwischen 0 und 100 liegen</message>
     </field-validator>
   </field>
+  <field name="exam.start">
+    <field-validator type="required">
+      <message>Bitte geben Sie ein Datum ein</message>
+    </field-validator>
+  </field>
+  <field name="exam.end">
+    <field-validator type="required">
+      <message>Bitte geben Sie ein Datum ein</message>
+    </field-validator>
+  </field>
 </validators>
 
