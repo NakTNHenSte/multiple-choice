@@ -36,6 +36,10 @@ public class QuestionEditAction extends ActionSupport {
         this.examService = examService;
     }
 
+    /*
+    * Methode gibt ein vorausgefuelltes Formular der Frage zurueck und ruft je nach Fragetyp
+    * ein Multiple-Choice oder Lueckentext auf
+    * */
     public String editQuestion() {
 
         question = questionService.findOne(questionId);
@@ -51,6 +55,9 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    * Methode dient zum Abbrechen einer Aktion
+    * */
     public String cancel() {
 
         exam = examService.findOne(examId);
@@ -63,10 +70,16 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    * Methode dient zum Redirect auf eine andere jsp
+    * */
     public String saveBlankText(){
         return SUCCESS;
     }
 
+    /*
+    * Methode speichert eine Multiple-Choice-Frage und legt die dazugehörige Anzahl an Antwortmöglichkeiten an
+    * */
     public String saveQuestion() {
 
         exam = question.getExam();
@@ -87,6 +100,9 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    * Methode speichert moegliche Aenderungen an einer Antwort
+    * */
     public String saveAnswerEdit() {
 
         List<Answer> answersFromDatabase = answerService.findAll(questionId);
@@ -102,6 +118,9 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    * Methode speichert moegliche Aenderungen an einer Frage oder erstellt sie neu
+    * */
     public String saveQuestionEdit() {
 
         question.setExam(examService.findOne(examId));
@@ -117,12 +136,18 @@ public class QuestionEditAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    * Methode loescht Antworten
+    * */
     public String deleteAnswer() {
         answerList = answerService.findAll(questionId);
         answerService.delete(answerList.get(positionOfAnswer).getAnswerID());
         return SUCCESS;
     }
 
+    /*
+    * Methode loescht die Frage und dazugehoerigen Antworten
+    * */
     public String deleteQuestion() {
         answerList = answerService.findAll(questionId);
         for (Answer answer : answerList) {

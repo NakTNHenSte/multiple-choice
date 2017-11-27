@@ -23,20 +23,22 @@ public class UserLoginAction extends ActionSupport implements SessionAware {
     private String password;
     private User user;
 
+    /*
+    * Meldet den User an und prueft zunaechst, ob er bereits angemeldet ist
+    * */
     public String login() {
-
-        // ueberpruefe, ob der user bereits eine session besitzt
+        // ueberpruefe, ob der User bereits eine session besitzt
         if (sessionMap.containsKey("userId")) {
                 return SUCCESS; // gehe zur Hauptseite
             }
 
         if (username != null && password != null){
-            // wenn kein user in der session existiert, dann pruefe Benutzername und Passwort
+            // wenn kein User in der session existiert, dann pruefe Benutzername und Passwort
             user = userService.findUser(username);
             if (user != null){
                 if (password.equals(user.getPassword())) {
 
-                    // setzte den user in die session
+                    // setze den User in die session
                     sessionMap.put("userId", user.getId());
                     sessionMap.put("userType", user.getType());
                     sessionMap.put("userFullName", user.getName()+" "+user.getSurname());
@@ -51,8 +53,10 @@ public class UserLoginAction extends ActionSupport implements SessionAware {
         return INPUT;
     }
 
+    /*
+    * Meldet den Benutzer ab und entfernt alle zuvor in der session gespeicherten Werte
+    * */
     public String logout() {
-        // entferne alle zuvor in der session gespeicherten Werte
         if (sessionMap.containsKey("userId")) {
             sessionMap.remove("userId");
             sessionMap.remove("userType");

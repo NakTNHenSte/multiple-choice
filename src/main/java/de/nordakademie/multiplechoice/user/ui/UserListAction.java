@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by Dieke Luebberstedt on 09.11.17.
  */
 
-public class UserListAction implements Action, SessionAware{
+public class UserListAction implements Action, SessionAware {
 
     private final UserService userService;
     private final ParticipationService participationService;
@@ -25,8 +25,14 @@ public class UserListAction implements Action, SessionAware{
 
 
     @Autowired
-    public UserListAction(final UserService userService, final ParticipationService participationService) { this.userService = userService; this.participationService = participationService;}
+    public UserListAction(final UserService userService, final ParticipationService participationService) {
+        this.userService = userService;
+        this.participationService = participationService;
+    }
 
+    /*
+    * Diese Methode dient fuer die Darstellung des Benutzerprofils bzgl. Benutzer- und Pruefungsinformationen
+    * */
     @Override
     public String execute() {
         user = userService.find((long) sessionMap.get("userId"));

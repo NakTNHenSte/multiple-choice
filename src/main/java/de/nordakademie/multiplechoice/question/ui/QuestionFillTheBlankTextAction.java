@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by chris on 22.11.17.
+ * Created by Christopher Ost on 22.11.17.
  */
 
 public class QuestionFillTheBlankTextAction extends ActionSupport {
@@ -39,12 +39,12 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
         this.examService = examService;
     }
 
-    public String getForm() { return SUCCESS; }
+    public String getForm() {
+        return SUCCESS;
+    }
 
     /**
      * Die Methode speichert den Lueckentext und die daraus extrahierten Antworten.
-     *
-     * @return
      */
     public String saveQuestionBlankText() {
 
@@ -68,6 +68,9 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /*
+    * Die extrahierten Antworten werden in die Datenbank gespeichert
+    * */
     private void parseAnswers() {
         List<String> blanksList = extractAnswers(question.getQuestionText());
 
@@ -79,6 +82,7 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
             answerService.create(answer);
         }
     }
+
 
     private List<Answer> createAnswerList(List<String> blanksList) {
 
@@ -95,6 +99,9 @@ public class QuestionFillTheBlankTextAction extends ActionSupport {
         return answers;
     }
 
+    /*
+    * Die Methode extrahiert die richtigen Antworten aus der Lueckentextaufgabe
+    * */
     private List<String> extractAnswers(String blankText) {
 
         List<String> answers = new ArrayList<String>();
