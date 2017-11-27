@@ -155,8 +155,17 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
     }
 
     public void validate() {
-    }
 
+        if (!(exam == null)) {
+            Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+            if (exam.getStart().before(currentTimestamp)) {
+                this.addFieldError("exam.start", "Das Startdatum muss in der Zukunft liegen");
+            }
+            if(exam.getEnd().before(exam.getStart())){
+                this.addFieldError("exam.end", "Das Enddatum muss hinter dem Startdatum liegen");
+            }
+        }
+    }
 
     private boolean isEditableExam(Date endDate, Date startDate) {
         Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
