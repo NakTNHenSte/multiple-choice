@@ -22,13 +22,13 @@ public class LoginInterceptor extends AbstractInterceptor {
         Map<String, Object> sessionMap = ActionContext.getContext().getSession();
 
         // pruefe ob eine session existiert. wenn nicht, dann gehe zum Login, andernfalls unternimm nichts weiteres
-        if (!sessionMap.containsKey("userId"))
+        if (sessionMap.containsKey("userId"))
         {
-            return "loginRedirect";
+            return invocation.invoke();
         }
         else
         {
-            return invocation.invoke();
+            return "loginRedirect";
         }
     }
 }
