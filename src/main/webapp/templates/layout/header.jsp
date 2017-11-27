@@ -9,7 +9,7 @@
             <s:a action="userList">
                 ${sessionScope.userFullName}
             </s:a>
-            <button data-toggle="modal" data-target="#confirmationModal2" aria-hidden="true">Logout
+            <button class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal2" aria-hidden="true">Logout
             </button>
         </div>
     </div>
