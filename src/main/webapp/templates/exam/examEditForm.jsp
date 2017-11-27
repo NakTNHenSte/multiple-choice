@@ -51,8 +51,6 @@
                               list="#{'1':'1', '2':'2', '3':'3', '4':'4', '5':'5', '6':'6', '7':'7', '8':'8', '9':'9'}"
                               name="answerCount"
                               value="1" />
-                    <%--<s:textfield name="answerCount" label="Anzahl Anwortmöglichkeiten"/>--%>
-
                 </div>
                 <div class="modal-footer">
                     <s:submit value="Bestätigen" type="button" class="btn btn-primary"/>
