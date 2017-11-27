@@ -74,7 +74,7 @@
         </action>
         <action name='saveExam' class="de.nordakademie.multiplechoice.exam.ui.ExamDetailAction"
                 method="saveExam">
-            <result name="input">/emplates/exam/examCreationForm.jsp</result>
+            <result name="input">examCreationForm</result>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
@@ -191,6 +191,7 @@
                 class="de.nordakademie.multiplechoice.question.ui.QuestionEditAction"
                 method="saveQuestion">
             <!--<interceptor-ref name="loginStack"/>-->
+            <result name="input">examEditForm</result>
             <result type="redirectAction">
                 <param name="actionName">editExam</param>
                 <param name="examId">${examId}</param>
