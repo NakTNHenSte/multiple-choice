@@ -1,5 +1,10 @@
 package de.nordakademie.multiplechoice.participation.service;
 
+/**
+ * Created by Daniel Fiolka on 26.11.17.
+ * Dieser Enum enthält Konstanten für die möglichen Zustände eines Prüfungsergebnis bezüglich
+ * einer Teilnahme oder auch nicht Teilnahme an einer Prüfung.
+ */
 public enum ExamResultEnum {
 
     PASSED("Bestanden"),

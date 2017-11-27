@@ -89,7 +89,7 @@ public class ExamDetailAction extends ActionSupport implements Action, SessionAw
                 }
                 questionService.delete(question.getId());
             }
-            participationService.deleteExam(examId);
+            participationService.deleteByExam(examId);
             examService.removeExam(examId);
             testAnswerService.deleteAllByExam(examId);
             return SUCCESS;

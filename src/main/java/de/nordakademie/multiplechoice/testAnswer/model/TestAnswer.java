@@ -10,6 +10,11 @@ import de.nordakademie.multiplechoice.user.model.User;
 
 import javax.persistence.*;
 
+/**
+ * Diese Entität stellt die gegebene Antwort eines Studenten auf eine Testfrage dar.
+ * Da es um multiple choice Tests geht, korrespondieren diese Antworten eins zu eins
+ * zu den eingetragenen Antworten des Dozenten.
+ */
 @Entity
 @Table(name = "testAnswer")
 public class TestAnswer {

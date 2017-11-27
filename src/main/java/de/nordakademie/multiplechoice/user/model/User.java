@@ -2,11 +2,12 @@ package de.nordakademie.multiplechoice.user.model;
 
 import javax.persistence.*;
 
+
+
 /**
  * Created by Dieke Luebberstedt on 07.11.17.
+ * Diese Entität stellt eines Benutzer der Anwendung dar.
  */
-
-
 @Entity
 @Table(name = "USER")
 public class User {

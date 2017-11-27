@@ -9,6 +9,9 @@ public class OneTimePasswordGenerator {
     public OneTimePasswordGenerator(){
     }
 
+    /** Generiert einen langen random String
+     * @return String
+     */
     public String generatePassword(){
         String uuid = UUID.randomUUID().toString();
         return uuid;

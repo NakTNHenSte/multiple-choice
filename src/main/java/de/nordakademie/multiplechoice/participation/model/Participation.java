@@ -6,11 +6,15 @@ import de.nordakademie.multiplechoice.user.model.User;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+
+
 /**
  * Created by Daniel Fiolka on 23.11.17.
+ * Diese Entität stellt eine Teilnahme an einer Prüfung dar.
+ * Ein Benutzer bzw. Student kann mehrere Teilnahmen an unterschiedlichen Prüfungen haben,
+ * aber immer nur einmal an ein und der selben Prüfung teilnehmen.
+ * Über diese Entität wird ihm auch ein Einmalpasswort und ein Testergebnis zugeordnet.
  */
-
-
 @Entity
 @Table(name = "PARTICIPATION")
 public class Participation {

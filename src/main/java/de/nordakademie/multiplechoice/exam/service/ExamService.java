@@ -56,7 +56,7 @@ public class ExamService {
 
     /**
      * Ruft das ExamRepository auf um ein Exam anhand einer examId zu finden.
-     * @param examId die Id der Prüfung die gefunden werden sollen.
+     * @param examId die Id des exams die gefunden werden sollen.
      * @return gibt ein Exam zurück.
      */
     @Transactional
@@ -76,7 +76,7 @@ public class ExamService {
 
     /**
      * Ruft das ExamRepository auf um ein Exam in der Datenbank zu aktualisieren.
-     * @param exam ist das Exam mit den aktualisierten Werten.
+     * @param exam ist das Exam mit den zu aktualisierenden Werten.
      */
     @Transactional
     public void update(Exam exam) {

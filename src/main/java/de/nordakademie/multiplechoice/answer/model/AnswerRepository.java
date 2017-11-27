@@ -1,8 +1,6 @@
 package de.nordakademie.multiplechoice.answer.model;
 
-/**
- * Created by Steven on 08.11.2017.
- */
+
 
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +8,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+/**
+ * Created by Steven on 08.11.2017.
+ * Das zur Entität Answer zugehörige Repository.
+ */
 @Repository
 public class AnswerRepository {
 
@@ -27,9 +29,9 @@ public class AnswerRepository {
 
 
     /**
-     * Entfernt ein Answer aus der Datenbank.
+     * Entfernt eine Answer aus der Datenbank.
      *
-     * @param answer ist das zu entfernende Answer.
+     * @param answer ist die zu entfernende Answer.
      */
     public void delete(final Answer answer) {
         entityManager.remove(answer);
@@ -45,7 +47,9 @@ public class AnswerRepository {
     }
 
     /**
-     * @return alle answer Entitäten aus der Datenbank.
+     * Gibt Answer Entitäten zurück, die zu einer bestimmten Question gehören.
+     * @param questionId die Id der Question
+     * @return Eine Liste mit allen answer Entitäten aus der Datenbank.
      */
     public List<Answer> findAll(long questionId) {
         return entityManager.createQuery("SELECT r FROM Answer r WHERE question_Id = :questionId", Answer.class)

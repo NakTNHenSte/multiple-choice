@@ -9,6 +9,7 @@ import java.sql.Date;
 
 /**
  * Created by Daniel Fiolka on 08.11.17.
+ * Diese Entität stellt eine gesamte Multiple Choice Prüfung dar.
  */
 @Entity
 @Table(name = "EXAM")

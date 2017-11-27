@@ -1,8 +1,6 @@
 package de.nordakademie.multiplechoice.answer.model;
 
-/**
- * Created by Steven on 08.11.2017.
- */
+
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -14,6 +12,13 @@ import javax.persistence.Table;
 
 import de.nordakademie.multiplechoice.question.model.Question;
 
+/**
+ * Created by Steven Hens on 08.11.2017.
+ * Diese Klasse ist die Entität Answer. Sie stellt im Datenmodell die vom Dozenten
+ * eingetragene(n) Antworten zu einer Frage dar. Da es um Multiple Choice Tests geht,
+ * kann es mehrere Antworten zu einer Frage geben, die unterschiedliche Wahrheitsgehalte
+ * können.
+ */
 @Entity
 @Table(name = "Answer")
 public class Answer {

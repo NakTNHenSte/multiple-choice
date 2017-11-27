@@ -32,22 +32,47 @@ public class TestAnswerService {
         this.questionService = questionService;
     }
 
+    /**
+     * Ruft das TestAnswerRepository auf um alle TestAnswer Entitäten zurückzugeben.
+     *
+     * @return eine Liste von testAnswers.
+     */
     @Transactional(readOnly = true)
     public List<TestAnswer> findAll() {
         return testAnswerRepository.findAll();
     }
 
+    /**
+     * Ruft das TestAnswerRepository auf um eine TestAnswer aus der Datenbank zu finden.
+     *
+     * @param testAnswerId ist die Id der zu findenden TestAnswer.
+     */
     @Transactional
     public TestAnswer findOne(final long testAnswerId) {
         return testAnswerRepository.findOne(testAnswerId);
     }
 
+    /**
+     * Ruft das TestAnswerRepository auf um eine TestAnswer aus der Datenbank zu finden, anhand
+     * einer korrespondierenden answer.
+     *
+     * @param answerId ist die Id der korrespondierenden Answer.
+     */
     @Transactional
     public TestAnswer findByAnswerId(final long answerId) {
         return testAnswerRepository.findByAnswerId(answerId);
     }
 
 
+    /**
+     * Diese Methode übergibt dem TestAnswerRepository eine TestAnswer um diese
+     * in der Datenbank zu persistieren.
+     *
+     * @param answerFromUser ist die TestAntwort eines users als Typ String.
+     * @param examId         die Id des Exams zu dem die TestAntwort gehört
+     * @param userId         Id des Users der die TestAntwort gegeben hat.
+     * @param answerId       Die Id der zugehörigen Antwort des Exams.
+     */
     @Transactional
     public void create(String answerFromUser, long examId, long userId, long answerId) {
 
@@ -80,22 +105,45 @@ public class TestAnswerService {
         return testAnswer;
     }
 
+    /**
+     * Ruft das TestAnswerRepository auf um eine TestAnswer aus der Datenbank zu löschen.
+     *
+     * @param testAnswerId ist die Id der zu entfernenden TestAnswer.
+     */
     @Transactional
     public void delete(final long testAnswerId) {
         final TestAnswer testAnswer = testAnswerRepository.findOne(testAnswerId);
         testAnswerRepository.delete(testAnswer);
     }
 
+    /**
+     * Entfernt alle TestAnswers, die zu einem bestimmten Exam gehören.
+     *
+     * @param examId die Id des bestimmten Exams.
+     */
     @Transactional
     public void deleteAllByExam(final long examId) {
         testAnswerRepository.deleteAllByExam(examId);
     }
 
+    /**
+     * Ruft das TestAnswerRepository auf um eine TestAnswer in der Datenbank zu aktualisieren.
+     *
+     * @param testAnswer ist die TestAnswer mit den zu aktualisierenden Werten.
+     */
     @Transactional
     public void update(TestAnswer testAnswer) {
         testAnswerRepository.update(testAnswer);
     }
 
+
+    /**
+     * Gibt die Anzahl der erreichten Punkte aus eines Users für ein bestimmtes Exam.
+     *
+     * @param userId die Id des users
+     * @param examId die Id des exams
+     * @return die Anzahl erreichter Punkte
+     */
     @Transactional
     public double getAchievedPointsInExam(long userId, long examId) {
         double points = 0;

@@ -4,10 +4,12 @@ import de.nordakademie.multiplechoice.exam.model.Exam;
 
 import javax.persistence.*;
 
+
 /**
  * Created by chris on 07.11.17.
+ * Diese Entität stellt eine Frage einer Prüfung dar. Es können mehrere Fragen zu
+ * einer Prüfung gehören.
  */
-
 @Entity
 @Table(name = "QUESTION")
 public class Question {
